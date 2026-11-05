@@ -77,14 +77,14 @@ h1{font-weight:800;line-height:1.05;letter-spacing:-.015em}
 
 /* Hero — type carries the screen; legend is one row of small markers */
 .hero{padding:3.5rem 0 3rem}
-@media(min-width:900px){.hero{padding:5rem 0 4rem}}
+@media(min-width:900px){.hero{padding:3.75rem 0 3rem}}
 .hero-name{
   font-size:clamp(5.25rem,12.5vw,8rem);line-height:.92;font-weight:800;letter-spacing:-.025em;
-  margin:1rem 0 1.75rem;text-transform:none;
+  margin:.85rem 0 1.35rem;text-transform:none;
 }
 .hero-claim{font-size:2.25rem;line-height:1.15;font-weight:700;max-width:22ch;margin:0 0 .6rem}
 @media(max-width:640px){.hero-claim{font-size:1.7rem}}
-.hero-sub{font-size:1.125rem;line-height:1.45;font-weight:500;margin:0 0 3rem;color:var(--ink)}
+.hero-sub{font-size:1.125rem;line-height:1.45;font-weight:500;margin:0 0 2.25rem;color:var(--ink)}
 .hero-legend{display:block;border:0;border-top:1px solid var(--ink)}
 .hero-block{
   display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;
