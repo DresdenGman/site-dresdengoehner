@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,35 +40,32 @@
     </div>
   </div>
 </header>
+<aside class="rail" aria-hidden="true"><span class="rail-text">Dresden Goehner — Evidence Dossier</span><span class="rail-pos"><span id="railNow">01</span> / <span id="railTot">10</span></span></aside>
 
 <main>
   <!-- 1) Hero -->
-  <section class="hero hero--plate" aria-labelledby="hero-name">
+  <section class="hero hero--plate rv" aria-labelledby="hero-name">
     <div class="wrap">
       <p class="label label--grey">Research · Systems · Evidence</p>
       <h1 class="hero-name" id="hero-name">Dresden<br>Goehner</h1>
       <p class="hero-claim">Building decision systems that make uncertainty visible.</p>
       <p class="hero-sub">— and audits his own systems first.</p>
-      <p class="plate-tag">Plate 01 — The tail (motif)</p>
+      <p class="plate-tag rv">Plate 01 — The tail (motif)</p>
 
       <div class="hero-legend" id="projects">
         <a class="hero-block" href="#ai-glasses">
-          <div class="shape shape--square" aria-hidden="true"></div>
           <span class="hero-block-num label--red">01 · AI Navigation Glasses — Research</span>
           <p class="hero-block-metric">211★ · 85 user responses · 4 communities</p>
         </a>
         <a class="hero-block" href="#epsilon">
-          <div class="shape shape--circle" aria-hidden="true"></div>
           <span class="hero-block-num label--blue">02 · EPSILON — Open Source</span>
           <p class="hero-block-metric">227★ · Case 001 rejected by its own tests</p>
         </a>
         <a class="hero-block" href="#gert">
-          <div class="shape shape--triangle" aria-hidden="true"></div>
           <span class="hero-block-num">03 · GERT — Grid Risk Research</span>
           <p class="hero-block-metric">115+ pilot participants · model held at its own gate</p>
         </a>
       </div>
-      <p class="legend-line"><span class="sw-red">Red = Research</span> · <span class="sw-blue">Blue = Open Source / Code</span> · <span class="sw-yellow">Yellow = Nonprofit / Community</span></p>
 
       <div class="evidence-chips">
         <a class="chip" href="https://epsilonfield.space">Live demo ↗</a>
@@ -90,16 +88,17 @@
       <p class="footnote">All figures as of November 5, 2026. Every number on this page links to its evidence.</p>
     </div>
   </section>
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Every number on this page links to its evidence.</span><span class="mq-dot">·</span><span>Every number on this page links to its evidence.</span><span class="mq-dot">·</span><span>Every number on this page links to its evidence.</span><span class="mq-dot">·</span><span>Every number on this page links to its evidence.</span><span class="mq-dot">·</span></div></div>
 
   <!-- 3a) AI Navigation Glasses -->
   <section class="section flagship flagship--red" id="ai-glasses" aria-labelledby="ai-glasses-title">
     <div class="wrap">
-      <figure class="plate"><img src="images/plate-glasses.webp" alt="" loading="lazy"><figcaption>Plate 02 — A signal in the dark</figcaption></figure>
-      <div class="section-head">
+      <figure class="plate rv"><img src="images/plate-glasses.webp" alt="" loading="lazy"><figcaption>Plate 02 — A signal in the dark</figcaption></figure>
+      <div class="section-head rv">
         <span class="label label--red">01 · Research</span>
         <h2 class="section-title" id="ai-glasses-title">AI Navigation Glasses</h2>
       </div>
-      <div class="flagship-grid">
+      <div class="flagship-grid rv">
         <div class="flagship-main">
           <p class="field-label">Question</p>
           <p class="flagship-question">What may a low-cost assistive device say to a blind pedestrian — and what must it never say?</p>
@@ -108,7 +107,7 @@
           <p>Safety redesign built around a confidence gate: low-confidence output never becomes an action instruction, a green light is reported as information and never as authorisation to cross, and repeated prompts are suppressed. Community build-and-explain sessions ran in 4 communities.</p>
           <p class="field-label">My specific contribution</p>
           <p>I designed the guidance rules, the confidence gate, and the safety case; I built the demo pipeline and ran the community build sessions.</p>
-          <div class="status-box">
+          <div class="status-box rv">
             <p class="label label--red">Status</p>
             <p>In progress: confidence calibration is the winter P0. The Bosch result is weak and is published unedited; the shell and guidance demo are not an integrated wearable product.</p>
           </div>
@@ -134,23 +133,23 @@
   <!-- 3b) EPSILON -->
   <section class="section flagship flagship--blue" id="epsilon" aria-labelledby="epsilon-title">
     <div class="wrap">
-      <figure class="plate"><img src="images/plate-epsilon.webp" alt="" loading="lazy"><figcaption>Plate 03 — Planes of assumption</figcaption></figure>
-      <div class="section-head">
+      <figure class="plate rv"><img src="images/plate-epsilon.webp" alt="" loading="lazy"><figcaption>Plate 03 — Planes of assumption</figcaption></figure>
+      <div class="section-head rv">
         <span class="label label--blue">02 · Open Source</span>
         <h2 class="section-title" id="epsilon-title">EPSILON</h2>
       </div>
-      <div class="flagship-grid">
+      <div class="flagship-grid rv">
         <div class="flagship-main">
           <p class="field-label">Question</p>
           <p class="flagship-question">Which assumption breaks first?</p>
           <p>A quantitative evidence instrument: state the claim and the rejection rule in advance, run a baseline plus five perturbations (fees / slippage / window / universe / combined), and export a fingerprinted evidence artifact. The browser demo is deterministic illustrative arithmetic, labelled illustrative on the spot; history mode uses server-side real daily data and does not silently substitute on failure.</p>
-          <figure class="chart">
+          <figure class="chart rv">
             <img src="images/chart-epsilon-case001.svg" alt="EPSILON Case 001: baseline return and five stress variants, with the rejection verdict" loading="lazy">
             <figcaption>Fig. — EPSILON Case 001. Baseline −7.75%; stress variants passed 0/5; verdict: Rejected.</figcaption>
           </figure>
           <p class="field-label">My specific contribution</p>
           <p>I designed the falsification protocol and built the instrument; Case 001 is my own strategy, rejected by my own rules.</p>
-          <div class="status-box">
+          <div class="status-box rv">
             <p class="label label--blue">Status</p>
             <p>Maintenance and evidence updates since October 2026. The awesome-quant listing (merged 2026-10-19) covers the Assumption Clinic; a listing is not an endorsement.</p>
           </div>
@@ -177,23 +176,23 @@
   <!-- 3c) GERT -->
   <section class="section flagship flagship--red" id="gert" aria-labelledby="gert-title">
     <div class="wrap">
-      <figure class="plate"><img src="images/plate-gert.webp" alt="" loading="lazy"><figcaption>Plate 04 — The tail</figcaption></figure>
-      <div class="section-head">
+      <figure class="plate rv"><img src="images/plate-gert.webp" alt="" loading="lazy"><figcaption>Plate 04 — The tail</figcaption></figure>
+      <div class="section-head rv">
         <span class="label label--red">03 · Grid Risk Research</span>
         <h2 class="section-title" id="gert-title">GERT — Grid Extreme Risk Toolkit</h2>
       </div>
-      <div class="flagship-grid">
+      <div class="flagship-grid rv">
         <div class="flagship-main">
           <p class="field-label">Question</p>
           <p class="flagship-question">Can a grid-risk model be stopped by its own evidence before it reaches a decision-maker?</p>
           <p>The Historical Lab is open to the public — 216 ERCOT-native load hours, three windows, recomputable in the browser with an independent checker. Probabilistic forecasting is switched off because the model did not pass its own gate.</p>
-          <figure class="chart">
+          <figure class="chart rv">
             <img src="images/chart-coverage.svg" alt="Forecast coverage against the preregistered calibration gate" loading="lazy">
             <figcaption>Fig. — Coverage against the preregistered gate. Chart from the PJM companion study; in-progress manuscript.</figcaption>
           </figure>
           <p class="field-label">My specific contribution</p>
           <p>I built the toolkit and the Historical Lab, ran both classroom pilots, and made the promotion decision the gate required: no.</p>
-          <div class="status-box">
+          <div class="status-box rv">
             <p class="label label--red">Status</p>
             <p>v1.5 is preregistered only (per-quantile recalibration, frozen before any v1.5 data run). No v1.5 result exists yet. Limited: pilot counts are organizer-recorded; the survey sample is self-selected.</p>
           </div>
@@ -223,13 +222,12 @@
     <div class="wrap">
       <div class="score-band" aria-hidden="true"><span class="sb sb-1">The score is not yours</span><span class="sb sb-2">The score is not yours</span><span class="sb sb-3">The score is not yours</span><span class="sb sb-4">The score is not yours</span><span class="sb sb-5">The score is not yours</span></div>
       <div class="kaggle-mark">
-        <div class="shape shape--triangle" aria-hidden="true"></div>
         <span class="label">Kaggle · Field Notes</span>
       </div>
       <h2 class="section-title" style="margin-top:.75rem" id="kaggle-title">The score is not yours</h2>
       <p><strong>AI Agent Security</strong> (OpenAI / Google / IEEE, team of 5): public <strong>70th (104.575)</strong> → private <strong>4,178th (0.00000)</strong>. The private leaderboard used unpublished, stricter guardrails.</p>
       <p><strong>Kaggriculture</strong>: peak <strong>6th</strong>; the same file scored <strong>2896.5 → 1236.4 → 4168.7</strong> across three segments (final standing <strong>2,278 of 10,148</strong>). In a local 84-game experiment, changing only the opponents moved the score by about <strong>31%</strong>.</p>
-      <figure class="chart">
+      <figure class="chart rv">
         <img src="images/chart-kaggle.svg" alt="Kaggle results: public to private leaderboard change and the same file scoring three different values" loading="lazy">
         <figcaption>Fig. — Kaggle. Public vs. private standing, and three scores for one unchanged file.</figcaption>
       </figure>
@@ -240,7 +238,7 @@
   <!-- 5) Open source -->
   <section class="section" id="open-source" aria-labelledby="oss-title">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head rv">
         <span class="label label--blue">Open Source · Code</span>
         <h2 class="section-title" id="oss-title">Open Source</h2>
       </div>
@@ -273,7 +271,7 @@
   <!-- 6) Competitions -->
   <section class="section" id="competitions" aria-labelledby="comp-title">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head rv">
         <span class="label">Results · With Denominators</span>
         <h2 class="section-title" id="comp-title">Competition Results</h2>
       </div>
@@ -301,7 +299,7 @@
   <!-- 7) Organisations -->
   <section class="section" id="organisations" aria-labelledby="org-title">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head rv">
         <span class="label label--yellow-tag">Nonprofit / Community</span>
         <h2 class="section-title" id="org-title">Organisations</h2>
       </div>
@@ -325,15 +323,15 @@
   <!-- 8) Work index -->
   <section class="section" id="index" aria-labelledby="index-title">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head rv">
         <span class="label label--grey">Complete Index</span>
         <h2 class="section-title" id="index-title">Complete Work Index</h2>
       </div>
       <ul class="index-list">
-        <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">GERT</a></span><span class="index-item-desc">Grid Extreme Risk Toolkit — Historical Lab and gated forecasting. See §03 above.</span></li>
+        <li class="index-item" data-plate="images/plate-gert.webp"><span class="index-item-name"><a href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">GERT</a></span><span class="index-item-desc">Grid Extreme Risk Toolkit — Historical Lab and gated forecasting. See §03 above.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/pjm-polar-vortex-paper">PJM Polar-Vortex Study</a></span><span class="index-item-desc">In-progress manuscript.</span></li>
-        <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/EPSILON-trading-simulator">EPSILON</a></span><span class="index-item-desc">Backtest-assumption instrument. See §02 above.</span></li>
-        <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/AIGlasses_for_navigation">AI Navigation Glasses</a></span><span class="index-item-desc">Low-cost assistive navigation research prototype. See §01 above.</span></li>
+        <li class="index-item" data-plate="images/plate-epsilon.webp"><span class="index-item-name"><a href="https://github.com/DresdenGman/EPSILON-trading-simulator">EPSILON</a></span><span class="index-item-desc">Backtest-assumption instrument. See §02 above.</span></li>
+        <li class="index-item" data-plate="images/plate-glasses.webp"><span class="index-item-name"><a href="https://github.com/DresdenGman/AIGlasses_for_navigation">AI Navigation Glasses</a></span><span class="index-item-desc">Low-cost assistive navigation research prototype. See §01 above.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://futureos.space/">FutureOS</a></span><span class="index-item-desc">Decision operating system; one line in the index, maintained separately.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/the-backtest-that-lied">the-backtest-that-lied</a></span><span class="index-item-desc">The signal was real; the strategy was not: IC 0.94 → 0.10.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/NEE">NEE</a></span><span class="index-item-desc">Exploratory research code, author&rsquo;s own disclaimer retained.</span></li>
@@ -350,11 +348,11 @@
   <!-- 9) About -->
   <section class="section" id="about" aria-labelledby="about-title">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head rv">
         <span class="label label--grey">About</span>
         <h2 class="section-title" id="about-title">Profile in One Frame</h2>
       </div>
-      <div class="about-grid">
+      <div class="about-grid rv">
         <div class="about-text">
           <p>I work where a claim has to survive contact with evidence. Curiosity becomes useful when it can be shared — written down, checked by someone else, and used to make a better decision than the one I would have made alone.</p>
           <p>I build at the seam of mathematics, technology, and people: a navigation prototype that has to respect what it does not know, a backtest instrument whose first rejected strategy was my own, and a grid-risk lab whose model stayed behind its own gate. The tools differ; the discipline does not.</p>
@@ -383,5 +381,6 @@
     <p class="small">Figures as of November 5, 2026.</p>
   </div>
 </footer>
+<script src="site.js" defer></script>
 </body>
 </html>
