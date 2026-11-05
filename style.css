@@ -239,6 +239,22 @@ a:hover{text-decoration-color:var(--ink)}
 .plate-head .label--red{color:#FF9D97}
 .plate-head .label--blue{color:#7CC0FF}
 .flagship-grid{display:grid;grid-template-columns:1.9fr 1fr;gap:3rem}
+
+.flagship-question{font-size:1.3rem;font-weight:600;line-height:1.45;margin:.2rem 0 .6rem;max-width:30em}
+.flagship-main p{margin:.35rem 0 .8rem}
+.status-box{
+  border-left:2px solid var(--ink);background:transparent;
+  padding:.2rem 0 .2rem 1.3rem;margin-top:1.8rem;max-width:46em;
+}
+.status-box p{margin:.3rem 0}
+.link-list,.metrics{list-style:none;margin:.4rem 0 1.2rem;padding:0}
+.link-list li,.metrics li{padding:.5rem 0;border-bottom:1px solid var(--line-soft);font-size:.98rem}
+.link-list a{font-family:var(--font-m);font-size:.82rem;letter-spacing:.03em;text-decoration:none}
+.link-list a:hover{text-decoration:underline;text-underline-offset:3px}
+.metrics li{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.metrics .score,.score{font-family:var(--font-m);font-weight:500}
+.link-note{font-size:.85rem;color:var(--ink-2)}
+
 /* charts: paper exhibits */
 .chart{margin:2rem 0;max-width:52rem}
 .chart img{display:block;width:100%;background:#0A0F14;border:1px solid #0A0F14;padding:1.5rem}
@@ -376,4 +392,9 @@ a:hover{text-decoration-color:var(--ink)}
   .plate{display:none}
   .score-band{background:none;color:var(--ink)}
   .js .rv{opacity:1;transform:none}
+}
+
+/* rail clearance for hero corners (late rule wins over shorthand) */
+@media (min-width:88rem){
+  .hero--plate .plate-corners{padding-left:4.8rem}
 }
