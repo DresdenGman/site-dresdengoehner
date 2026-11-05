@@ -45,6 +45,7 @@ a:hover{text-decoration-color:var(--ink)}
 /* ---------- instrument rail (desktop margin) ---------- */
 .rail{display:none}
 @media (min-width:88rem){
+  .plate-corners{padding-left:4.8rem}
   .rail{
     position:fixed;left:0;top:0;bottom:0;width:3.1rem;z-index:60;
     display:flex;flex-direction:column;justify-content:space-between;align-items:center;
@@ -149,7 +150,7 @@ a:hover{text-decoration-color:var(--ink)}
 
 .hero-legend{
   display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3.2rem;
-  border-top:1px solid var(--night-line);
+  border-top:1px solid var(--night-line);background:rgba(5,10,16,.86);
 }
 .hero-block{
   display:block;padding:1.2rem 1.2rem 1.3rem;text-decoration:none;
@@ -225,14 +226,14 @@ a:hover{text-decoration-color:var(--ink)}
 /* flagship chapters: full-bleed plate screen, dossier below */
 .flagship{padding-top:0}
 .plate--screen{
-  width:100vw;margin-left:calc(50% - 50vw);
+  width:100vw;margin:0 0 0 calc(50% - 50vw);
   height:min(82vh,760px);position:relative;
 }
 .plate--screen img{height:100%;width:100%;object-fit:cover}
 .plate--screen figcaption{
   position:absolute;right:1.5rem;bottom:1rem;margin:0;color:var(--night-2);
 }
-.plate-head{position:relative;z-index:2;margin-top:-9.5rem;margin-bottom:2.4rem}
+.plate-head{position:relative;z-index:2;margin-top:-10.5rem;margin-bottom:2.4rem}
 .plate-head .section-title{color:#fff;font-size:clamp(2.8rem,6.5vw,5.2rem)}
 .plate-head .label{color:var(--night-ink)}
 .plate-head .label--red{color:#FF9D97}
