@@ -15,29 +15,37 @@
 <meta name="twitter:title" content="The result I refused to call reliable">
 <meta name="twitter:description" content="A model can be technically impressive and still fail the one test that matters.">
 <meta name="twitter:image" content="https://dresdengoehner.com/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#14181b">
+<link rel="preload" href="/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<header class="site-head">
-<a class="brand" href="/">Dresden Goehner</a>
-<nav aria-label="Site">
-<a href="/">Home</a>
-<a href="/notes.html">Field Notes</a>
-<a href="/proof.html">Proof</a>
-</nav>
+<a class="skip" href="#content">Skip to content</a>
+<header class="topbar">
+  <div class="wrap topbar-row">
+    <a class="brand" href="/">Dresden Goehner</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/#projects">Projects</a>
+      <a href="/#open-source">Open Source</a>
+      <a href="/notes.html">Notes</a>
+      <a href="/proof.html">Proof</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
 </header>
-<main>
+<main id="content">
 <article>
-<header>
+<header class="page-hero">
+<div class="wrap narrow">
 <p class="meta"><span class="label">Field Note · essay</span> August 2026 · 6 min read</p>
 <p class="label">Research integrity · model calibration</p>
 <h1>The result I refused to call reliable</h1>
 <p class="lede">A model can be technically impressive and still fail the one test that matters.</p>
+</div>
 </header>
+<div class="wrap narrow">
 <aside>
 <p class="label">The question</p>
 <p>What should happen when a model is finished enough to impress, but not calibrated enough to trust?</p>
@@ -93,12 +101,19 @@
 </li>
 </ul>
 </section>
+</div>
 </article>
 </main>
-<footer class="site-foot">
-<p>Dresden Goehner</p>
-<p>Field Notes · Research · Systems · Evidence</p>
-<a href="/notes.html">Back to the archive ↑</a>
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-name">Dresden Goehner</p>
+    <ul class="footer-links">
+      <li><a href="/notes.html">Back to notes</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/proof.html">Proof</a></li>
+    </ul>
+    <p class="small">Field Notes</p>
+  </div>
 </footer>
 </body>
 </html>
