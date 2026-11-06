@@ -3,227 +3,316 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dresden Goehner — Research, Systems &amp; Evidence</title>
-<meta name="description" content="Building decision systems that make uncertainty visible — and audits his own systems first. AI navigation glasses, EPSILON, GERT, and 24 merged upstream open-source PRs.">
+<title>Dresden Goehner — Research in Light</title>
+<meta name="description" content="Building decision systems that make uncertainty visible — and audits his own systems first.">
+<meta name="theme-color" content="#14181b">
 <link rel="canonical" href="https://dresdengoehner.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dresdengoehner.com/">
-<meta property="og:title" content="Dresden Goehner — Research, Systems &amp; Evidence">
-<meta property="og:description" content="Building decision systems that make uncertainty visible — and audits his own systems first. AI navigation glasses, EPSILON, GERT, and 24 merged upstream open-source PRs.">
+<meta property="og:title" content="Dresden Goehner — Research in Light">
+<meta property="og:description" content="Building decision systems that make uncertainty visible — and audits his own systems first.">
 <meta property="og:image" content="https://dresdengoehner.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Dresden Goehner — Research, Systems &amp; Evidence">
+<meta property="og:image:alt" content="Dresden Goehner — Building decision systems that make uncertainty visible.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dresden Goehner — Research, Systems &amp; Evidence">
-<meta name="twitter:description" content="Building decision systems that make uncertainty visible — and audits his own systems first. AI navigation glasses, EPSILON, GERT, and 24 merged upstream open-source PRs.">
+<meta name="twitter:title" content="Dresden Goehner — Research in Light">
+<meta name="twitter:description" content="Building decision systems that make uncertainty visible — and audits his own systems first.">
 <meta name="twitter:image" content="https://dresdengoehner.com/og.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 <header class="topbar">
-  <div class="wrap">
-    <div class="topbar-row">
-      <span class="label">Dresden Goehner · Research &amp; Engineering · Class of 2027</span>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#ai-glasses">Projects</a>
-        <a href="#open-source">Open Source</a>
-        <a href="notes.html">Notes</a>
-        <a href="/proof.html">Proof</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+  <div class="wrap topbar-row">
+    <a class="brand" href="/">Dresden Goehner</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="#open-source">Open Source</a>
+      <a href="notes.html">Notes</a>
+      <a href="/proof.html">Proof</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
-<main>
-  <!-- 1) Hero -->
+<main id="content">
   <section class="hero" aria-labelledby="hero-name">
     <div class="wrap">
-      <p class="label label--grey">Research · Systems · Evidence</p>
-      <h1 class="hero-name" id="hero-name">Dresden<br>Goehner</h1>
-      <p class="hero-claim">Building decision systems that make uncertainty visible.</p>
-      <p class="hero-sub">— and audits his own systems first.</p>
+      <p class="meta-row"><span>Research in Light</span><span>Evidence archive · as of 2026-11-05</span></p>
+      <h1 class="hero-name" id="hero-name">Dresden Goehner</h1>
+      <p class="thesis">Building decision systems that make uncertainty visible.</p>
+      <p class="method">— and audits his own systems first.</p>
 
-      <div class="hero-legend" id="projects">
-        <a class="hero-block" href="#ai-glasses">
-          <div class="shape shape--square" aria-hidden="true"></div>
-          <span class="hero-block-num label--red">01 · AI Navigation Glasses — Research</span>
-          <p class="hero-block-metric">211★ · 85 user responses · 4 communities</p>
-        </a>
-        <a class="hero-block" href="#epsilon">
-          <div class="shape shape--circle" aria-hidden="true"></div>
-          <span class="hero-block-num label--blue">02 · EPSILON — Open Source</span>
-          <p class="hero-block-metric">227★ · Case 001 rejected by its own tests</p>
-        </a>
-        <a class="hero-block" href="#gert">
-          <div class="shape shape--triangle" aria-hidden="true"></div>
-          <span class="hero-block-num">03 · GERT — Grid Risk Research</span>
-          <p class="hero-block-metric">115+ pilot participants · model held at its own gate</p>
-        </a>
-      </div>
-      <p class="legend-line"><span class="sw-red">Red = Research</span> · <span class="sw-blue">Blue = Open Source / Code</span> · <span class="sw-yellow">Yellow = Nonprofit / Community</span></p>
-
-      <div class="evidence-chips">
-        <a class="chip" href="https://epsilonfield.space">Live demo ↗</a>
-        <a class="chip" href="https://github.com/DresdenGman">GitHub ↗</a>
-        <a class="chip" href="/proof.html">Proof index →</a>
-      </div>
+      <ol class="q-grid" id="projects">
+        <li>
+          <a class="q-card" href="#ai-glasses">
+            <p class="meta-row"><span>01</span><span>Research</span></p>
+            <p class="q-kicker">AI Navigation Glasses</p>
+            <p class="q-text">What may a low-cost assistive device say to a blind pedestrian — and what must it never say?</p>
+            <p class="q-status"><span class="status-label">In progress</span> Research prototype. The Bosch result is weak and is published unedited, including one red frame read as green. Confidence calibration is the winter P0.</p>
+            <span class="more">Read the chapter</span>
+          </a>
+        </li>
+        <li>
+          <a class="q-card" href="#epsilon">
+            <p class="meta-row"><span>02</span><span>Open source</span></p>
+            <p class="q-kicker">EPSILON</p>
+            <p class="q-text">Which assumption breaks first?</p>
+            <p class="q-status"><span class="status-label">Rejected by its own tests</span> Case 001 is my own strategy: baseline −7.75%, stress variants passed 0/5. Independent replications: 0.</p>
+            <span class="more">Read the chapter</span>
+          </a>
+        </li>
+        <li>
+          <a class="q-card" href="#gert">
+            <p class="meta-row"><span>03</span><span>Grid risk</span></p>
+            <p class="q-kicker">GERT</p>
+            <p class="q-text">Can a grid-risk model be stopped by its own evidence before it reaches a decision-maker?</p>
+            <p class="q-status"><span class="status-label">Not promoted</span> v1.4 missed its preregistered calibration gate. v1.5 is preregistered only; no v1.5 result exists yet.</p>
+            <span class="more">Read the chapter</span>
+          </a>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- 2) Evidence band -->
-  <section class="evidence-band" aria-label="Evidence in numbers">
+  <section class="section" id="artifacts" aria-labelledby="artifacts-title">
     <div class="wrap">
+      <p class="meta-row"><span>Selected artifacts</span><span>Three surfaces</span></p>
+      <h2 class="section-title" id="artifacts-title">Working artifacts, not stock photos</h2>
+      <div class="triptych">
+        <a class="plate-link" href="https://gert-d.vercel.app">
+          <figure class="plate shot">
+            <img src="images/gert-demo.png" alt="GERT presentation screen. The interface itself marks the view as a simulated ERCOT decision snapshot with no live operational claims.">
+            <figcaption>GERT · recorded demo · archive 2026-11-05. Opens the demo surface.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://epsilon-livid.vercel.app">
+          <figure class="plate shot">
+            <img src="images/epsilon-demo.png" alt="EPSILON experiment screen asking whether a conclusion holds when execution friction changes. Illustrative interface.">
+            <figcaption>EPSILON · recorded demo · archive 2026-11-05. Opens the demo surface.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://futureos.space/">
+          <figure class="plate shot">
+            <img src="images/futureos-guided-demo.png" alt="FutureOS guided demo, opening frame of a decision-contract walkthrough.">
+            <figcaption>FutureOS · guided demo · archive 2026-11-05. Maintained separately; not a fourth flagship.</figcaption>
+          </figure>
+        </a>
+      </div>
+      <p class="footnote">The frames are working interfaces. Numbers printed inside a screenshot are not additional results on this page. The flagship chapters remain AI Navigation Glasses, EPSILON, and GERT.</p>
+    </div>
+  </section>
+
+  <section class="evidence-band" aria-label="Evidence with denominators">
+    <div class="wrap">
+      <p class="meta-row"><span>Record</span><span>Each figure links to the proof index</span></p>
       <ul class="evidence-list">
-        <li class="evidence-item"><a href="#open-source"><span class="evidence-num">24</span><span class="evidence-cap">merged upstream PRs / 16 repositories</span></a></li>
-        <li class="evidence-item"><a href="#gert"><span class="evidence-num">115+</span><span class="evidence-cap">pilot participants</span></a></li>
-        <li class="evidence-item"><a href="#ai-glasses"><span class="evidence-num">85</span><span class="evidence-cap">user responses</span></a></li>
-        <li class="evidence-item"><a href="#epsilon"><span class="evidence-num">227★</span><span class="evidence-cap">most-starred project</span></a></li>
-        <li class="evidence-item"><a href="#gert"><span class="evidence-num">57</span><span class="evidence-cap">valid survey responses</span></a></li>
+        <li class="evidence-item">
+          <a href="/proof.html#pr-engineering">
+            <span class="num">24 <span class="unit">PRs</span></span>
+            <span class="cap">merged upstream engineering pull requests, across 16 repositories<span class="more">Proof</span></span>
+          </a>
+        </li>
+        <li class="evidence-item">
+          <a href="/proof.html#glasses-bosch">
+            <span class="num">1 <span class="unit">/ 215</span></span>
+            <span class="cap">red frame read as green, among 215 labeled Bosch frames — published in full<span class="more">Proof</span></span>
+          </a>
+        </li>
+        <li class="evidence-item">
+          <a href="/proof.html#epsilon-case">
+            <span class="num">0 <span class="unit">/ 5</span></span>
+            <span class="cap">Case 001 stress variants passed. Verdict: Rejected. Baseline −7.75%.<span class="more">Proof</span></span>
+          </a>
+        </li>
+        <li class="evidence-item">
+          <a href="/proof.html#gert-pilots">
+            <span class="num">57 <span class="unit">responses</span></span>
+            <span class="cap">valid survey responses, from pilots with 115+ organizer-recorded participants<span class="more">Proof</span></span>
+          </a>
+        </li>
+        <li class="evidence-item">
+          <a href="/proof.html#epsilon-case">
+            <span class="num">0</span>
+            <span class="cap">independent replications of EPSILON Case 001<span class="more">Proof</span></span>
+          </a>
+        </li>
       </ul>
-      <p class="footnote">All figures as of November 5, 2026. Every number on this page links to its evidence.</p>
+      <p class="footnote">All figures as of November 5, 2026. The caption states the denominator or the scope. Repository star counts are recorded in the chapters and on the proof index.</p>
     </div>
   </section>
 
-  <!-- 3a) AI Navigation Glasses -->
-  <section class="section flagship flagship--red" id="ai-glasses" aria-labelledby="ai-glasses-title">
+  <section class="section chapter" id="ai-glasses" aria-labelledby="ai-glasses-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label label--red">01 · Research</span>
-        <h2 class="section-title" id="ai-glasses-title">AI Navigation Glasses</h2>
-      </div>
-      <div class="flagship-grid">
-        <div class="flagship-main">
-          <p class="field-label">Question</p>
-          <p class="flagship-question">What may a low-cost assistive device say to a blind pedestrian — and what must it never say?</p>
-          <p>A low-cost navigation research prototype that turns traffic-light and obstacle detection into restrained spoken prompts. Research prototype — not a certified mobility aid, and not a replacement for a cane, guide dog, traffic rules, or the user&rsquo;s judgment.</p>
-          <p class="field-label">Process</p>
-          <p>Safety redesign built around a confidence gate: low-confidence output never becomes an action instruction, a green light is reported as information and never as authorisation to cross, and repeated prompts are suppressed. Community build-and-explain sessions ran in 4 communities.</p>
-          <p class="field-label">My specific contribution</p>
+      <div class="chapter-grid">
+        <div class="chapter-main">
+          <p class="meta-row"><span>01 · Research</span><span>As of 2026-11-05</span></p>
+          <h2 id="ai-glasses-title">AI Navigation Glasses</h2>
+          <h3 class="field">Question</h3>
+          <p class="question">What may a low-cost assistive device say to a blind pedestrian — and what must it never say?</p>
+          <p>A low-cost navigation research prototype that turns traffic-light and obstacle detection into restrained spoken prompts. Research prototype — not a certified mobility aid, and not a replacement for a cane, guide dog, traffic rules, or the user’s judgment.</p>
+          <h3 class="field">Process</h3>
+          <p>Safety redesign built around a confidence gate: low-confidence output never becomes an action instruction, a green light is reported as information and never as authorisation to cross, and repeated prompts are suppressed. Community build-and-explain sessions ran in <a href="/proof.html#glasses-communities">4 communities</a>.</p>
+          <ul class="boundary">
+            <li>
+              <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="16" cy="16" r="5"/>
+                <path d="M4 16h4M24 16h4M16 4v4M16 24v4"/>
+              </svg>
+              <strong>Observe</strong>
+              <p>Traffic lights and obstacles enter as detections.</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 8h20M6 24h20"/>
+                <path d="M10 8v6l6 4 6-4V8"/>
+              </svg>
+              <strong>Confidence gate</strong>
+              <p>Low-confidence output never becomes an action instruction. A green light is information, never authorisation to cross.</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 10h10a6 6 0 0 1 0 12H8z"/>
+                <path d="M8 22l-3 4"/>
+              </svg>
+              <strong>Speak</strong>
+              <p>Prompts stay restrained, and repeated prompts are suppressed.</p>
+            </li>
+          </ul>
+          <h3 class="field">My specific contribution</h3>
           <p>I designed the guidance rules, the confidence gate, and the safety case; I built the demo pipeline and ran the community build sessions.</p>
+          <h3 class="field">Turning point</h3>
+          <p class="turning">The Bosch traffic-light evaluation is published in full, including the weak result: <a href="/proof.html#glasses-bosch">215 labeled frames, committed-decision coverage 6.6%, and 1 red frame read as green</a>.</p>
           <div class="status-box">
-            <p class="label label--red">Status</p>
+            <h3 class="field">Status</h3>
             <p>In progress: confidence calibration is the winter P0. The Bosch result is weak and is published unedited; the shell and guidance demo are not an integrated wearable product.</p>
           </div>
         </div>
-        <div class="flagship-side">
-          <p class="field-label">Links</p>
+        <div class="chapter-side">
+          <h3 class="field">Links</h3>
           <ul class="link-list">
-            <li><a href="https://github.com/DresdenGman/AIGlasses_for_navigation">Run the demo / Code →</a></li>
-            <li><a href="https://doi.org/10.5281/zenodo.23977545">Archive DOI →</a></li>
+            <li><a href="https://github.com/DresdenGman/AIGlasses_for_navigation">Run the demo / Code</a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.23977545">Archive DOI</a></li>
           </ul>
-          <p class="field-label">Metrics</p>
+          <h3 class="field">Metrics</h3>
           <ul class="metrics">
-            <li><strong>211★ / 30 forks</strong> (GitHub, 2026-11-05)</li>
-            <li><strong>85 feedback responses</strong> collected 2026-08-26 – 2026-11-04 (helpfulness 3.47/5; 9 of 64 users who tried it still use it; 48% reported inaccurate prompts)</li>
-            <li><strong>114</strong> automated test functions</li>
-            <li>Bosch traffic-light evaluation: 215 labeled frames, committed-decision coverage 6.6%, including 1 red-read-as-green error — published in full</li>
+            <li><a href="/proof.html#glasses-stars">211★ / 30 forks</a> (GitHub, 2026-11-05)</li>
+            <li><a href="/proof.html#glasses-feedback">85 feedback responses</a> collected 2026-08-26 – 2026-11-04 (helpfulness 3.47/5; 9 of 64 users who tried it still use it; 48% reported inaccurate prompts)</li>
+            <li><a href="/proof.html#glasses-tests">114</a> automated test functions</li>
+            <li><a href="/proof.html#glasses-bosch">Bosch traffic-light evaluation</a>: 215 labeled frames, committed-decision coverage 6.6%, including 1 red-read-as-green error — published in full</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3b) EPSILON -->
-  <section class="section flagship flagship--blue" id="epsilon" aria-labelledby="epsilon-title">
+  <section class="section chapter" id="epsilon" aria-labelledby="epsilon-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label label--blue">02 · Open Source</span>
-        <h2 class="section-title" id="epsilon-title">EPSILON</h2>
-      </div>
-      <div class="flagship-grid">
-        <div class="flagship-main">
-          <p class="field-label">Question</p>
-          <p class="flagship-question">Which assumption breaks first?</p>
+      <div class="chapter-grid">
+        <div class="chapter-main">
+          <p class="meta-row"><span>02 · Open source</span><span>As of 2026-11-05</span></p>
+          <h2 id="epsilon-title">EPSILON</h2>
+          <h3 class="field">Question</h3>
+          <p class="question">Which assumption breaks first?</p>
+          <a class="plate-link" href="https://epsilon-livid.vercel.app">
+            <figure class="plate shot">
+              <img src="images/epsilon-demo.png" alt="EPSILON experiment screen asking whether a conclusion holds when execution friction changes. Illustrative interface." loading="lazy">
+              <figcaption>EPSILON · recorded demo · archive 2026-11-05. Illustrative. The Case 001 verdict is the chart below, not a figure read off this screen.</figcaption>
+            </figure>
+          </a>
+          <h3 class="field">Process</h3>
           <p>A quantitative evidence instrument: state the claim and the rejection rule in advance, run a baseline plus five perturbations (fees / slippage / window / universe / combined), and export a fingerprinted evidence artifact. The browser demo is deterministic illustrative arithmetic, labelled illustrative on the spot; history mode uses server-side real daily data and does not silently substitute on failure.</p>
           <figure class="chart">
             <img src="images/chart-epsilon-case001.svg" alt="EPSILON Case 001: baseline return and five stress variants, with the rejection verdict" loading="lazy">
             <figcaption>Fig. — EPSILON Case 001. Baseline −7.75%; stress variants passed 0/5; verdict: Rejected.</figcaption>
           </figure>
-          <p class="field-label">My specific contribution</p>
+          <h3 class="field">My specific contribution</h3>
           <p>I designed the falsification protocol and built the instrument; Case 001 is my own strategy, rejected by my own rules.</p>
+          <h3 class="field">Turning point</h3>
+          <p class="turning">Case 001, my own strategy, was rejected by those rules: baseline −7.75%, stress variants passed <a href="/proof.html#epsilon-case">0/5</a>, verdict Rejected. <a href="/proof.html#epsilon-case">Independent replications: 0</a>.</p>
           <div class="status-box">
-            <p class="label label--blue">Status</p>
+            <h3 class="field">Status</h3>
             <p>Maintenance and evidence updates since October 2026. The awesome-quant listing (merged 2026-10-19) covers the Assumption Clinic; a listing is not an endorsement.</p>
           </div>
         </div>
-        <div class="flagship-side">
-          <p class="field-label">Links</p>
+        <div class="chapter-side">
+          <h3 class="field">Links</h3>
           <ul class="link-list">
-            <li><a href="https://epsilonfield.space">Live demo →</a><br><span class="link-note">browser demo live; history-mode endpoints are scaffolds since the platform migration — see status note</span></li>
-            <li><a href="https://github.com/DresdenGman/EPSILON-trading-simulator">Code →</a></li>
+            <li><a href="https://epsilonfield.space">Live demo</a><span class="link-note">Browser demo live; history-mode endpoints are scaffolds since the platform migration — see status note.</span></li>
+            <li><a href="https://github.com/DresdenGman/EPSILON-trading-simulator">Code</a></li>
           </ul>
-          <p class="field-label">Metrics</p>
+          <h3 class="field">Metrics</h3>
           <ul class="metrics">
-            <li><strong>227★ / 32 forks</strong> (2026-11-05)</li>
-            <li>Case 001 baseline <strong>−7.75%</strong>, stress variants passed <strong>0/5</strong>, verdict <strong>Rejected</strong></li>
-            <li>Assumption Clinic, April 2026: <strong>26 participants, 5 feedback responses</strong></li>
-            <li>Independent replications: <strong>0</strong> — stated plainly</li>
-            <li>Diamond Challenge 2026, Beijing Pitch Event: <strong>Third Prize (regional)</strong></li>
+            <li><a href="/proof.html#epsilon-stars">227★ / 32 forks</a> (2026-11-05)</li>
+            <li>Case 001 baseline <a href="/proof.html#epsilon-case">−7.75%</a>, stress variants passed <a href="/proof.html#epsilon-case">0/5</a>, verdict Rejected</li>
+            <li>Assumption Clinic, April 2026: <a href="/proof.html#epsilon-clinic">26 participants, 5 feedback responses</a></li>
+            <li>Independent replications: <a href="/proof.html#epsilon-case">0</a> — stated plainly</li>
+            <li>Diamond Challenge 2026, Beijing Pitch Event: <a href="/proof.html#diamond">Third Prize (regional)</a></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3c) GERT -->
-  <section class="section flagship flagship--red" id="gert" aria-labelledby="gert-title">
+  <section class="section chapter" id="gert" aria-labelledby="gert-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label label--red">03 · Grid Risk Research</span>
-        <h2 class="section-title" id="gert-title">GERT — Grid Extreme Risk Toolkit</h2>
-      </div>
-      <div class="flagship-grid">
-        <div class="flagship-main">
-          <p class="field-label">Question</p>
-          <p class="flagship-question">Can a grid-risk model be stopped by its own evidence before it reaches a decision-maker?</p>
-          <p>The Historical Lab is open to the public — 216 ERCOT-native load hours, three windows, recomputable in the browser with an independent checker. Probabilistic forecasting is switched off because the model did not pass its own gate.</p>
+      <div class="chapter-grid">
+        <div class="chapter-main">
+          <p class="meta-row"><span>03 · Grid risk research</span><span>As of 2026-11-05</span></p>
+          <h2 id="gert-title">GERT — Grid Extreme Risk Toolkit</h2>
+          <h3 class="field">Question</h3>
+          <p class="question">Can a grid-risk model be stopped by its own evidence before it reaches a decision-maker?</p>
+          <a class="plate-link" href="https://gert-d.vercel.app">
+            <figure class="plate shot">
+              <img src="images/gert-demo.png" alt="GERT presentation screen. The interface itself marks the view as a simulated ERCOT decision snapshot with no live operational claims." loading="lazy">
+              <figcaption>GERT · recorded demo · archive 2026-11-05. The screen labels itself a simulated snapshot with no live operational claims. Forecasting on the research record stays switched off.</figcaption>
+            </figure>
+          </a>
+          <h3 class="field">Process</h3>
+          <p>The Historical Lab is open to the public — <a href="/proof.html#gert-lab">216 ERCOT-native load hours, three windows</a>, recomputable in the browser with an independent checker. Probabilistic forecasting is switched off because the model did not pass its own gate.</p>
           <figure class="chart">
             <img src="images/chart-coverage.svg" alt="Forecast coverage against the preregistered calibration gate" loading="lazy">
             <figcaption>Fig. — Coverage against the preregistered gate. Chart from the PJM companion study; in-progress manuscript.</figcaption>
           </figure>
-          <p class="field-label">My specific contribution</p>
+          <h3 class="field">My specific contribution</h3>
           <p>I built the toolkit and the Historical Lab, ran both classroom pilots, and made the promotion decision the gate required: no.</p>
+          <h3 class="field">Turning point</h3>
+          <p class="turning">I made the promotion decision the gate required: no. The v1.4 candidate missed the preregistered calibration gate — <a href="/proof.html#gert-gate">Q90 0.035 / Q95 0.044 / Q99 0.032 vs ≤0.03</a> — and was not promoted.</p>
           <div class="status-box">
-            <p class="label label--red">Status</p>
+            <h3 class="field">Status</h3>
             <p>v1.5 is preregistered only (per-quantile recalibration, frozen before any v1.5 data run). No v1.5 result exists yet. Limited: pilot counts are organizer-recorded; the survey sample is self-selected.</p>
           </div>
         </div>
-        <div class="flagship-side">
-          <p class="field-label">Links</p>
+        <div class="chapter-side">
+          <h3 class="field">Links</h3>
           <ul class="link-list">
-            <li><a href="https://gertgrid.space">Live site →</a></li>
-            <li><a href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">Code →</a></li>
-            <li><a href="https://doi.org/10.5281/zenodo.23982227">Software archive →</a></li>
+            <li><a href="https://gertgrid.space">Live site</a></li>
+            <li><a href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">Code</a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.23982227">Software archive</a></li>
           </ul>
-          <p class="field-label">Metrics</p>
+          <h3 class="field">Metrics</h3>
           <ul class="metrics">
-            <li><strong>48★</strong> (2026-11-05)</li>
-            <li>Pilots (May &amp; September 2026): <strong>115+ participants, 57 valid survey responses</strong>, overall 4.33/5, checker usability 3.89/5</li>
-            <li>v1.4 candidate: pinball skill +0.76 to +0.84, calibration error Q90 0.035 / Q95 0.044 / Q99 0.032 vs preregistered gate ≤0.03 — rejected by its own gate, not promoted</li>
-            <li><strong>141</strong> backend tests · Release <strong>v1.2.0</strong></li>
-            <li>TeachEngineering: formally submitted 2026-10-20, under review</li>
+            <li><a href="/proof.html#gert-stars">48★</a> (2026-11-05)</li>
+            <li>Pilots (May &amp; September 2026): <a href="/proof.html#gert-pilots">115+ participants, 57 valid survey responses</a>, overall 4.33/5, checker usability 3.89/5</li>
+            <li>v1.4 candidate: pinball skill +0.76 to +0.84, calibration error <a href="/proof.html#gert-gate">Q90 0.035 / Q95 0.044 / Q99 0.032 vs preregistered gate ≤0.03</a> — rejected by its own gate, not promoted</li>
+            <li><a href="/proof.html#gert-tests">141</a> backend tests · Release <a href="/proof.html#gert-tests">v1.2.0</a></li>
+            <li>TeachEngineering: <a href="/proof.html#teachengineering">formally submitted 2026-10-20, under review</a></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4) Kaggle -->
   <section class="section" id="kaggle" aria-labelledby="kaggle-title">
     <div class="wrap">
-      <div class="kaggle-mark">
-        <div class="shape shape--triangle" aria-hidden="true"></div>
-        <span class="label">Kaggle · Field Notes</span>
-      </div>
-      <h2 class="section-title" style="margin-top:.75rem" id="kaggle-title">The score is not yours</h2>
-      <p><strong>AI Agent Security</strong> (OpenAI / Google / IEEE, team of 5): public <strong>70th (104.575)</strong> → private <strong>4,178th (0.00000)</strong>. The private leaderboard used unpublished, stricter guardrails.</p>
-      <p><strong>Kaggriculture</strong>: peak <strong>6th</strong>; the same file scored <strong>2896.5 → 1236.4 → 4168.7</strong> across three segments (final standing <strong>2,278 of 10,148</strong>). In a local 84-game experiment, changing only the opponents moved the score by about <strong>31%</strong>.</p>
+      <p class="meta-row"><span>Field note · Kaggle</span><span>2026 leaderboards</span></p>
+      <h2 class="section-title" id="kaggle-title">The score is not yours</h2>
+      <p><strong>AI Agent Security</strong> (OpenAI / Google / IEEE, team of 5): public <a href="/proof.html#kaggle-agent"><strong>70th (104.575)</strong></a> → private <a href="/proof.html#kaggle-agent"><strong>4,178th (0.00000)</strong></a>. The private leaderboard used unpublished, stricter guardrails.</p>
+      <p><strong>Kaggriculture</strong>: peak <a href="/proof.html#kaggle-agri"><strong>6th</strong></a>; the same file scored <a href="/proof.html#kaggle-agri"><strong>2896.5 → 1236.4 → 4168.7</strong></a> across three segments (final standing <a href="/proof.html#kaggle-agri"><strong>2,278 of 10,148</strong></a>). In a local 84-game experiment, changing only the opponents moved the score by about <a href="/proof.html#kaggle-local"><strong>31%</strong></a>.</p>
       <figure class="chart">
         <img src="images/chart-kaggle.svg" alt="Kaggle results: public to private leaderboard change and the same file scoring three different values" loading="lazy">
         <figcaption>Fig. — Kaggle. Public vs. private standing, and three scores for one unchanged file.</figcaption>
@@ -232,14 +321,13 @@
     </div>
   </section>
 
-  <!-- 5) Open source -->
   <section class="section" id="open-source" aria-labelledby="oss-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label label--blue">Open Source · Code</span>
-        <h2 class="section-title" id="oss-title">Open Source</h2>
-      </div>
-      <p class="section-intro"><strong>24 merged upstream engineering PRs · 16 repositories — as of 2026-11-05.</strong> Selected list; every item links to the pull request itself.</p>
+      <p class="meta-row"><span>Open source · Code</span><span>As of 2026-11-05</span></p>
+      <h2 class="section-title" id="oss-title">Open Source</h2>
+      <p class="section-intro"><a href="/proof.html#pr-engineering">24 merged upstream engineering PRs · 16 repositories</a> — as of 2026-11-05. Selected list; every item links to the pull request itself.</p>
+      <div class="oss-layout">
+      <div>
       <ul class="pr-list">
         <li><span class="repo">SALib</span> — <a href="https://github.com/SALib/SALib/pull/678">#678</a> · <a href="https://github.com/SALib/SALib/pull/685">#685</a> · <a href="https://github.com/SALib/SALib/pull/686">#686</a> · <a href="https://github.com/SALib/SALib/pull/688">#688</a> · <a href="https://github.com/SALib/SALib/pull/693">#693</a> · <a href="https://github.com/SALib/SALib/pull/694">#694</a> (×6)</li>
         <li><span class="repo">StatsForecast</span> — <a href="https://github.com/Nixtla/statsforecast/pull/1175">#1175</a> · <a href="https://github.com/Nixtla/statsforecast/pull/1176">#1176</a> · <a href="https://github.com/Nixtla/statsforecast/pull/1241">#1241</a> (×3)</li>
@@ -259,51 +347,181 @@
         <li><span class="repo">Trellis AI</span> — <a href="https://github.com/ronsse/trellis-ai/pull/352">#352</a></li>
       </ul>
       <div class="listing-box">
-        <span class="label">Listing, listed separately</span>
-        <p><a href="https://github.com/wilsonfreitas/awesome-quant/pull/735">awesome-quant #735</a> — the Assumption Clinic is listed in the awesome-quant directory; a listing, not an endorsement.</p>
+        <p class="meta-row"><span>Listing, listed separately</span></p>
+        <p><a href="https://github.com/wilsonfreitas/awesome-quant/pull/735">awesome-quant #735</a> — the Assumption Clinic is listed in the awesome-quant directory; a listing, not an endorsement. Not counted among the 24 engineering PRs.</p>
+      </div>
+      </div>
+      <aside class="oss-side">
+        <a class="plate-link" href="https://github.com/networkx/networkx/pull/8735">
+          <figure class="plate ref">
+            <img src="images/networkx-proof.png" alt="NetworkX repository page showing a merged commit by DresdenGman on the PageRank convergence check. Star and fork counts in the page chrome belong to the NetworkX project." loading="lazy">
+            <figcaption>NetworkX #8735, merged upstream · archive 2026-11-05. Counts in the frame are the upstream repository’s, not a personal total.</figcaption>
+          </figure>
+        </a>
+      </aside>
       </div>
     </div>
   </section>
 
-  <!-- 6) Competitions -->
   <section class="section" id="competitions" aria-labelledby="comp-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label">Results · With Denominators</span>
-        <h2 class="section-title" id="comp-title">Competition Results</h2>
+      <p class="meta-row"><span>Results</span><span>Denominator where one was recorded</span></p>
+      <h2 class="section-title" id="comp-title">Competition Results</h2>
+      <div class="cert-grid">
+        <figure class="plate cert" id="cert-bmo">
+          <a href="images/bmo2-distinction-redacted.jpg"><img src="images/bmo2-distinction-redacted.jpg" alt="Redacted BMO Round 2 2026 certificate showing Distinction and Best in School" loading="lazy"></a>
+          <figcaption>BMO Round 2 2026 · 27/40 · Distinction, Best in School</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-aime">
+          <a href="images/aime-qualification.jpg"><img src="images/aime-qualification.jpg" alt="Redacted AIME 2026 qualification certificate" loading="lazy"></a>
+          <figcaption>AIME 2026 · 14/15 · Qualified</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-smt-algebra">
+          <a href="images/stanford-algebra.png"><img src="images/stanford-algebra.png" alt="Redacted Stanford Mathematics Tournament 2026 Algebra certificate, third place" loading="lazy"></a>
+          <figcaption>Stanford Mathematics Tournament 2026 · Algebra 3rd</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-smt-discrete">
+          <a href="images/stanford-discrete.png"><img src="images/stanford-discrete.png" alt="Redacted Stanford Mathematics Tournament 2026 Discrete certificate, seventh place" loading="lazy"></a>
+          <figcaption>Stanford Mathematics Tournament 2026 · Discrete 7th</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-bpho">
+          <a href="images/bpho-round1-top-gold.jpg"><img src="images/bpho-round1-top-gold.jpg" alt="Redacted BPhO Round 1 2025–26 certificate, Global Top Gold" loading="lazy"></a>
+          <figcaption>BPhO Round 1 2025–26 · 80/100 · Global Top Gold, Beijing rank 5</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-smc">
+          <a href="images/smc-gold-redacted.jpg"><img src="images/smc-gold-redacted.jpg" alt="Redacted SMC 2025 Gold certificate" loading="lazy"></a>
+          <figcaption>SMC 2025 · 120/125 · Gold</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-lse">
+          <a href="images/lse-top-gold-redacted.jpg"><img src="images/lse-top-gold-redacted.jpg" alt="Redacted LSE Economics Challenge 2025 Top Gold certificate" loading="lazy"></a>
+          <figcaption>LSE Economics Challenge 2025 · 97/100 · Top Gold</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-wsc">
+          <a href="images/wsc-2025-redacted.png"><img src="images/wsc-2025-redacted.png" alt="Redacted World Scholar’s Cup Beijing 2025 record, Overall Champion Scholar" loading="lazy"></a>
+          <figcaption>World Scholar’s Cup Beijing 2025 · Overall Champion Scholar</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-acsl">
+          <a href="images/acsl-senior.jpg"><img src="images/acsl-senior.jpg" alt="Redacted ACSL 2025–26 Senior certificate" loading="lazy"></a>
+          <figcaption>ACSL 2025–26 Senior · 12/12</figcaption>
+        </figure>
       </div>
       <div class="table-wrap">
-        <table>
-          <caption>Selected results — score, denominator, year</caption>
-          <thead><tr><th scope="col">Competition</th><th scope="col">Result</th><th scope="col">Detail</th><th scope="col">Artifact</th></tr></thead>
+        <table class="stack-table">
+          <caption>Selected results — score or standing, and artifact</caption>
+          <thead>
+            <tr><th scope="col">Competition</th><th scope="col">Result</th><th scope="col">Detail</th><th scope="col">Artifact</th></tr>
+          </thead>
           <tbody>
-            <tr><td>BMO Round 2 2026</td><td class="score">27/40</td><td>Distinction, Best in School</td><td><a class="artifact-link" href="images/bmo2-distinction-redacted.jpg">Artifact →</a></td></tr>
-            <tr><td>USAJMO</td><td class="score">Qualifier</td><td>(record)</td><td><span class="small">Evidence on file</span></td></tr>
-            <tr><td>AIME 2026</td><td class="score">14/15</td><td>Qualified</td><td><a class="artifact-link" href="images/aime-qualification.jpg">Artifact →</a></td></tr>
-            <tr><td>Stanford Mathematics Tournament 2026</td><td class="score">Algebra 3rd</td><td>Discrete 7th</td><td><a class="artifact-link" href="images/stanford-algebra.png">Algebra →</a> · <a class="artifact-link" href="images/stanford-discrete.png">Discrete →</a></td></tr>
-            <tr><td>BPhO Round 1 2025–26</td><td class="score">80/100</td><td>Global Top Gold, Beijing rank 5</td><td><a class="artifact-link" href="images/bpho-round1-top-gold.jpg">Artifact →</a></td></tr>
-            <tr><td>SMC 2025</td><td class="score">120/125</td><td>Gold</td><td><a class="artifact-link" href="images/smc-gold-redacted.jpg">Artifact →</a></td></tr>
-            <tr><td>LSE Economics Challenge 2025</td><td class="score">97/100</td><td>Top Gold</td><td><a class="artifact-link" href="images/lse-top-gold-redacted.jpg">Artifact →</a></td></tr>
-            <tr><td>World Scholar&rsquo;s Cup Beijing 2025</td><td class="score">Overall Champion Scholar</td><td>—</td><td><a class="artifact-link" href="images/wsc-2025-redacted.png">Artifact →</a></td></tr>
-            <tr><td>ACSL 2025–26 Senior</td><td class="score">12/12</td><td>—</td><td><a class="artifact-link" href="images/acsl-senior.jpg">Artifact →</a></td></tr>
-            <tr><td>NYT My List Contest 2025–26</td><td class="score">Top 25%</td><td>970 of 4,004</td><td><span class="small">Evidence on file</span></td></tr>
+            <tr>
+              <th scope="row">BMO Round 2 2026</th>
+              <td class="score" data-label="Result">27/40</td>
+              <td data-label="Detail">Distinction, Best in School</td>
+              <td data-label="Artifact"><a href="#cert-bmo">Certificate</a></td>
+            </tr>
+            <tr>
+              <th scope="row">USAJMO</th>
+              <td class="score" data-label="Result">Qualifier</td>
+              <td data-label="Detail">(record)</td>
+              <td data-label="Artifact">Evidence on file</td>
+            </tr>
+            <tr>
+              <th scope="row">AIME 2026</th>
+              <td class="score" data-label="Result">14/15</td>
+              <td data-label="Detail">Qualified</td>
+              <td data-label="Artifact"><a href="#cert-aime">Certificate</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Stanford Mathematics Tournament 2026</th>
+              <td class="score" data-label="Result">Algebra 3rd</td>
+              <td data-label="Detail">Discrete 7th</td>
+              <td data-label="Artifact"><a href="#cert-smt-algebra">Algebra</a> · <a href="#cert-smt-discrete">Discrete</a></td>
+            </tr>
+            <tr>
+              <th scope="row">BPhO Round 1 2025–26</th>
+              <td class="score" data-label="Result">80/100</td>
+              <td data-label="Detail">Global Top Gold, Beijing rank 5</td>
+              <td data-label="Artifact"><a href="#cert-bpho">Certificate</a></td>
+            </tr>
+            <tr>
+              <th scope="row">SMC 2025</th>
+              <td class="score" data-label="Result">120/125</td>
+              <td data-label="Detail">Gold</td>
+              <td data-label="Artifact"><a href="#cert-smc">Certificate</a></td>
+            </tr>
+            <tr>
+              <th scope="row">LSE Economics Challenge 2025</th>
+              <td class="score" data-label="Result">97/100</td>
+              <td data-label="Detail">Top Gold</td>
+              <td data-label="Artifact"><a href="#cert-lse">Certificate</a></td>
+            </tr>
+            <tr>
+              <th scope="row">World Scholar’s Cup Beijing 2025</th>
+              <td class="score" data-label="Result">Overall Champion Scholar</td>
+              <td data-label="Detail">—</td>
+              <td data-label="Artifact"><a href="#cert-wsc">Certificate</a></td>
+            </tr>
+            <tr>
+              <th scope="row">ACSL 2025–26 Senior</th>
+              <td class="score" data-label="Result">12/12</td>
+              <td data-label="Detail">—</td>
+              <td data-label="Artifact"><a href="#cert-acsl">Certificate</a></td>
+            </tr>
+            <tr>
+              <th scope="row">NYT My List Contest 2025–26</th>
+              <td class="score" data-label="Result">Top 25%</td>
+              <td data-label="Detail">970 of 4,004</td>
+              <td data-label="Artifact">Evidence on file</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- 7) Organisations -->
+  <section class="section" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <p class="meta-row"><span>Research gallery</span><span>Figures already on file</span></p>
+      <h2 class="section-title" id="gallery-title">Figures beside the index</h2>
+      <p>These are the public sheets already kept with the work index. A link appears only where a repository or pull request is already public.</p>
+      <div class="gallery">
+        <figure class="plate doc">
+          <img src="images/physics-polhode.png" alt="Diagram from the AP Physics tennis-racket theorem notes" loading="lazy">
+          <figcaption>AP Physics · tennis-racket theorem. Evidence on file · archive 2026-11-05.</figcaption>
+        </figure>
+        <a class="plate-link" href="https://github.com/DresdenGman/NEE">
+          <figure class="plate ref">
+            <img src="images/nee-entropy.png" alt="Figure from the NEE exploratory research code" loading="lazy">
+            <figcaption>NEE · archive 2026-11-05. Exploratory research code; the author’s own disclaimer stands.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://github.com/DresdenGman/03_Showcase_Projects/tree/main/Transportation-Bike_Sharing_Demand_Prediction">
+          <figure class="plate ref">
+            <img src="images/bike-feature-importance.png" alt="Feature-importance chart from a bike-sharing demand analysis" loading="lazy">
+            <figcaption>Bike-sharing demand · feature importance · archive 2026-11-05. One analysis inside the data lab.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://github.com/networkx/networkx/pull/8735">
+          <figure class="plate ref">
+            <img src="images/networkx-proof.png" alt="NetworkX repository page showing a merged commit by DresdenGman on the PageRank convergence check" loading="lazy">
+            <figcaption>NetworkX #8735 · archive 2026-11-05. Upstream repository counts in the frame are not a personal total.</figcaption>
+          </figure>
+        </a>
+        <figure class="plate doc" id="polymath">
+          <img src="images/polymath-brochure.png" alt="Polymath Society brochure from the project record" loading="lazy">
+          <figcaption>Polymath Society. Leadership record; evidence on file · archive 2026-11-05.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="organisations" aria-labelledby="org-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label label--yellow-tag">Nonprofit / Community</span>
-        <h2 class="section-title" id="org-title">Organisations</h2>
-      </div>
+      <p class="meta-row"><span>Organisations</span><span>No acceptance claimed where review is open</span></p>
+      <h2 class="section-title" id="org-title">Organisations</h2>
       <ul class="org-list">
         <li class="org-item">
           <h3><a href="https://www.prooftoai.org/">Proof to AI</a></h3>
-          <p>Co-founder. A nonprofit about how math students survive and thrive in the AI era — &ldquo;AI Generates. You Prove.&rdquo;</p>
+          <p>Co-founder. A nonprofit about how math students survive and thrive in the AI era — “AI Generates. You Prove.”</p>
         </li>
         <li class="org-item">
           <h3>AA (Applied Mathematics and AI)</h3>
@@ -311,29 +529,26 @@
         </li>
         <li class="org-item">
           <h3>TeachEngineering</h3>
-          <p>GERT Historical Lab formally submitted 2026-10-20, under review.</p>
+          <p>GERT Historical Lab <a href="/proof.html#teachengineering">formally submitted 2026-10-20, under review</a>. Submission is not acceptance.</p>
         </li>
       </ul>
     </div>
   </section>
 
-  <!-- 8) Work index -->
   <section class="section" id="index" aria-labelledby="index-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label label--grey">Complete Index</span>
-        <h2 class="section-title" id="index-title">Complete Work Index</h2>
-      </div>
+      <p class="meta-row"><span>Complete index</span><span>Including work that is not a flagship</span></p>
+      <h2 class="section-title" id="index-title">Complete Work Index</h2>
       <ul class="index-list">
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">GERT</a></span><span class="index-item-desc">Grid Extreme Risk Toolkit — Historical Lab and gated forecasting. See §03 above.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/pjm-polar-vortex-paper">PJM Polar-Vortex Study</a></span><span class="index-item-desc">In-progress manuscript.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/EPSILON-trading-simulator">EPSILON</a></span><span class="index-item-desc">Backtest-assumption instrument. See §02 above.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/AIGlasses_for_navigation">AI Navigation Glasses</a></span><span class="index-item-desc">Low-cost assistive navigation research prototype. See §01 above.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://futureos.space/">FutureOS</a></span><span class="index-item-desc">Decision operating system; one line in the index, maintained separately.</span></li>
-        <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/the-backtest-that-lied">the-backtest-that-lied</a></span><span class="index-item-desc">The signal was real; the strategy was not: IC 0.94 → 0.10.</span></li>
-        <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/NEE">NEE</a></span><span class="index-item-desc">Exploratory research code, author&rsquo;s own disclaimer retained.</span></li>
+        <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/the-backtest-that-lied">the-backtest-that-lied</a></span><span class="index-item-desc">The signal was real; the strategy was not: <a href="/proof.html#backtest-ic">IC 0.94 → 0.10</a>.</span></li>
+        <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/NEE">NEE</a></span><span class="index-item-desc">Exploratory research code, author’s own disclaimer retained.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/collatz-descent-framework">Collatz Descent Framework</a></span><span class="index-item-desc">Does not claim a proof.</span></li>
-        <li class="index-item"><span class="index-item-name">30-project Data Lab</span><span class="index-item-desc">13 individual + 17 group; group index <a href="https://github.com/DresdenGman/02_Group_Projects">02_Group_Projects</a>.</span></li>
+        <li class="index-item"><span class="index-item-name">30-project Data Lab</span><span class="index-item-desc"><a href="/proof.html#data-lab">13 individual + 17 group</a>; group index <a href="https://github.com/DresdenGman/02_Group_Projects">02_Group_Projects</a>.</span></li>
         <li class="index-item"><span class="index-item-name">AP Physics Tennis-Racket Theorem</span><span class="index-item-desc">Evidence on file.</span></li>
         <li class="index-item"><span class="index-item-name">Polymath Society</span><span class="index-item-desc">Leadership record; Evidence on file.</span></li>
         <li class="index-item"><span class="index-item-name"><a href="https://github.com/DresdenGman/nexus-club-os">Nexus Club OS</a></span><span class="index-item-desc">Public concept repo, not deployed.</span></li>
@@ -342,39 +557,47 @@
     </div>
   </section>
 
-  <!-- 9) About -->
   <section class="section" id="about" aria-labelledby="about-title">
     <div class="wrap">
-      <div class="section-head">
-        <span class="label label--grey">About</span>
-        <h2 class="section-title" id="about-title">Profile in One Frame</h2>
-      </div>
+      <p class="meta-row"><span>About</span><span>One frame</span></p>
+      <h2 class="section-title" id="about-title">Profile in One Frame</h2>
       <div class="about-grid">
         <div class="about-text">
           <p>I work where a claim has to survive contact with evidence. Curiosity becomes useful when it can be shared — written down, checked by someone else, and used to make a better decision than the one I would have made alone.</p>
           <p>I build at the seam of mathematics, technology, and people: a navigation prototype that has to respect what it does not know, a backtest instrument whose first rejected strategy was my own, and a grid-risk lab whose model stayed behind its own gate. The tools differ; the discipline does not.</p>
           <p>My method is the sentence at the top of this page, repeated in every project: build decision systems that make uncertainty visible — and audit my own systems first. If a number appears here, it links to its evidence; if a result is weak, it is published weak.</p>
-          <a class="cv-link" href="/dresden-goehner-cv.pdf">One-page CV (PDF) ↓</a>
+          <a class="cv-link" href="/dresden-goehner-cv.pdf">One-page CV (PDF)</a>
         </div>
-        <figure class="about-fig">
-          <img class="portrait" src="images/dresden-portrait-bw.jpg" alt="Portrait of Dresden Goehner" width="800" height="800" loading="lazy">
-          <figcaption>Fig. — Dresden Goehner. Portrait from the project record.</figcaption>
-        </figure>
+        <div class="about-fig">
+          <figure class="portrait-pick">
+            <p class="portrait-controls">
+              <label><input type="radio" name="portrait-mode" id="portrait-color" checked> Color</label>
+              <label><input type="radio" name="portrait-mode" id="portrait-bw"> Black and white</label>
+            </p>
+            <img class="portrait show-color" src="images/dresden-portrait.jpg" alt="Color portrait of Dresden Goehner" width="800" height="800" loading="lazy">
+            <img class="portrait show-bw" src="images/dresden-portrait-bw.jpg" alt="Black-and-white portrait of Dresden Goehner" width="800" height="800" loading="lazy">
+            <figcaption>Dresden Goehner. Color portrait from the project record; black and white kept beside it.</figcaption>
+          </figure>
+          <figure class="plate doc brochure">
+            <a href="#polymath"><img src="images/polymath-brochure.png" alt="Polymath Society brochure from the project record" loading="lazy"></a>
+            <figcaption>Polymath Society. Leadership record; evidence on file · archive 2026-11-05.</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<!-- 10) Footer -->
 <footer class="site-footer" id="contact">
   <div class="wrap">
-    <p class="footer-name">Dresden Goehner — Research · Systems · Evidence</p>
-    <div class="footer-links">
-      <a href="mailto:dr.dresden0416@gmail.com">dr.dresden0416@gmail.com</a>
-      <a href="https://github.com/DresdenGman">GitHub ↗</a>
-      <a href="/proof.html">Proof index →</a>
-      <a href="notes.html">Notes</a>
-    </div>
+    <p class="meta-row"><span>Contact</span><span>As of 2026-11-05</span></p>
+    <p class="footer-name">Dresden Goehner</p>
+    <ul class="footer-links">
+      <li><a href="mailto:dr.dresden0416@gmail.com">dr.dresden0416@gmail.com</a></li>
+      <li><a href="https://github.com/DresdenGman">GitHub</a></li>
+      <li><a href="/proof.html">Proof index</a></li>
+      <li><a href="notes.html">Notes</a></li>
+    </ul>
     <p class="small">Figures as of November 5, 2026.</p>
   </div>
 </footer>
