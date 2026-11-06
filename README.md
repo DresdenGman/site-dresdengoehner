@@ -13,6 +13,7 @@ Plain static files. No build step.
 - `index.html` — the site
 - `notes.html` and `notes/` — Field Notes
 - `proof.html` — dated claim index, linked from the evidence section
+- `dresden-goehner-cv.pdf` — one-page CV. Every figure is already on the homepage or in `proof.html`. The awesome-quant listing is not inside the 24 engineering pull requests.
 - `404.html`, `robots.txt`, `sitemap.xml`, `og.png`
 
 ## Local preview
