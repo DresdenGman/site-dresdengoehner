@@ -79,6 +79,34 @@
     </div>
   </section>
 
+  <section class="section" id="artifacts" aria-labelledby="artifacts-title">
+    <div class="wrap">
+      <p class="meta-row"><span>Selected artifacts</span><span>Three surfaces</span></p>
+      <h2 class="section-title" id="artifacts-title">Working artifacts, not stock photos</h2>
+      <div class="triptych">
+        <a class="plate-link" href="https://gert-d.vercel.app">
+          <figure class="plate shot">
+            <img src="images/gert-demo.png" alt="GERT presentation screen. The interface itself marks the view as a simulated ERCOT decision snapshot with no live operational claims.">
+            <figcaption>GERT · recorded demo · archive 2026-11-05. Opens the demo surface.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://epsilon-livid.vercel.app">
+          <figure class="plate shot">
+            <img src="images/epsilon-demo.png" alt="EPSILON experiment screen asking whether a conclusion holds when execution friction changes. Illustrative interface.">
+            <figcaption>EPSILON · recorded demo · archive 2026-11-05. Opens the demo surface.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://futureos.space/">
+          <figure class="plate shot">
+            <img src="images/futureos-guided-demo.png" alt="FutureOS guided demo, opening frame of a decision-contract walkthrough.">
+            <figcaption>FutureOS · guided demo · archive 2026-11-05. Maintained separately; not a fourth flagship.</figcaption>
+          </figure>
+        </a>
+      </div>
+      <p class="footnote">The frames are working interfaces. Numbers printed inside a screenshot are not additional results on this page. The flagship chapters remain AI Navigation Glasses, EPSILON, and GERT.</p>
+    </div>
+  </section>
+
   <section class="evidence-band" aria-label="Evidence with denominators">
     <div class="wrap">
       <p class="meta-row"><span>Record</span><span>Each figure links to the proof index</span></p>
@@ -129,6 +157,32 @@
           <p>A low-cost navigation research prototype that turns traffic-light and obstacle detection into restrained spoken prompts. Research prototype — not a certified mobility aid, and not a replacement for a cane, guide dog, traffic rules, or the user’s judgment.</p>
           <h3 class="field">Process</h3>
           <p>Safety redesign built around a confidence gate: low-confidence output never becomes an action instruction, a green light is reported as information and never as authorisation to cross, and repeated prompts are suppressed. Community build-and-explain sessions ran in <a href="/proof.html#glasses-communities">4 communities</a>.</p>
+          <ul class="boundary">
+            <li>
+              <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="16" cy="16" r="5"/>
+                <path d="M4 16h4M24 16h4M16 4v4M16 24v4"/>
+              </svg>
+              <strong>Observe</strong>
+              <p>Traffic lights and obstacles enter as detections.</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 8h20M6 24h20"/>
+                <path d="M10 8v6l6 4 6-4V8"/>
+              </svg>
+              <strong>Confidence gate</strong>
+              <p>Low-confidence output never becomes an action instruction. A green light is information, never authorisation to cross.</p>
+            </li>
+            <li>
+              <svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 10h10a6 6 0 0 1 0 12H8z"/>
+                <path d="M8 22l-3 4"/>
+              </svg>
+              <strong>Speak</strong>
+              <p>Prompts stay restrained, and repeated prompts are suppressed.</p>
+            </li>
+          </ul>
           <h3 class="field">My specific contribution</h3>
           <p>I designed the guidance rules, the confidence gate, and the safety case; I built the demo pipeline and ran the community build sessions.</p>
           <h3 class="field">Turning point</h3>
@@ -164,6 +218,12 @@
           <h2 id="epsilon-title">EPSILON</h2>
           <h3 class="field">Question</h3>
           <p class="question">Which assumption breaks first?</p>
+          <a class="plate-link" href="https://epsilon-livid.vercel.app">
+            <figure class="plate shot">
+              <img src="images/epsilon-demo.png" alt="EPSILON experiment screen asking whether a conclusion holds when execution friction changes. Illustrative interface." loading="lazy">
+              <figcaption>EPSILON · recorded demo · archive 2026-11-05. Illustrative. The Case 001 verdict is the chart below, not a figure read off this screen.</figcaption>
+            </figure>
+          </a>
           <h3 class="field">Process</h3>
           <p>A quantitative evidence instrument: state the claim and the rejection rule in advance, run a baseline plus five perturbations (fees / slippage / window / universe / combined), and export a fingerprinted evidence artifact. The browser demo is deterministic illustrative arithmetic, labelled illustrative on the spot; history mode uses server-side real daily data and does not silently substitute on failure.</p>
           <figure class="chart">
@@ -206,6 +266,12 @@
           <h2 id="gert-title">GERT — Grid Extreme Risk Toolkit</h2>
           <h3 class="field">Question</h3>
           <p class="question">Can a grid-risk model be stopped by its own evidence before it reaches a decision-maker?</p>
+          <a class="plate-link" href="https://gert-d.vercel.app">
+            <figure class="plate shot">
+              <img src="images/gert-demo.png" alt="GERT presentation screen. The interface itself marks the view as a simulated ERCOT decision snapshot with no live operational claims." loading="lazy">
+              <figcaption>GERT · recorded demo · archive 2026-11-05. The screen labels itself a simulated snapshot with no live operational claims. Forecasting on the research record stays switched off.</figcaption>
+            </figure>
+          </a>
           <h3 class="field">Process</h3>
           <p>The Historical Lab is open to the public — <a href="/proof.html#gert-lab">216 ERCOT-native load hours, three windows</a>, recomputable in the browser with an independent checker. Probabilistic forecasting is switched off because the model did not pass its own gate.</p>
           <figure class="chart">
@@ -260,6 +326,8 @@
       <p class="meta-row"><span>Open source · Code</span><span>As of 2026-11-05</span></p>
       <h2 class="section-title" id="oss-title">Open Source</h2>
       <p class="section-intro"><a href="/proof.html#pr-engineering">24 merged upstream engineering PRs · 16 repositories</a> — as of 2026-11-05. Selected list; every item links to the pull request itself.</p>
+      <div class="oss-layout">
+      <div>
       <ul class="pr-list">
         <li><span class="repo">SALib</span> — <a href="https://github.com/SALib/SALib/pull/678">#678</a> · <a href="https://github.com/SALib/SALib/pull/685">#685</a> · <a href="https://github.com/SALib/SALib/pull/686">#686</a> · <a href="https://github.com/SALib/SALib/pull/688">#688</a> · <a href="https://github.com/SALib/SALib/pull/693">#693</a> · <a href="https://github.com/SALib/SALib/pull/694">#694</a> (×6)</li>
         <li><span class="repo">StatsForecast</span> — <a href="https://github.com/Nixtla/statsforecast/pull/1175">#1175</a> · <a href="https://github.com/Nixtla/statsforecast/pull/1176">#1176</a> · <a href="https://github.com/Nixtla/statsforecast/pull/1241">#1241</a> (×3)</li>
@@ -282,6 +350,16 @@
         <p class="meta-row"><span>Listing, listed separately</span></p>
         <p><a href="https://github.com/wilsonfreitas/awesome-quant/pull/735">awesome-quant #735</a> — the Assumption Clinic is listed in the awesome-quant directory; a listing, not an endorsement. Not counted among the 24 engineering PRs.</p>
       </div>
+      </div>
+      <aside class="oss-side">
+        <a class="plate-link" href="https://github.com/networkx/networkx/pull/8735">
+          <figure class="plate ref">
+            <img src="images/networkx-proof.png" alt="NetworkX repository page showing a merged commit by DresdenGman on the PageRank convergence check. Star and fork counts in the page chrome belong to the NetworkX project." loading="lazy">
+            <figcaption>NetworkX #8735, merged upstream · archive 2026-11-05. Counts in the frame are the upstream repository’s, not a personal total.</figcaption>
+          </figure>
+        </a>
+      </aside>
+      </div>
     </div>
   </section>
 
@@ -289,6 +367,44 @@
     <div class="wrap">
       <p class="meta-row"><span>Results</span><span>Denominator where one was recorded</span></p>
       <h2 class="section-title" id="comp-title">Competition Results</h2>
+      <div class="cert-grid">
+        <figure class="plate cert" id="cert-bmo">
+          <a href="images/bmo2-distinction-redacted.jpg"><img src="images/bmo2-distinction-redacted.jpg" alt="Redacted BMO Round 2 2026 certificate showing Distinction and Best in School" loading="lazy"></a>
+          <figcaption>BMO Round 2 2026 · 27/40 · Distinction, Best in School</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-aime">
+          <a href="images/aime-qualification.jpg"><img src="images/aime-qualification.jpg" alt="Redacted AIME 2026 qualification certificate" loading="lazy"></a>
+          <figcaption>AIME 2026 · 14/15 · Qualified</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-smt-algebra">
+          <a href="images/stanford-algebra.png"><img src="images/stanford-algebra.png" alt="Redacted Stanford Mathematics Tournament 2026 Algebra certificate, third place" loading="lazy"></a>
+          <figcaption>Stanford Mathematics Tournament 2026 · Algebra 3rd</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-smt-discrete">
+          <a href="images/stanford-discrete.png"><img src="images/stanford-discrete.png" alt="Redacted Stanford Mathematics Tournament 2026 Discrete certificate, seventh place" loading="lazy"></a>
+          <figcaption>Stanford Mathematics Tournament 2026 · Discrete 7th</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-bpho">
+          <a href="images/bpho-round1-top-gold.jpg"><img src="images/bpho-round1-top-gold.jpg" alt="Redacted BPhO Round 1 2025–26 certificate, Global Top Gold" loading="lazy"></a>
+          <figcaption>BPhO Round 1 2025–26 · 80/100 · Global Top Gold, Beijing rank 5</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-smc">
+          <a href="images/smc-gold-redacted.jpg"><img src="images/smc-gold-redacted.jpg" alt="Redacted SMC 2025 Gold certificate" loading="lazy"></a>
+          <figcaption>SMC 2025 · 120/125 · Gold</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-lse">
+          <a href="images/lse-top-gold-redacted.jpg"><img src="images/lse-top-gold-redacted.jpg" alt="Redacted LSE Economics Challenge 2025 Top Gold certificate" loading="lazy"></a>
+          <figcaption>LSE Economics Challenge 2025 · 97/100 · Top Gold</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-wsc">
+          <a href="images/wsc-2025-redacted.png"><img src="images/wsc-2025-redacted.png" alt="Redacted World Scholar’s Cup Beijing 2025 record, Overall Champion Scholar" loading="lazy"></a>
+          <figcaption>World Scholar’s Cup Beijing 2025 · Overall Champion Scholar</figcaption>
+        </figure>
+        <figure class="plate cert" id="cert-acsl">
+          <a href="images/acsl-senior.jpg"><img src="images/acsl-senior.jpg" alt="Redacted ACSL 2025–26 Senior certificate" loading="lazy"></a>
+          <figcaption>ACSL 2025–26 Senior · 12/12</figcaption>
+        </figure>
+      </div>
       <div class="table-wrap">
         <table class="stack-table">
           <caption>Selected results — score or standing, and artifact</caption>
@@ -300,7 +416,7 @@
               <th scope="row">BMO Round 2 2026</th>
               <td class="score" data-label="Result">27/40</td>
               <td data-label="Detail">Distinction, Best in School</td>
-              <td data-label="Artifact"><a href="images/bmo2-distinction-redacted.jpg">Artifact</a></td>
+              <td data-label="Artifact"><a href="#cert-bmo">Certificate</a></td>
             </tr>
             <tr>
               <th scope="row">USAJMO</th>
@@ -312,43 +428,43 @@
               <th scope="row">AIME 2026</th>
               <td class="score" data-label="Result">14/15</td>
               <td data-label="Detail">Qualified</td>
-              <td data-label="Artifact"><a href="images/aime-qualification.jpg">Artifact</a></td>
+              <td data-label="Artifact"><a href="#cert-aime">Certificate</a></td>
             </tr>
             <tr>
               <th scope="row">Stanford Mathematics Tournament 2026</th>
               <td class="score" data-label="Result">Algebra 3rd</td>
               <td data-label="Detail">Discrete 7th</td>
-              <td data-label="Artifact"><a href="images/stanford-algebra.png">Algebra</a> · <a href="images/stanford-discrete.png">Discrete</a></td>
+              <td data-label="Artifact"><a href="#cert-smt-algebra">Algebra</a> · <a href="#cert-smt-discrete">Discrete</a></td>
             </tr>
             <tr>
               <th scope="row">BPhO Round 1 2025–26</th>
               <td class="score" data-label="Result">80/100</td>
               <td data-label="Detail">Global Top Gold, Beijing rank 5</td>
-              <td data-label="Artifact"><a href="images/bpho-round1-top-gold.jpg">Artifact</a></td>
+              <td data-label="Artifact"><a href="#cert-bpho">Certificate</a></td>
             </tr>
             <tr>
               <th scope="row">SMC 2025</th>
               <td class="score" data-label="Result">120/125</td>
               <td data-label="Detail">Gold</td>
-              <td data-label="Artifact"><a href="images/smc-gold-redacted.jpg">Artifact</a></td>
+              <td data-label="Artifact"><a href="#cert-smc">Certificate</a></td>
             </tr>
             <tr>
               <th scope="row">LSE Economics Challenge 2025</th>
               <td class="score" data-label="Result">97/100</td>
               <td data-label="Detail">Top Gold</td>
-              <td data-label="Artifact"><a href="images/lse-top-gold-redacted.jpg">Artifact</a></td>
+              <td data-label="Artifact"><a href="#cert-lse">Certificate</a></td>
             </tr>
             <tr>
               <th scope="row">World Scholar’s Cup Beijing 2025</th>
               <td class="score" data-label="Result">Overall Champion Scholar</td>
               <td data-label="Detail">—</td>
-              <td data-label="Artifact"><a href="images/wsc-2025-redacted.png">Artifact</a></td>
+              <td data-label="Artifact"><a href="#cert-wsc">Certificate</a></td>
             </tr>
             <tr>
               <th scope="row">ACSL 2025–26 Senior</th>
               <td class="score" data-label="Result">12/12</td>
               <td data-label="Detail">—</td>
-              <td data-label="Artifact"><a href="images/acsl-senior.jpg">Artifact</a></td>
+              <td data-label="Artifact"><a href="#cert-acsl">Certificate</a></td>
             </tr>
             <tr>
               <th scope="row">NYT My List Contest 2025–26</th>
@@ -358,6 +474,42 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <p class="meta-row"><span>Research gallery</span><span>Figures already on file</span></p>
+      <h2 class="section-title" id="gallery-title">Figures beside the index</h2>
+      <p>These are the public sheets already kept with the work index. A link appears only where a repository or pull request is already public.</p>
+      <div class="gallery">
+        <figure class="plate doc">
+          <img src="images/physics-polhode.png" alt="Diagram from the AP Physics tennis-racket theorem notes" loading="lazy">
+          <figcaption>AP Physics · tennis-racket theorem. Evidence on file · archive 2026-11-05.</figcaption>
+        </figure>
+        <a class="plate-link" href="https://github.com/DresdenGman/NEE">
+          <figure class="plate ref">
+            <img src="images/nee-entropy.png" alt="Figure from the NEE exploratory research code" loading="lazy">
+            <figcaption>NEE · archive 2026-11-05. Exploratory research code; the author’s own disclaimer stands.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://github.com/DresdenGman/03_Showcase_Projects/tree/main/Transportation-Bike_Sharing_Demand_Prediction">
+          <figure class="plate ref">
+            <img src="images/bike-feature-importance.png" alt="Feature-importance chart from a bike-sharing demand analysis" loading="lazy">
+            <figcaption>Bike-sharing demand · feature importance · archive 2026-11-05. One analysis inside the data lab.</figcaption>
+          </figure>
+        </a>
+        <a class="plate-link" href="https://github.com/networkx/networkx/pull/8735">
+          <figure class="plate ref">
+            <img src="images/networkx-proof.png" alt="NetworkX repository page showing a merged commit by DresdenGman on the PageRank convergence check" loading="lazy">
+            <figcaption>NetworkX #8735 · archive 2026-11-05. Upstream repository counts in the frame are not a personal total.</figcaption>
+          </figure>
+        </a>
+        <figure class="plate doc" id="polymath">
+          <img src="images/polymath-brochure.png" alt="Polymath Society brochure from the project record" loading="lazy">
+          <figcaption>Polymath Society. Leadership record; evidence on file · archive 2026-11-05.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -416,10 +568,21 @@
           <p>My method is the sentence at the top of this page, repeated in every project: build decision systems that make uncertainty visible — and audit my own systems first. If a number appears here, it links to its evidence; if a result is weak, it is published weak.</p>
           <a class="cv-link" href="/dresden-goehner-cv.pdf">One-page CV (PDF)</a>
         </div>
-        <figure class="about-fig">
-          <img class="portrait" src="images/dresden-portrait-bw.jpg" alt="Black-and-white portrait of Dresden Goehner" width="800" height="800" loading="lazy">
-          <figcaption>Fig. — Dresden Goehner. Portrait from the project record.</figcaption>
-        </figure>
+        <div class="about-fig">
+          <figure class="portrait-pick">
+            <p class="portrait-controls">
+              <label><input type="radio" name="portrait-mode" id="portrait-color" checked> Color</label>
+              <label><input type="radio" name="portrait-mode" id="portrait-bw"> Black and white</label>
+            </p>
+            <img class="portrait show-color" src="images/dresden-portrait.jpg" alt="Color portrait of Dresden Goehner" width="800" height="800" loading="lazy">
+            <img class="portrait show-bw" src="images/dresden-portrait-bw.jpg" alt="Black-and-white portrait of Dresden Goehner" width="800" height="800" loading="lazy">
+            <figcaption>Dresden Goehner. Color portrait from the project record; black and white kept beside it.</figcaption>
+          </figure>
+          <figure class="plate doc brochure">
+            <a href="#polymath"><img src="images/polymath-brochure.png" alt="Polymath Society brochure from the project record" loading="lazy"></a>
+            <figcaption>Polymath Society. Leadership record; evidence on file · archive 2026-11-05.</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
