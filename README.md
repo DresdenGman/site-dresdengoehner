@@ -1,24 +1,19 @@
 # dresdengoehner.com
 
-Personal site of Dresden Goehner — research direction, three flagship
-systems (AI Navigation Glasses, EPSILON, GERT), an open-source record,
-competition results, field notes, and a proof index that links every
-public claim to its evidence.
+Personal site of Dresden Goehner. The pages are his earlier static export
+(scroll hero, artifact triptych, flagship chapters, certificate film,
+research gallery, field notes). Copy was tightened against the November 5,
+2026 evidence snapshot. The layout, type, color, and motion are that
+earlier site.
 
-Plain static files: HTML + one stylesheet (`style.css`) + images.
-No build step, no framework, no server-side code; every page is
-readable with JavaScript disabled.
+Plain static files. No build step.
 
 ## Pages
 
-- `index.html` — the one-page site (flagships, Kaggle record, open
-  source, competitions, organizations, complete work index, about)
-- `notes.html` + `notes/` — Field Notes
-- `proof.html` — claim-by-claim evidence index (figures as of
-  2026-11-05)
-- `404.html`, `sitemap.xml`, `robots.txt`, `og.png`
-- `dresden-goehner-cv.pdf` — one-page CV generated from the same
-  figures as the site
+- `index.html` — the site
+- `notes.html` and `notes/` — Field Notes
+- `proof.html` — dated claim index, linked from the evidence section
+- `404.html`, `robots.txt`, `sitemap.xml`, `og.png`
 
 ## Local preview
 
@@ -27,16 +22,8 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Deployment (Cloudflare Pages)
+## Deployment
 
-Deployed as direct uploads with wrangler to the Cloudflare Pages
-project `site-dresdengoehner` (custom domains dresdengoehner.com
-and www). Pushing to GitHub does not by itself publish changes;
-redeploy the directory after editing.
-
-## Rollback
-
-The pre-redesign site (2026-11-05) is preserved at git tag
-`v1-pre-redesign-2026-11-05` and branch
-`archive/pre-redesign-2026-11-05`. To roll back: check out the tag
-into a clean directory and redeploy that directory the same way.
+This tree is not a production deploy. Do not upload it to Cloudflare
+Pages, and do not change DNS, from a content edit alone. Publishing
+stays a separate, explicit step.

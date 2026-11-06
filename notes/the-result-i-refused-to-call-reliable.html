@@ -1,104 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The result I refused to call reliable — Dresden Goehner</title>
-<meta name="description" content="A model can be technically impressive and still fail the one test that matters.">
-<link rel="canonical" href="https://dresdengoehner.com/notes/the-result-i-refused-to-call-reliable.html">
-<meta property="og:type" content="article">
-<meta property="og:title" content="The result I refused to call reliable">
-<meta property="og:description" content="A model can be technically impressive and still fail the one test that matters.">
-<meta property="og:url" content="https://dresdengoehner.com/notes/the-result-i-refused-to-call-reliable.html">
-<meta property="og:image" content="https://dresdengoehner.com/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The result I refused to call reliable">
-<meta name="twitter:description" content="A model can be technically impressive and still fail the one test that matters.">
-<meta name="twitter:image" content="https://dresdengoehner.com/og.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-</head>
-<body>
-<header class="site-head">
-<a class="brand" href="/">Dresden Goehner</a>
-<nav aria-label="Site">
-<a href="/">Home</a>
-<a href="/notes.html">Field Notes</a>
-<a href="/proof.html">Proof</a>
-</nav>
-</header>
-<main>
-<article>
-<header>
-<p class="meta"><span class="label">Field Note · essay</span> August 2026 · 6 min read</p>
-<p class="label">Research integrity · model calibration</p>
-<h1>The result I refused to call reliable</h1>
-<p class="lede">A model can be technically impressive and still fail the one test that matters.</p>
-</header>
-<aside>
-<p class="label">The question</p>
-<p>What should happen when a model is finished enough to impress, but not calibrated enough to trust?</p>
-<nav aria-label="Sections">
-<ol>
-<li><a href="#section-1">A gate, not a decoration</a></li>
-<li><a href="#section-2">When the average hides the event</a></li>
-<li><a href="#section-3">What changed in the product</a></li>
-<li><a href="#section-4">A result that refuses to disappear</a></li>
-</ol>
-</nav>
-</aside>
-<p class="lede">The most honest result in my grid-risk work was not a forecast. It was a decision: the model had not earned the right to be called reliable.</p>
-<section id="section-1">
-<p class="label">01</p>
-<h2>A gate, not a decoration</h2>
-<p>I built GERT, the Grid Extreme Risk Toolkit, to make tail risk visible. Instead of giving an operator only a median forecast, the system exposes a range of possible demand outcomes, including the P99 boundary where a rare event can collide with generation capacity.</p>
-<p>That design creates a temptation. A fan chart looks rigorous. A dashboard can make uncertainty feel controlled. But the visual is only useful if the intervals mean what they claim to mean. So the project needed a calibration gate: a model would not be promoted as reliable simply because its interface looked finished or its average performance looked strong.</p>
-</section>
-<section id="section-2">
-<p class="label">02</p>
-<h2>When the average hides the event</h2>
-<p>The PJM polar-vortex study asked a narrower question: can ordinary annual validation conceal failure during the cold events that matter most? In the current research record, the nominal 90% interval covered roughly 82–85% of observations across the annual evaluation, but only about 31–33% during the 2014 cold-event window.</p>
-<p>Those figures are still part of an ongoing manuscript, not a published conclusion. But they were enough to change the product decision. The model had not passed the preregistered calibration threshold, so I did not present it as operationally reliable.</p>
-<blockquote><p>A failed promotion is not a failed project when the gate was designed to protect the decision.</p></blockquote>
-</section>
-<section id="section-3">
-<p class="label">03</p>
-<h2>What changed in the product</h2>
-<p>The failed gate became an interface principle. GERT distinguishes live, simulated, stale, and unavailable evidence. It shows provenance alongside a forecast and treats capacity margin as a decision variable rather than a decorative metric. Scenario tools are labeled as interventions, not observations.</p>
-<p>This does not make the model certain. It makes the distance between the model and the world harder to ignore.</p>
-</section>
-<section id="section-4">
-<p class="label">04</p>
-<h2>A result that refuses to disappear</h2>
-<p>Competition problems are designed so that an answer exists. Real systems make no such promise. In a real system, the most useful outcome can be evidence that the current method should not cross the line from experiment to claim.</p>
-<p>I still want the model to work. I also want the threshold to mean something. If a test cannot stop a release, it is not a gate; it is decoration.</p>
-</section>
-<section>
-<p class="meta"><span class="label">Evidence trail</span> Sources · status · limitations</p>
-<h2>The claim should lead somewhere.</h2>
-<p>The interval-coverage figures and promotion decision come from the current project audit and research records. They are presented as an ongoing result, not as a published paper or operational grid forecast.</p>
-<ul>
-<li>
-<p class="label">01</p>
-<h3><a href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">Grid Extreme Risk Toolkit</a></h3>
-<p>Public repository · system design, provenance, scenarios, and model gates</p>
-</li>
-<li>
-<p class="label">02</p>
-<h3><a href="https://github.com/DresdenGman/pjm-polar-vortex-paper">PJM Polar-Vortex Study</a></h3>
-<p>Public research artifact · manuscript remains in development</p>
-</li>
-</ul>
-</section>
-</article>
-</main>
-<footer class="site-foot">
-<p>Dresden Goehner</p>
-<p>Field Notes · Research · Systems · Evidence</p>
-<a href="/notes.html">Back to the archive ↑</a>
-</footer>
-</body>
-</html>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../_next/static/css/index.BmOt2gdq.css" data-rsc-css-href="/_next/static/css/index.BmOt2gdq.css" data-precedence="vite-rsc/importer-resources"/><link rel="modulepreload" fetchPriority="low" href="../_next/static/chunks/index-cjrBbfkA.js"/><script src="../_next/static/chunks/rolldown-runtime-C60lm6uB.js" type="module" async=""></script><script src="../_next/static/chunks/framework-D_rUT4EX.js" type="module" async=""></script><link rel="modulepreload" href="../_next/static/chunks/layout-segment-context-DZopitRB.js" crossorigin=""/><link rel="modulepreload" href="../_next/static/chunks/streamed-icons-Cs-m6aYg.js" crossorigin=""/><script>Object.assign(((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}),{params:{"slug":"the-result-i-refused-to-call-reliable"},nav:{"pathname":"/notes/the-result-i-refused-to-call-reliable","searchParams":[]}})</script><link rel="modulepreload" href="../_next/static/chunks/index-cjrBbfkA.js" />
+<link rel="preload" href="../_next/static/_vinext_fonts/geist-8ac0455e797f/geist-98bbbccb.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="../_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2" as="font" type="font/woff2" crossorigin />
+<style data-vinext-fonts>/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-8ac0455e797f/geist-ff2310f5.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-8ac0455e797f/geist-875ccdd4.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-8ac0455e797f/geist-52306abf.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-8ac0455e797f/geist-001175b1.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-8ac0455e797f/geist-98bbbccb.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Geist Fallback';
+  src: local("Arial");
+  ascent-override: 95.94%;
+  descent-override: 28.16%;
+  line-gap-override: 0.00%;
+  size-adjust: 104.76%;
+}
+
+.__font_geist_013ydlh { font-family: 'Geist', 'Geist Fallback'; font-style: normal; }
+
+.__variable_geist_013ydlh { --font-geist-sans: 'Geist', 'Geist Fallback'; }
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-f6b33328.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-44e03052.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-0638449e.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-971fb274.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-44745446.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../_next/static/_vinext_fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Geist Mono Fallback';
+  src: local("Arial");
+  ascent-override: 74.67%;
+  descent-override: 21.92%;
+  line-gap-override: 0.00%;
+  size-adjust: 134.59%;
+}
+
+.__font_geist_mono_0bm7fsx { font-family: 'Geist Mono', 'Geist Mono Fallback'; font-style: normal; }
+
+.__variable_geist_mono_0bm7fsx { --font-geist-mono: 'Geist Mono', 'Geist Mono Fallback'; }
+</style>
+</head><body class="__variable_geist_013ydlh __variable_geist_mono_0bm7fsx antialiased"><main class="note-detail-page"><nav class="site-nav notes-page-nav" aria-label="Field Notes navigation"><a class="nav-mark" href="../index.html" aria-label="Dresden Goehner, home">DG<span>·26</span></a><a href="../notes.html">Field Notes <span aria-hidden="true">←</span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#evidence">Evidence <span aria-hidden="true">＋</span></a></div></nav><article><header class="note-detail-hero section-shell"><div class="eyebrow-row"><p>Field Note · <!-- -->essay</p><p>August 2026<!-- --> · <!-- -->6 min read</p></div><div class="note-detail-title-grid"><div><p class="project-label">Research integrity · model calibration</p><h1>The result I refused to call reliable</h1></div><p class="note-detail-deck">A model can be technically impressive and still fail the one test that matters.</p></div></header><div class="note-detail-body section-shell"><aside class="note-detail-aside"><p class="project-label">The question</p><p>What should happen when a model is finished enough to impress, but not calibrated enough to trust?</p><div class="note-detail-index"><a href="the-result-i-refused-to-call-reliable.html#section-1"><span>01</span>A gate, not a decoration</a><a href="the-result-i-refused-to-call-reliable.html#section-2"><span>02</span>When the average hides the event</a><a href="the-result-i-refused-to-call-reliable.html#section-3"><span>03</span>What changed in the product</a><a href="the-result-i-refused-to-call-reliable.html#section-4"><span>04</span>A result that refuses to disappear</a></div></aside><div class="note-detail-copy"><p class="note-detail-lede">The most honest result in my grid-risk work was not a forecast. It was a decision: the model had not earned the right to be called reliable.</p><section id="section-1"><span class="project-label">01</span><h2>A gate, not a decoration</h2><p>I built GERT, the Grid Extreme Risk Toolkit, to make tail risk visible. Instead of giving an operator only a median forecast, the system exposes a range of possible demand outcomes, including the P99 boundary where a rare event can collide with generation capacity.</p><p>That design creates a temptation. A fan chart looks rigorous. A dashboard can make uncertainty feel controlled. But the visual is only useful if the intervals mean what they claim to mean. So the project needed a calibration gate: a model would not be promoted as reliable simply because its interface looked finished or its average performance looked strong.</p></section><section id="section-2"><span class="project-label">02</span><h2>When the average hides the event</h2><p>The PJM polar-vortex study asked a narrower question: can ordinary annual validation conceal failure during the cold events that matter most? In the current research record, the nominal 90% interval covered roughly 82–85% of observations across the annual evaluation, but only about 31–33% during the 2014 cold-event window.</p><p>Those figures are still part of an ongoing manuscript, not a published conclusion. But they were enough to change the product decision. The model had not passed the preregistered calibration threshold, so I did not present it as operationally reliable.</p><blockquote>A failed promotion is not a failed project when the gate was designed to protect the decision.</blockquote></section><section id="section-3"><span class="project-label">03</span><h2>What changed in the product</h2><p>The failed gate became an interface principle. GERT distinguishes live, simulated, stale, and unavailable evidence. It shows provenance alongside a forecast and treats capacity margin as a decision variable rather than a decorative metric. Scenario tools are labeled as interventions, not observations.</p><p>This does not make the model certain. It makes the distance between the model and the world harder to ignore.</p></section><section id="section-4"><span class="project-label">04</span><h2>A result that refuses to disappear</h2><p>Competition problems are designed so that an answer exists. Real systems make no such promise. In a real system, the most useful outcome can be evidence that the current method should not cross the line from experiment to claim.</p><p>I still want the model to work. I also want the threshold to mean something. If a test cannot stop a release, it is not a gate; it is decoration.</p></section></div></div><section class="note-detail-evidence section-shell"><div class="eyebrow-row"><p>Evidence trail</p><p>Sources · status · limitations</p></div><div class="note-detail-evidence-grid"><div><h2>The claim should lead somewhere.</h2><p>The interval-coverage figures and promotion decision come from the current project audit and research records. They are presented as an ongoing result, not as a published paper or operational grid forecast.</p></div><div class="note-detail-references"><a href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-" target="_blank" rel="noreferrer"><span>01</span><div><h3>Grid Extreme Risk Toolkit</h3><p>Public repository · system design, provenance, scenarios, and model gates</p></div><b>↗</b></a><a href="https://github.com/DresdenGman/pjm-polar-vortex-paper" target="_blank" rel="noreferrer"><span>02</span><div><h3>PJM Polar-Vortex Study</h3><p>Public research artifact · manuscript remains in development</p></div><b>↗</b></a></div></div></section></article><footer class="site-footer section-shell"><p>Dresden Goehner</p><p>Field Notes · Research · Systems · Evidence</p><a href="../notes.html">Back to the archive ↑</a></footer></main><!--$--><!--/$--><div hidden=""><!--$--><div hidden=""><title>The result I refused to call reliable — Dresden Goehner</title><meta name="description" content="A model can be technically impressive and still fail the one test that matters."><meta property="og:title" content="The result I refused to call reliable"><meta property="og:description" content="A model can be technically impressive and still fail the one test that matters."><meta property="og:type" content="article"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="The result I refused to call reliable"><meta name="twitter:description" content="A model can be technically impressive and still fail the one test that matters."><link data-vinext-streamed-icon="/notes/the-result-i-refused-to-call-reliable:yqoeqe:0" rel="shortcut icon" href="../favicon.svg"><link data-vinext-streamed-icon="/notes/the-result-i-refused-to-call-reliable:yqoeqe:1" rel="icon" href="../favicon.svg" type="image/svg+xml"><script>document.querySelectorAll('body link[rel="icon"], body link[rel="apple-touch-icon"]').forEach(el => document.head.appendChild(el));const a='data-vinext-streamed-icon',o=el=>{const m=el.getAttribute(a),i=m.lastIndexOf(':');return Number(m.slice(i+1))};[...document.querySelectorAll('link['+a+']')].sort((l,r)=>o(l)-o(r)).forEach(el=>document.head.appendChild(el))</script></div><!--/$--></div><script type="module" src="../_next/static/chunks/index-cjrBbfkA.js" id="_R_" async=""></script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("0:{\"__vinext_streaming_metadata_body:route:/notes/the-result-i-refused-to-call-reliable\":\"$L1\",\"__vinext_streaming_metadata_outlet:route:/notes/the-result-i-refused-to-call-reliable\":\"$L2\",\"page:/notes/the-result-i-refused-to-call-reliable\":\"$L3\",\"layout:/\":\"$L4\",\"layout:/notes\":\"$L5\",\"route:/notes/the-result-i-refused-to-call-reliable\":\"$L6\",\"__route\":\"route:/notes/the-result-i-refused-to-call-reliable\",\"__interceptionContext\":null,\"__layoutIds\":[\"layout:/\",\"layout:/notes\"],\"__rootLayout\":\"/\",\"__bfcacheSegmentIdentities\":{\"layout:/\":\"[\\\"layout\\\",\\\"layout:/\\\",\\\"root-boundary:/\\\",\\\"\\\"]\",\"layout:/notes\":\"[\\\"layout\\\",\\\"layout:/notes\\\",\\\"root-boundary:/\\\",\\\"[\\\\\\\"notes\\\\\\\"]\\\"]\",\"page:/notes/the-result-i-refused-to-call-reliable\":\"[\\\"page\\\",\\\"page:/notes/:slug\\\",\\\"root-boundary:/\\\",\\\"[\\\\\\\"notes\\\\\\\",\\\\\\\"slug|the-result-i-refused-to-call-reliable|d\\\\\\\"]\\\"]\"},\"__srcPage\":[\"notes\",\"[slug]\",\"page\"],\"__layoutFlags\":{\"layout:/notes\":\"s\",\"layout:/\":\"s\"},\"__artifactCompatibility\":{\"schemaVersion\":1,\"graphVersion\":\"app-route-graph:528b3508fbd9ac74\",\"deploymentVersion\":\"9a153562-400c-4284-8629-ab3bd2e7d950\",\"appElementsSchemaVersion\":1,\"rscPayloadSchemaVersion\":1,\"rootBoundaryId\":\"/\",\"renderEpoch\":null},\"__dynamicStaleTime\":0}\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("8:I[\"89c3cac48cb5\",[],\"StreamedIconsInsertion\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("7:T523,")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("\u003ctitle\u003eThe result I refused to call reliable — Dresden Goehner\u003c/title\u003e\u003cmeta name=\"description\" content=\"A model can be technically impressive and still fail the one test that matters.\"\u003e\u003cmeta property=\"og:title\" content=\"The result I refused to call reliable\"\u003e\u003cmeta property=\"og:description\" content=\"A model can be technically impressive and still fail the one test that matters.\"\u003e\u003cmeta property=\"og:type\" content=\"article\"\u003e\u003cmeta name=\"twitter:card\" content=\"summary\"\u003e\u003cmeta name=\"twitter:title\" content=\"The result I refused to call reliable\"\u003e\u003cmeta name=\"twitter:description\" content=\"A model can be technically impressive and still fail the one test that matters.\"\u003e\u003clink data-vinext-streamed-icon=\"/notes/the-result-i-refused-to-call-reliable:yqoeqe:0\" rel=\"shortcut icon\" href=\"/favicon.svg\"\u003e\u003clink data-vinext-streamed-icon=\"/notes/the-result-i-refused-to-call-reliable:yqoeqe:1\" rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\"\u003e\u003cscript\u003edocument.querySelectorAll('body link[rel=\"icon\"], body link[rel=\"apple-touch-icon\"]').forEach(el =\u003e document.head.appendChild(el));const a='data-vinext-streamed-icon',o=el=\u003e{const m=el.getAttribute(a),i=m.lastIndexOf(':');return Number(m.slice(i+1))};[...document.querySelectorAll('link['+a+']')].sort((l,r)=\u003eo(l)-o(r)).forEach(el=\u003edocument.head.appendChild(el))\u003c/script\u003e")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("1:[[\"$\",\"div\",null,{\"hidden\":true,\"suppressHydrationWarning\":true,\"dangerouslySetInnerHTML\":{\"__html\":\"$7\"}}],[\"$\",\"$L8\",null,{\"metadataKey\":\"/notes/the-result-i-refused-to-call-reliable:yqoeqe\"}]]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("2:null\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("9:I[\"8c0f216c4604\",[],\"Children\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("a:I[\"593f344dc510\",[],\"GlobalErrorBoundary\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("b:I[\"0b874ad30386\",[],\"default\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("c:I[\"593f344dc510\",[],\"ErrorBoundary\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("d:I[\"15c18cfaeeff\",[],\"LayoutSegmentProvider\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("e:I[\"8c0f216c4604\",[],\"Slot\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("f:I[\"593f344dc510\",[],\"NotFoundBoundary\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("10:I[\"9276801271d6\",[],\"AppRouterScrollTarget\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("11:I[\"593f344dc510\",[],\"RedirectBoundary\",1]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("12:\"$Sreact.suspense\"\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(":HL[\"/_next/static/css/index.BmOt2gdq.css\",\"style\"     ]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("4:[[[\"$\",\"link\",\"css:/_next/static/css/index.BmOt2gdq.css\",{\"rel\":\"stylesheet\",\"precedence\":\"vite-rsc/importer-resources\",\"href\":\"/_next/static/css/index.BmOt2gdq.css\",\"data-rsc-css-href\":\"/_next/static/css/index.BmOt2gdq.css\"}],\"$undefined\"],[\"$\",\"html\",null,{\"lang\":\"en\",\"children\":[\"$\",\"body\",null,{\"className\":\"__variable_geist_013ydlh __variable_geist_mono_0bm7fsx antialiased\",\"children\":[\"$\",\"$L9\",null,{}]}]}]]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("6:[[[\"$\",\"meta\",null,{\"charSet\":\"utf-8\"}],null,[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]],[\"$\",\"$La\",null,{\"fallback\":\"$b\",\"children\":[\"$\",\"$Lc\",null,{\"fallback\":\"$b\",\"children\":[\"$\",\"$Ld\",null,{\"providerId\":\"layout:/\",\"segmentMap\":{\"children\":[\"notes\",\"the-result-i-refused-to-call-reliable\"]},\"children\":[\"$\",\"$Le\",null,{\"id\":\"layout:/\",\"parallelSlots\":\"$undefined\",\"children\":[\"$\",\"$Lf\",null,{\"resetKey\":\"notes\",\"fallback\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"children\":[\"$\",\"$Ld\",null,{\"providerId\":\"layout:/notes\",\"segmentMap\":{\"children\":[\"the-result-i-refused-to-call-reliable\"]},\"children\":[\"$\",\"$Le\",null,{\"id\":\"layout:/notes\",\"parallelSlots\":\"$undefined\",\"children\":[\"$\",\"$L10\",null,{\"children\":[\"$\",\"$L11\",null,{\"children\":[[\"$\",\"$Ld\",null,{\"providerId\":\"page:/notes/the-result-i-refused-to-call-reliable\",\"segmentMap\":{\"children\":[\"__PAGE__\"]},\"children\":[\"$\",\"$Le\",null,{\"id\":\"page:/notes/the-result-i-refused-to-call-reliable\"}]}],[\"$\",\"$12\",null,{\"fallback\":null,\"children\":[\"$\",\"$Le\",null,{\"id\":\"__vinext_streaming_metadata_outlet:route:/notes/the-result-i-refused-to-call-reliable\"}]}]]}]}]}]}]}]}]}]}]}],null,[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$12\",null,{\"fallback\":null,\"children\":[\"$\",\"$Le\",null,{\"id\":\"__vinext_streaming_metadata_body:route:/notes/the-result-i-refused-to-call-reliable\"}]}]}]]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("5:[\"$\",\"$L9\",null,{}]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("3:[\"$\",\"main\",null,{\"className\":\"note-detail-page\",\"children\":[[\"$\",\"nav\",null,{\"className\":\"site-nav notes-page-nav\",\"aria-label\":\"Field Notes navigation\",\"children\":[[\"$\",\"a\",null,{\"className\":\"nav-mark\",\"href\":\"/\",\"aria-label\":\"Dresden Goehner, home\",\"children\":[\"DG\",[\"$\",\"span\",null,{\"children\":\"·26\"}]]}],[\"$\",\"a\",null,{\"href\":\"/notes\",\"children\":[\"Field Notes \",[\"$\",\"span\",null,{\"aria-hidden\":\"true\",\"children\":\"←\"}]]}],[\"$\",\"div\",null,{\"className\":\"nav-links\",\"children\":[[\"$\",\"a\",null,{\"href\":\"/#projects\",\"children\":\"Projects\"}],[\"$\",\"a\",null,{\"href\":\"/#evidence\",\"children\":[\"Evidence \",[\"$\",\"span\",null,{\"aria-hidden\":\"true\",\"children\":\"＋\"}]]}]]}]]}],[\"$\",\"article\",null,{\"children\":[[\"$\",\"header\",null,{\"className\":\"note-detail-hero section-shell\",\"children\":[[\"$\",\"div\",null,{\"className\":\"eyebrow-row\",\"children\":[[\"$\",\"p\",null,{\"children\":[\"Field Note · \",\"essay\"]}],[\"$\",\"p\",null,{\"children\":[\"August 2026\",\" · \",\"6 min read\"]}]]}],[\"$\",\"div\",null,{\"className\":\"note-detail-title-grid\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"project-label\",\"children\":\"Research integrity · model calibration\"}],[\"$\",\"h1\",null,{\"children\":\"The result I refused to call reliable\"}]]}],[\"$\",\"p\",null,{\"className\":\"note-detail-deck\",\"children\":\"A model can be technically impressive and still fail the one test that matters.\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"note-detail-body section-shell\",\"children\":[[\"$\",\"aside\",null,{\"className\":\"note-detail-aside\",\"children\":[[\"$\",\"p\",null,{\"className\":\"project-label\",\"children\":\"The question\"}],[\"$\",\"p\",null,{\"children\":\"What should happen when a model is finished enough to impress, but not calibrated enough to trust?\"}],[\"$\",\"div\",null,{\"className\":\"note-detail-index\",\"children\":[[\"$\",\"a\",\"A gate, not a decoration\",{\"href\":\"#section-1\",\"children\":[[\"$\",\"span\",null,{\"children\":\"01\"}],\"A gate, not a decoration\"]}],[\"$\",\"a\",\"When the average hides the event\",{\"href\":\"#section-2\",\"children\":[[\"$\",\"span\",null,{\"children\":\"02\"}],\"When the average hides the event\"]}],[\"$\",\"a\",\"What changed in the product\",{\"href\":\"#section-3\",\"children\":[[\"$\",\"span\",null,{\"children\":\"03\"}],\"What changed in the product\"]}],[\"$\",\"a\",\"A result that refuses to disappear\",{\"href\":\"#section-4\",\"children\":[[\"$\",\"span\",null,{\"children\":\"04\"}],\"A result that refuses to disappear\"]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"note-detail-copy\",\"children\":[[\"$\",\"p\",null,{\"className\":\"note-detail-lede\",\"children\":\"The most honest result in my grid-risk work was not a forecast. It was a decision: the model had not earned the right to be called reliable.\"}],[[\"$\",\"section\",\"A gate, not a decoration\",{\"id\":\"section-1\",\"children\":[[\"$\",\"span\",null,{\"className\":\"project-label\",\"children\":\"01\"}],[\"$\",\"h2\",null,{\"children\":\"A gate, not a decoration\"}],[[\"$\",\"p\",\"I built GERT, the Grid Extreme Risk Toolkit, to make tail risk visible. Instead of giving an operator only a median forecast, the system exposes a range of possible demand outcomes, including the P99 boundary where a rare event can collide with generation capacity.\",{\"children\":\"I built GERT, the Grid Extreme Risk Toolkit, to make tail risk visible. Instead of giving an operator only a median forecast, the system exposes a range of possible demand outcomes, including the P99 boundary where a rare event can collide with generation capacity.\"}],[\"$\",\"p\",\"That design creates a temptation. A fan chart looks rigorous. A dashboard can make uncertainty feel controlled. But the visual is only useful if the intervals mean what they claim to mean. So the project needed a calibration gate: a model would not be promoted as reliable simply because its interface looked finished or its average performance looked strong.\",{\"children\":\"That design creates a temptation. A fan chart looks rigorous. A dashboard can make uncertainty feel controlled. But the visual is only useful if the intervals mean what they claim to mean. So the project needed a calibration gate: a model would not be promoted as reliable simply because its interface looked finished or its average performance looked strong.\"}]],null]}],\"$L13\",\"$L14\",\"$L15\"]]}]]}],\"$L16\"]}],\"$L17\"]}]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("13:[\"$\",\"section\",\"When the average hides the event\",{\"id\":\"section-2\",\"children\":[[\"$\",\"span\",null,{\"className\":\"project-label\",\"children\":\"02\"}],[\"$\",\"h2\",null,{\"children\":\"When the average hides the event\"}],[[\"$\",\"p\",\"The PJM polar-vortex study asked a narrower question: can ordinary annual validation conceal failure during the cold events that matter most? In the current research record, the nominal 90% interval covered roughly 82–85% of observations across the annual evaluation, but only about 31–33% during the 2014 cold-event window.\",{\"children\":\"The PJM polar-vortex study asked a narrower question: can ordinary annual validation conceal failure during the cold events that matter most? In the current research record, the nominal 90% interval covered roughly 82–85% of observations across the annual evaluation, but only about 31–33% during the 2014 cold-event window.\"}],[\"$\",\"p\",\"Those figures are still part of an ongoing manuscript, not a published conclusion. But they were enough to change the product decision. The model had not passed the preregistered calibration threshold, so I did not present it as operationally reliable.\",{\"children\":\"Those figures are still part of an ongoing manuscript, not a published conclusion. But they were enough to change the product decision. The model had not passed the preregistered calibration threshold, so I did not present it as operationally reliable.\"}]],[\"$\",\"blockquote\",null,{\"children\":\"A failed promotion is not a failed project when the gate was designed to protect the decision.\"}]]}]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("14:[\"$\",\"section\",\"What changed in the product\",{\"id\":\"section-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"project-label\",\"children\":\"03\"}],[\"$\",\"h2\",null,{\"children\":\"What changed in the product\"}],[[\"$\",\"p\",\"The failed gate became an interface principle. GERT distinguishes live, simulated, stale, and unavailable evidence. It shows provenance alongside a forecast and treats capacity margin as a decision variable rather than a decorative metric. Scenario tools are labeled as interventions, not observations.\",{\"children\":\"The failed gate became an interface principle. GERT distinguishes live, simulated, stale, and unavailable evidence. It shows provenance alongside a forecast and treats capacity margin as a decision variable rather than a decorative metric. Scenario tools are labeled as interventions, not observations.\"}],[\"$\",\"p\",\"This does not make the model certain. It makes the distance between the model and the world harder to ignore.\",{\"children\":\"This does not make the model certain. It makes the distance between the model and the world harder to ignore.\"}]],null]}]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("15:[\"$\",\"section\",\"A result that refuses to disappear\",{\"id\":\"section-4\",\"children\":[[\"$\",\"span\",null,{\"className\":\"project-label\",\"children\":\"04\"}],[\"$\",\"h2\",null,{\"children\":\"A result that refuses to disappear\"}],[[\"$\",\"p\",\"Competition problems are designed so that an answer exists. Real systems make no such promise. In a real system, the most useful outcome can be evidence that the current method should not cross the line from experiment to claim.\",{\"children\":\"Competition problems are designed so that an answer exists. Real systems make no such promise. In a real system, the most useful outcome can be evidence that the current method should not cross the line from experiment to claim.\"}],[\"$\",\"p\",\"I still want the model to work. I also want the threshold to mean something. If a test cannot stop a release, it is not a gate; it is decoration.\",{\"children\":\"I still want the model to work. I also want the threshold to mean something. If a test cannot stop a release, it is not a gate; it is decoration.\"}]],null]}]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("16:[\"$\",\"section\",null,{\"className\":\"note-detail-evidence section-shell\",\"children\":[[\"$\",\"div\",null,{\"className\":\"eyebrow-row\",\"children\":[[\"$\",\"p\",null,{\"children\":\"Evidence trail\"}],[\"$\",\"p\",null,{\"children\":\"Sources · status · limitations\"}]]}],[\"$\",\"div\",null,{\"className\":\"note-detail-evidence-grid\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"h2\",null,{\"children\":\"The claim should lead somewhere.\"}],[\"$\",\"p\",null,{\"children\":\"The interval-coverage figures and promotion decision come from the current project audit and research records. They are presented as an ongoing result, not as a published paper or operational grid forecast.\"}]]}],[\"$\",\"div\",null,{\"className\":\"note-detail-references\",\"children\":[[\"$\",\"a\",\"https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-\",{\"href\":\"https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-\",\"target\":\"_blank\",\"rel\":\"noreferrer\",\"children\":[[\"$\",\"span\",null,{\"children\":\"01\"}],[\"$\",\"div\",null,{\"children\":[[\"$\",\"h3\",null,{\"children\":\"Grid Extreme Risk Toolkit\"}],[\"$\",\"p\",null,{\"children\":\"Public repository · system design, provenance, scenarios, and model gates\"}]]}],[\"$\",\"b\",null,{\"children\":\"↗\"}]]}],[\"$\",\"a\",\"https://github.com/DresdenGman/pjm-polar-vortex-paper\",{\"href\":\"https://github.com/DresdenGman/pjm-polar-vortex-paper\",\"target\":\"_blank\",\"rel\":\"noreferrer\",\"children\":[[\"$\",\"span\",null,{\"children\":\"02\"}],[\"$\",\"div\",null,{\"children\":[[\"$\",\"h3\",null,{\"children\":\"PJM Polar-Vortex Study\"}],[\"$\",\"p\",null,{\"children\":\"Public research artifact · manuscript remains in development\"}]]}],[\"$\",\"b\",null,{\"children\":\"↗\"}]]}]]}]]}]]}]\n")</script><script>((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push("17:[\"$\",\"footer\",null,{\"className\":\"site-footer section-shell\",\"children\":[[\"$\",\"p\",null,{\"children\":\"Dresden Goehner\"}],[\"$\",\"p\",null,{\"children\":\"Field Notes · Research · Systems · Evidence\"}],[\"$\",\"a\",null,{\"href\":\"/notes\",\"children\":\"Back to the archive ↑\"}]]}]\n")</script><script>Object.assign(((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}),{"initialCacheKind":"static"});((self[Symbol.for("vinext.navigationRuntime")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).done=true</script></body></html>
