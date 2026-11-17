@@ -1,30 +1,23 @@
 # dresdengoehner.com
 
-Personal site of Dresden Goehner. The pages are his earlier static export
-(scroll hero, artifact triptych, flagship chapters, certificate film,
-research gallery, field notes). Copy was tightened against the November 5,
-2026 evidence snapshot. The layout, type, color, and motion are that
-earlier site.
-
-Plain static files. No build step.
+Personal site of Dresden Goehner. The homepage is the approved kinetic-museum exhibition: static HTML, CSS, and a short script. There is no build step and no deploy from this repository. Publishing stays a separate upload to Cloudflare Pages.
 
 ## Pages
 
-- `index.html` — the site
-- `notes.html` and `notes/` — Field Notes
-- `proof.html` — dated claim index, linked from the evidence section
-- `dresden-goehner-cv.pdf` — one-page CV. Every figure is already on the homepage or in `proof.html`. The awesome-quant listing is not inside the 24 engineering pull requests.
-- `404.html`, `robots.txt`, `sitemap.xml`, `og.png`
+- `index.html` — the exhibition
+- `proof.html` — claim index. Every homepage figure is repeated with a public source link.
+- `notes.html` and `notes/` — the field note
+- `dresden-goehner-cv.pdf` — one-page CV. Every figure on it is already on the homepage or in `proof.html`.
+- `404.html`, `robots.txt`, `sitemap.xml`, `og.png`, `favicon.svg`
 
 ## Local preview
 
 ```sh
 python3 -m http.server 8000
-# then open http://localhost:8000
 ```
+
+Then open http://localhost:8000
 
 ## Deployment
 
-This tree is not a production deploy. Do not upload it to Cloudflare
-Pages, and do not change DNS, from a content edit alone. Publishing
-stays a separate, explicit step.
+Do not upload this tree to Cloudflare Pages, and do not change DNS, from a content edit alone.
