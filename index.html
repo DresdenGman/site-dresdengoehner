@@ -1,7 +1,22 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<title>Dresden Goehner — Kinetic Type × Museum System (preview)</title>
+<title>Dresden Goehner</title>
 <meta name="description" content="Building decision systems that make uncertainty visible.">
+<link rel="canonical" href="https://dresdengoehner.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dresden Goehner">
+<meta property="og:title" content="Dresden Goehner">
+<meta property="og:description" content="Building decision systems that make uncertainty visible.">
+<meta property="og:url" content="https://dresdengoehner.com/">
+<meta property="og:image" content="https://dresdengoehner.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dresden Goehner">
+<meta name="twitter:description" content="Building decision systems that make uncertainty visible.">
+<meta name="twitter:image" content="https://dresdengoehner.com/og.png">
+<meta name="twitter:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -55,8 +70,8 @@ section{padding:128px 0}
 .ex figure{grid-column:1/9;position:relative;isolation:isolate}
 .ex figure .frame{position:relative;overflow:hidden;background:#141414}
 .ex figure .frame::before{content:"";position:absolute;z-index:-1;inset:-20%;}
-.ex figure img{display:block;width:100%;height:auto;filter:grayscale(1) contrast(1.12);transition:filter .7s var(--ease),transform 1s var(--ease)}
-.ex:hover figure img,.ex:focus-within figure img{filter:grayscale(0) contrast(1);transform:scale(1.012)}
+.ex figure img{display:block;width:100%;height:auto;transition:transform 1s var(--ease)}
+.ex:hover figure img,.ex:focus-within figure img{transform:scale(1.012)}
 .ex figcaption{display:flex;justify-content:space-between;gap:16px;font-size:12px;color:var(--dim);padding-top:10px}
 .slab{position:absolute;z-index:-1;pointer-events:none;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.75) 35%,rgba(225,235,255,.6) 70%,rgba(255,255,255,0));transform:skewX(-18deg) rotate(-6deg);filter:blur(16px);opacity:.42}
 .wall{grid-column:9/13;align-self:end;background:var(--paper);color:var(--ink);padding:22px 22px 20px}
@@ -106,8 +121,8 @@ section{padding:128px 0}
 .item .inv{display:flex;justify-content:space-between;color:var(--y);margin-bottom:12px}
 .item .inv span:last-child{color:var(--dim)}
 .item .ph{aspect-ratio:4/3;overflow:hidden;background:var(--paper)}
-.item img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);opacity:.82;transition:filter .5s,opacity .5s,transform .8s var(--ease)}
-.item:hover img{filter:none;opacity:1;transform:scale(1.02)}
+.item img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.item:hover img{transform:scale(1.02)}
 .item h4{font-family:Archivo;font-weight:800;font-size:20px;line-height:1.05;letter-spacing:-.015em;margin-top:14px}
 .item p{font-size:13px;color:#cfccc5;margin-top:4px}
 .item.txt .ph{display:grid;place-items:center;background:#151515;font-family:Archivo;font-weight:900;font-size:clamp(36px,4vw,58px);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.1px var(--fg)}
@@ -236,7 +251,7 @@ footer .sig,footer .c1,footer .c2{grid-column:1/-1;text-align:left}footer .c1{ma
 </main>
 
 <footer>
-  <div class="grid"><div class="sig">dresden<br>goehner</div><div class="col c1"><a class="ul" href="https://github.com/DresdenGman">GitHub ↗</a><br><a class="ul" href="https://math.stackexchange.com/users/1769665/dresden">Math StackExchange ↗</a><br><a class="ul" href="mailto:dr.dresden0416@gmail.com">dr.dresden0416@gmail.com</a></div><div class="col c2">Style preview · kinetic × museum<br>after Peter Megert 1965 · Alfred Willimann 1932<br>Tim A. Landheer 2015</div></div>
+  <div class="grid"><div class="sig">dresden<br>goehner</div><div class="col c1"><a class="ul" href="https://github.com/DresdenGman">GitHub ↗</a><br><a class="ul" href="https://math.stackexchange.com/users/1769665/dresden">Math StackExchange ↗</a><br><a class="ul" href="mailto:dr.dresden0416@gmail.com">dr.dresden0416@gmail.com</a></div><div class="col c2">kinetic × museum<br>after Peter Megert 1965 · Alfred Willimann 1932<br>Tim A. Landheer 2015</div></div>
   <div class="inst"><span class="cap"><span class="mark" aria-hidden="true"></span>Dresden Goehner · Research Index</span><a class="cap" href="proof.html">Claim index</a><a class="cap" href="https://github.com/DresdenGman">GitHub</a><a class="cap" href="https://math.stackexchange.com/users/1769665/dresden">Math SE</a><a class="cap" href="#top">Back to top ↑</a></div>
 </footer>
 <script src="assets/common.js"></script>
