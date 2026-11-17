@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="huggingface/peft pull request 3417: Improve IA3 documentation: add usage guidance, module selection tips, and LoRA comparison">
+<rect width="800" height="450" fill="#0b0b0b"/>
+<rect x="0" y="0" width="800" height="10" fill="#f2e600"/>
+<rect x="48" y="56" width="12" height="12" fill="#f2e600"/>
+<text x="72" y="68" font-family="Inter,Helvetica,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="3" fill="#f2f0ea">MERGED PULL REQUEST</text>
+<text x="48" y="128" font-family="Archivo,Inter,Helvetica,Arial,sans-serif" font-size="40" font-weight="800" fill="#f2e600">huggingface/peft</text>
+<text x="48" y="168" font-family="Inter,Helvetica,Arial,sans-serif" font-size="19" fill="#8f8c86">#3417 &#183; merged 2026-07-14 &#183; github.com</text>
+<text x="48" y="238" font-family="Archivo,Inter,Helvetica,Arial,sans-serif" font-size="34" font-weight="800" fill="#f2f0ea">Improve IA3 documentation: add</text>
+<text x="48" y="280" font-family="Archivo,Inter,Helvetica,Arial,sans-serif" font-size="34" font-weight="800" fill="#f2f0ea">usage guidance, module selection</text>
+<text x="48" y="322" font-family="Archivo,Inter,Helvetica,Arial,sans-serif" font-size="34" font-weight="800" fill="#f2f0ea">tips, and LoRA comparison</text>
+<text x="48" y="410" font-family="Inter,Helvetica,Arial,sans-serif" font-size="15" fill="#8f8c86">1 file changed &#183; +20 -1</text>
+</svg>
