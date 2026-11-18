@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions — Dresden Goehner</title>
-<meta name="description" content="Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner): 27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), newest first.">
+<meta name="description" content="Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner): 27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first.">
 <link rel="canonical" href="https://dresdengoehner.com/contributions.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dresden Goehner">
 <meta property="og:title" content="Open-source contributions — Dresden Goehner">
-<meta property="og:description" content="27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), newest first, each with a plain summary and its file and line counts.">
+<meta property="og:description" content="27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first, each with a plain summary and its file and line counts.">
 <meta property="og:url" content="https://dresdengoehner.com/contributions.html">
 <meta property="og:image" content="https://dresdengoehner.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Open-source contributions — Dresden Goehner">
-<meta name="twitter:description" content="27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), newest first.">
+<meta name="twitter:description" content="27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first.">
 <meta name="twitter:image" content="https://dresdengoehner.com/og.png">
 <meta name="twitter:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -54,7 +54,7 @@ a.card p{font-size:14px;color:#cfccc5}
 <header class="page">
 <p class="cap">Open-source contributions &#183; merged pull requests only</p>
 <h1>Open-source contributions</h1>
-<p class="lede">Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner), newest first: 27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry). Each card links to the pull request on GitHub. Counts were checked against GitHub on 2026-11-17 and match the <a class="src" href="proof.html#opensource">claim index</a>.</p>
+<p class="lede">Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner), ordered by the exchange each one had with the repository&#8217;s maintainers &#8212; the comments and written reviews on the pull request &#8212; most exchange first: 27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry). Each card links to the pull request on GitHub. Counts were checked against GitHub on 2026-11-17 and match the <a class="src" href="proof.html#opensource">claim index</a>.</p>
 </header>
 <main>
 <section aria-label="Totals">
@@ -65,206 +65,206 @@ a.card p{font-size:14px;color:#cfccc5}
 </div>
 <p class="note" style="margin-top:16px">The 27 are 26 code contributions plus 1 list entry (the awesome-quant listing, labelled on its card below).</p>
 </section>
-<section aria-label="Merged pull requests, newest first">
-<p class="cap kicker">Newest first</p>
+<section aria-label="Merged pull requests, most exchange first">
+<p class="cap kicker">Most exchange first</p>
 <h2>27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry)</h2>
 <div class="cards">
-<a class="card" href="https://github.com/tornadoweb/tornado/pull/3855" target="_blank" rel="noopener">
-<img src="assets/contributions/tornadoweb-tornado-3855.webp" width="1200" height="937" loading="lazy" alt="Screenshot of tornadoweb/tornado#3855 on GitHub">
-<p class="cap repo">tornadoweb/tornado #3855</p>
-<h3>Include Allow header in 405 responses</h3>
-<p class="meta">Merged 2026-11-17 &#183; 2 files changed &#183; +67 -0</p>
-<p>Adds the Allow header that RFC 9110 requires on 405 responses but tornado never sent. The header is built in RequestHandler.send_error, where every 405 path converges, from the methods the handler actually implements.</p>
-</a>
-<a class="card" href="https://github.com/bashtage/linearmodels/pull/862" target="_blank" rel="noopener">
-<img src="assets/contributions/bashtage-linearmodels-862.webp" width="1200" height="937" loading="lazy" alt="Screenshot of bashtage/linearmodels#862 on GitHub">
-<p class="cap repo">bashtage/linearmodels #862</p>
-<h3>BUG: Do not materialize weighted data when all weights are 1</h3>
-<p class="meta">Merged 2026-11-06 &#183; 2 files changed &#183; +213 -3</p>
-<p>Stops the IV estimators from building full float64 weighted copies when every weight is 1, aliasing the original arrays instead. This avoids the extra full-size allocations reported for large low-dtype inputs.</p>
-</a>
-<a class="card" href="https://github.com/hgrecco/pint/pull/2551" target="_blank" rel="noopener">
-<img src="assets/contributions/hgrecco-pint-2551.webp" width="1200" height="937" loading="lazy" alt="Screenshot of hgrecco/pint#2551 on GitHub">
-<p class="cap repo">hgrecco/pint #2551</p>
-<h3>Fix Quantity.__setitem__ for values of a different Quantity class</h3>
-<p class="meta">Merged 2026-11-04 &#183; 3 files changed &#183; +24 -1</p>
-<p>Fixes Quantity.__setitem__ so assigning a value of a different Quantity class uses the normal conversion path instead of a reciprocal-units fallback. Same-dimension assignments across classes now work, and mismatched dimensions raise the intended error.</p>
-</a>
-<a class="card" href="https://github.com/e2nIEE/pandapower/pull/3291" target="_blank" rel="noopener">
-<img src="assets/contributions/e2niee-pandapower-3291.webp" width="1200" height="937" loading="lazy" alt="Screenshot of e2nIEE/pandapower#3291 on GitHub">
-<p class="cap repo">e2nIEE/pandapower #3291</p>
-<h3>Fix MATPOWER round trip turning star-point transformer branches into impedances</h3>
-<p class="meta">Merged 2026-11-03 &#183; 7 files changed &#183; +238 -18</p>
-<p>Fixes the MATPOWER round trip so the star-point branches of three-winding transformers come back as transformers instead of impedances. It corrects the TAP value handling in the to-MATPOWER, from-MATPOWER and from-ppc conversion steps.</p>
-</a>
-<a class="card" href="https://github.com/SALib/SALib/pull/694" target="_blank" rel="noopener">
-<img src="assets/contributions/salib-salib-694.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#694 on GitHub">
-<p class="cap repo">SALib/SALib #694</p>
-<h3>Add retained resamples to Morris analysis</h3>
-<p class="meta">Merged 2026-10-29 &#183; 4 files changed &#183; +278 -16</p>
-<p>Adds an opt-in keep_resamples argument to Morris analysis that returns the bootstrap mu_star estimates as mu_star_conf_all. One shared resample index matrix is used across parameters, so each retained row is a coherent bootstrap replicate.</p>
-</a>
-<a class="card" href="https://github.com/Nixtla/statsforecast/pull/1241" target="_blank" rel="noopener">
-<img src="assets/contributions/nixtla-statsforecast-1241.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/statsforecast#1241 on GitHub">
-<p class="cap repo">Nixtla/statsforecast #1241</p>
-<h3>feat: expose fixed theta parameter</h3>
-<p class="meta">Merged 2026-10-20 &#183; 2 files changed &#183; +47 -0</p>
-<p>Exposes an optional fixed theta parameter on AutoTheta, OptimizedTheta and DynamicOptimizedTheta, validated against the same finite range the internal optimizer uses. The default remains None, so existing callers still estimate theta as before.</p>
-</a>
-<a class="card" href="https://github.com/wilsonfreitas/awesome-quant/pull/735" target="_blank" rel="noopener">
-<img src="assets/contributions/wilsonfreitas-awesome-quant-735.webp" width="1200" height="937" loading="lazy" alt="Screenshot of wilsonfreitas/awesome-quant#735 on GitHub">
-<p class="cap listing">Listing / awesome-list entry</p>
-<p class="cap repo">wilsonfreitas/awesome-quant #735</p>
-<h3>Add EPSILON to Reproducing Works, Training &amp; Books</h3>
-<p class="meta">Merged 2026-10-19 &#183; 1 file changed &#183; +1 -0</p>
-<p>Adds an entry for EPSILON to the awesome-quant list, in its Reproducing Works, Training &amp; Books section, pointing to the EPSILON Assumption Clinic worksheet. The pull request description discloses that its author is EPSILON&#x27;s author and maintainer, as the list&#x27;s contributing guide requires.</p>
-</a>
-<a class="card" href="https://github.com/SALib/SALib/pull/693" target="_blank" rel="noopener">
-<img src="assets/contributions/salib-salib-693.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#693 on GitHub">
-<p class="cap repo">SALib/SALib #693</p>
-<h3>Fix non-finite Morris samples for unbounded distributions</h3>
-<p class="meta">Merged 2026-10-10 &#183; 2 files changed &#183; +125 -0</p>
-<p>Makes Morris sampling detect non-finite values produced when unit-interval endpoints pass through unbounded distributions, and fail naming the affected parameters and distributions. It directs users to finite bounds or a bounded distribution instead of returning infinite values.</p>
-</a>
-<a class="card" href="https://github.com/SALib/SALib/pull/686" target="_blank" rel="noopener">
-<img src="assets/contributions/salib-salib-686.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#686 on GitHub">
-<p class="cap repo">SALib/SALib #686</p>
-<h3>Add Goda Shapley effects method</h3>
-<p class="meta">Merged 2026-09-18 &#183; 11 files changed &#183; +659 -0</p>
-<p>Adds a Shapley effects method based on the random-permutation estimator described by Goda (2021), following SALib&#x27;s sample, evaluate and analyze workflow. The initial scope supports independent, ungrouped inputs, with CLI and ProblemSpec support.</p>
-</a>
-<a class="card" href="https://github.com/SALib/SALib/pull/688" target="_blank" rel="noopener">
-<img src="assets/contributions/salib-salib-688.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#688 on GitHub">
-<p class="cap repo">SALib/SALib #688</p>
-<h3>Seed the delta SVM regression test</h3>
-<p class="meta">Merged 2026-09-18 &#183; 1 file changed &#183; +2 -1</p>
-<p>Seeds the delta SVM regression test by requesting the existing set_seed fixture, so the test no longer depends on random draws consumed by earlier tests. Only the test&#x27;s fixture dependency and an explanatory comment change.</p>
-</a>
-<a class="card" href="https://github.com/SALib/SALib/pull/685" target="_blank" rel="noopener">
-<img src="assets/contributions/salib-salib-685.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#685 on GitHub">
-<p class="cap repo">SALib/SALib #685</p>
-<h3>Seed the discrepancy test sample</h3>
-<p class="meta">Merged 2026-09-18 &#183; 1 file changed &#183; +1 -1</p>
-<p>Passes a fixed seed to the Latin hypercube sample in test_discrepancy so its numerical assertion is deterministic. The PR description records repeated failures across unseeded repetitions and passing runs after the change.</p>
-</a>
-<a class="card" href="https://github.com/ronsse/trellis-ai/pull/352" target="_blank" rel="noopener">
-<img src="assets/contributions/ronsse-trellis-ai-352.webp" width="1200" height="937" loading="lazy" alt="Screenshot of ronsse/trellis-ai#352 on GitHub">
-<p class="cap repo">ronsse/trellis-ai #352</p>
-<h3>fix(mcp): document save_experience trace schema</h3>
-<p class="meta">Merged 2026-08-27 &#183; 2 files changed &#183; +36 -1</p>
-<p>Documents the save_experience MCP tool&#x27;s Trace schema in its description, showing the required source, intent and context fields with a minimal JSON example. It also adds a regression test that runs that example through the real validation and storage path.</p>
-</a>
-<a class="card" href="https://github.com/fairlearn/fairlearn/pull/1673" target="_blank" rel="noopener">
-<img src="assets/contributions/fairlearn-fairlearn-1673.webp" width="1200" height="937" loading="lazy" alt="Screenshot of fairlearn/fairlearn#1673 on GitHub">
-<p class="cap repo">fairlearn/fairlearn #1673</p>
-<h3>MNT: clarify fitted-state check in adversarial mitigation</h3>
-<p class="meta">Merged 2026-08-17 &#183; 2 files changed &#183; +6 -6</p>
-<p>Replaces a try/except NotFittedError probe in the adversarial mitigation input validation with a direct check for the fitted backend attribute. Existing behaviour is kept while the fitted-state check is made clearer.</p>
-</a>
-<a class="card" href="https://github.com/ag2ai/faststream/pull/3015" target="_blank" rel="noopener">
-<img src="assets/contributions/ag2ai-faststream-3015.webp" width="1200" height="937" loading="lazy" alt="Screenshot of ag2ai/faststream#3015 on GitHub">
-<p class="cap repo">ag2ai/faststream #3015</p>
-<h3>feat(redis): add StreamSub declare option</h3>
-<p class="meta">Merged 2026-08-13 &#183; 4 files changed &#183; +55 -1</p>
-<p>Adds a declare option to the Redis StreamSub class and passes it to the XGROUP CREATE command as mkstream, so a missing externally managed stream is not created when declare is False. It warns when declare is False is used without a consumer group, where it has no effect.</p>
-</a>
-<a class="card" href="https://github.com/argoproj/argo-cd/pull/29173" target="_blank" rel="noopener">
-<img src="assets/contributions/argoproj-argo-cd-29173.webp" width="1200" height="937" loading="lazy" alt="Screenshot of argoproj/argo-cd#29173 on GitHub">
-<p class="cap repo">argoproj/argo-cd #29173</p>
-<h3>docs: fix config management plugin link (#29172)</h3>
-<p class="meta">Merged 2026-08-13 &#183; 1 file changed &#183; +1 -1</p>
-<p>Updates the Kustomizing Helm Charts documentation to link directly to the canonical config-management-plugins page instead of a moved-page URL. This is a documentation-only change.</p>
+<a class="card" href="https://github.com/scikit-learn-contrib/MAPIE/pull/953" target="_blank" rel="noopener">
+<img src="assets/contributions/scikit-learn-contrib-mapie-953.webp" width="1200" height="937" loading="lazy" alt="Screenshot of scikit-learn-contrib/MAPIE#953 on GitHub">
+<p class="cap repo">scikit-learn-contrib/MAPIE #953</p>
+<h3>add aucroc_score and auarc_score uncertainty metrics</h3>
+<p class="meta">Merged 2026-07-10 &#183; 5 files changed &#183; +349 -0 &#183; Exchange 10</p>
+<p>Adds aucroc_score and auarc_score uncertainty metrics in a new mapie metrics module, implementing the metrics described by Lin et al. (2023). Both functions take NumPy input and return a scalar.</p>
 </a>
 <a class="card" href="https://github.com/beeware/briefcase/pull/2939" target="_blank" rel="noopener">
 <img src="assets/contributions/beeware-briefcase-2939.webp" width="1200" height="937" loading="lazy" alt="Screenshot of beeware/briefcase#2939 on GitHub">
 <p class="cap repo">beeware/briefcase #2939</p>
 <h3>Add zizmor pre-commit hook and fix all reported GHA security issues</h3>
-<p class="meta">Merged 2026-07-29 &#183; 8 files changed &#183; +78 -38</p>
+<p class="meta">Merged 2026-07-29 &#183; 8 files changed &#183; +78 -38 &#183; Exchange 8</p>
 <p>Pins the GitHub Actions references reported by zizmor to full commit SHAs, adds persist-credentials: false to checkout steps, and adds contents: read permissions to workflows. It also enables zizmor in pre-commit.</p>
 </a>
 <a class="card" href="https://github.com/SALib/SALib/pull/678" target="_blank" rel="noopener">
 <img src="assets/contributions/salib-salib-678.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#678 on GitHub">
 <p class="cap repo">SALib/SALib #678</p>
 <h3>Fix Sobol analysis for partially constant multi-output columns</h3>
-<p class="meta">Merged 2026-07-17 &#183; 2 files changed &#183; +92 -12</p>
+<p class="meta">Merged 2026-07-17 &#183; 2 files changed &#183; +92 -12 &#183; Exchange 5</p>
 <p>Fixes Sobol analysis for multi-output problems where some output columns are constant, by applying per-column zero-variance handling instead of a single scalar check. Regression coverage is added for mixed constant and varying outputs.</p>
+</a>
+<a class="card" href="https://github.com/Nixtla/statsforecast/pull/1175" target="_blank" rel="noopener">
+<img src="assets/contributions/nixtla-statsforecast-1175.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/statsforecast#1175 on GitHub">
+<p class="cap repo">Nixtla/statsforecast #1175</p>
+<h3>[FEAT] Add conformal_error prediction intervals method</h3>
+<p class="meta">Merged 2026-07-13 &#183; 4 files changed &#183; +81 -5 &#183; Exchange 5</p>
+<p>Adds a conformal_error prediction-interval method that uses quantiles of the conformity scores as the error margin for prediction intervals. It enables the new method alongside the existing conformal_distribution method and adds a test.</p>
+</a>
+<a class="card" href="https://github.com/Nixtla/neuralforecast/pull/1563" target="_blank" rel="noopener">
+<img src="assets/contributions/nixtla-neuralforecast-1563.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/neuralforecast#1563 on GitHub">
+<p class="cap repo">Nixtla/neuralforecast #1563</p>
+<h3>add FreDF loss combining time-domain MSE and frequency-domain MAE</h3>
+<p class="meta">Merged 2026-07-04 &#183; 2 files changed &#183; +121 -1 &#183; Exchange 5</p>
+<p>Adds the FreDF loss, which combines time-domain MSE with frequency-domain MAE computed through an FFT, weighted by an alpha parameter defaulting to 0.5. At alpha 0 it reduces to pure MSE, and at alpha 1 to pure frequency-domain MAE.</p>
+</a>
+<a class="card" href="https://github.com/networkx/networkx/pull/8735" target="_blank" rel="noopener">
+<img src="assets/contributions/networkx-networkx-8735.webp" width="1200" height="937" loading="lazy" alt="Screenshot of networkx/networkx#8735 on GitHub">
+<p class="cap repo">networkx/networkx #8735</p>
+<h3>Warn when PageRank convergence check is ineffective</h3>
+<p class="meta">Merged 2026-07-07 &#183; 1 file changed &#183; +6 -0 &#183; Exchange 4</p>
+<p>Adds a RuntimeWarning to PageRank when the number of nodes times tol is at least 2, where the L1 convergence threshold can no longer meaningfully gate iteration. PageRank results and tolerance semantics are unchanged.</p>
 </a>
 <a class="card" href="https://github.com/huggingface/peft/pull/3417" target="_blank" rel="noopener">
 <img src="assets/contributions/huggingface-peft-3417.webp" width="1200" height="937" loading="lazy" alt="Screenshot of huggingface/peft#3417 on GitHub">
 <p class="cap repo">huggingface/peft #3417</p>
 <h3>Improve IA3 documentation: add usage guidance, module selection tips, and LoRA comparison</h3>
-<p class="meta">Merged 2026-07-14 &#183; 1 file changed &#183; +20 -1</p>
+<p class="meta">Merged 2026-07-14 &#183; 1 file changed &#183; +20 -1 &#183; Exchange 3</p>
 <p>Expands the IA3 documentation with a complete usage example, guidance on choosing target modules, and a comparison table for IA3 versus LoRA. This is a documentation-only change.</p>
 </a>
 <a class="card" href="https://github.com/repowise-dev/repowise/pull/788" target="_blank" rel="noopener">
 <img src="assets/contributions/repowise-dev-repowise-788.webp" width="1200" height="937" loading="lazy" alt="Screenshot of repowise-dev/repowise#788 on GitHub">
 <p class="cap repo">repowise-dev/repowise #788</p>
 <h3>feat(codex): deliver architectural decisions into Codex SessionStart</h3>
-<p class="meta">Merged 2026-07-14 &#183; 2 files changed &#183; +64 -15</p>
+<p class="meta">Merged 2026-07-14 &#183; 2 files changed &#183; +64 -15 &#183; Exchange 3</p>
 <p>Wires the existing standing-decisions injection into the Codex SessionStart hook, so architectural decisions are delivered there as they already were for Claude Code. It also passes the session_id from the hook payload into decision scoring.</p>
-</a>
-<a class="card" href="https://github.com/Nixtla/statsforecast/pull/1175" target="_blank" rel="noopener">
-<img src="assets/contributions/nixtla-statsforecast-1175.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/statsforecast#1175 on GitHub">
-<p class="cap repo">Nixtla/statsforecast #1175</p>
-<h3>[FEAT] Add conformal_error prediction intervals method</h3>
-<p class="meta">Merged 2026-07-13 &#183; 4 files changed &#183; +81 -5</p>
-<p>Adds a conformal_error prediction-interval method that uses quantiles of the conformity scores as the error margin for prediction intervals. It enables the new method alongside the existing conformal_distribution method and adds a test.</p>
-</a>
-<a class="card" href="https://github.com/Nixtla/statsforecast/pull/1176" target="_blank" rel="noopener">
-<img src="assets/contributions/nixtla-statsforecast-1176.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/statsforecast#1176 on GitHub">
-<p class="cap repo">Nixtla/statsforecast #1176</p>
-<h3>Add py.typed marker</h3>
-<p class="meta">Merged 2026-07-11 &#183; 1 file changed &#183; +0 -0</p>
-<p>Adds a py.typed marker file to the statsforecast package so type checkers recognise it as a typed package under PEP 561. No runtime code is changed.</p>
 </a>
 <a class="card" href="https://github.com/fairlearn/fairlearn/pull/1674" target="_blank" rel="noopener">
 <img src="assets/contributions/fairlearn-fairlearn-1674.webp" width="1200" height="937" loading="lazy" alt="Screenshot of fairlearn/fairlearn#1674 on GitHub">
 <p class="cap repo">fairlearn/fairlearn #1674</p>
 <h3>ENH auto-detect built-in CI in plot_metric_frame</h3>
-<p class="meta">Merged 2026-07-11 &#183; 3 files changed &#183; +322 -0</p>
+<p class="meta">Merged 2026-07-11 &#183; 3 files changed &#183; +322 -0 &#183; Exchange 3</p>
 <p>Lets plot_metric_frame use the confidence intervals already computed by MetricFrame when it was constructed with bootstrapping, converting them into the existing error-bar path. An explicitly passed conf_intervals argument still takes precedence.</p>
 </a>
-<a class="card" href="https://github.com/scikit-learn-contrib/MAPIE/pull/953" target="_blank" rel="noopener">
-<img src="assets/contributions/scikit-learn-contrib-mapie-953.webp" width="1200" height="937" loading="lazy" alt="Screenshot of scikit-learn-contrib/MAPIE#953 on GitHub">
-<p class="cap repo">scikit-learn-contrib/MAPIE #953</p>
-<h3>add aucroc_score and auarc_score uncertainty metrics</h3>
-<p class="meta">Merged 2026-07-10 &#183; 5 files changed &#183; +349 -0</p>
-<p>Adds aucroc_score and auarc_score uncertainty metrics in a new mapie metrics module, implementing the metrics described by Lin et al. (2023). Both functions take NumPy input and return a scalar.</p>
+<a class="card" href="https://github.com/SALib/SALib/pull/694" target="_blank" rel="noopener">
+<img src="assets/contributions/salib-salib-694.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#694 on GitHub">
+<p class="cap repo">SALib/SALib #694</p>
+<h3>Add retained resamples to Morris analysis</h3>
+<p class="meta">Merged 2026-10-29 &#183; 4 files changed &#183; +278 -16 &#183; Exchange 2</p>
+<p>Adds an opt-in keep_resamples argument to Morris analysis that returns the bootstrap mu_star estimates as mu_star_conf_all. One shared resample index matrix is used across parameters, so each retained row is a coherent bootstrap replicate.</p>
 </a>
-<a class="card" href="https://github.com/langgenius/dify/pull/38626" target="_blank" rel="noopener">
-<img src="assets/contributions/langgenius-dify-38626.webp" width="1200" height="937" loading="lazy" alt="Screenshot of langgenius/dify#38626 on GitHub">
-<p class="cap repo">langgenius/dify #38626</p>
-<h3>chore: Replace @patch logger.warning with caplog fixture in credit_pool_service test</h3>
-<p class="meta">Merged 2026-07-10 &#183; 1 file changed &#183; +6 -5</p>
-<p>Replaces a patch mock of logger.warning with pytest&#x27;s caplog fixture in a credit_pool_service test. The assertions now check caplog records instead of mock call arguments.</p>
+<a class="card" href="https://github.com/SALib/SALib/pull/686" target="_blank" rel="noopener">
+<img src="assets/contributions/salib-salib-686.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#686 on GitHub">
+<p class="cap repo">SALib/SALib #686</p>
+<h3>Add Goda Shapley effects method</h3>
+<p class="meta">Merged 2026-09-18 &#183; 11 files changed &#183; +659 -0 &#183; Exchange 2</p>
+<p>Adds a Shapley effects method based on the random-permutation estimator described by Goda (2021), following SALib&#x27;s sample, evaluate and analyze workflow. The initial scope supports independent, ungrouped inputs, with CLI and ProblemSpec support.</p>
 </a>
-<a class="card" href="https://github.com/networkx/networkx/pull/8735" target="_blank" rel="noopener">
-<img src="assets/contributions/networkx-networkx-8735.webp" width="1200" height="937" loading="lazy" alt="Screenshot of networkx/networkx#8735 on GitHub">
-<p class="cap repo">networkx/networkx #8735</p>
-<h3>Warn when PageRank convergence check is ineffective</h3>
-<p class="meta">Merged 2026-07-07 &#183; 1 file changed &#183; +6 -0</p>
-<p>Adds a RuntimeWarning to PageRank when the number of nodes times tol is at least 2, where the L1 convergence threshold can no longer meaningfully gate iteration. PageRank results and tolerance semantics are unchanged.</p>
+<a class="card" href="https://github.com/ronsse/trellis-ai/pull/352" target="_blank" rel="noopener">
+<img src="assets/contributions/ronsse-trellis-ai-352.webp" width="1200" height="937" loading="lazy" alt="Screenshot of ronsse/trellis-ai#352 on GitHub">
+<p class="cap repo">ronsse/trellis-ai #352</p>
+<h3>fix(mcp): document save_experience trace schema</h3>
+<p class="meta">Merged 2026-08-27 &#183; 2 files changed &#183; +36 -1 &#183; Exchange 2</p>
+<p>Documents the save_experience MCP tool&#x27;s Trace schema in its description, showing the required source, intent and context fields with a minimal JSON example. It also adds a regression test that runs that example through the real validation and storage path.</p>
+</a>
+<a class="card" href="https://github.com/Nixtla/statsforecast/pull/1176" target="_blank" rel="noopener">
+<img src="assets/contributions/nixtla-statsforecast-1176.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/statsforecast#1176 on GitHub">
+<p class="cap repo">Nixtla/statsforecast #1176</p>
+<h3>Add py.typed marker</h3>
+<p class="meta">Merged 2026-07-11 &#183; 1 file changed &#183; +0 -0 &#183; Exchange 2</p>
+<p>Adds a py.typed marker file to the statsforecast package so type checkers recognise it as a typed package under PEP 561. No runtime code is changed.</p>
+</a>
+<a class="card" href="https://github.com/tornadoweb/tornado/pull/3855" target="_blank" rel="noopener">
+<img src="assets/contributions/tornadoweb-tornado-3855.webp" width="1200" height="937" loading="lazy" alt="Screenshot of tornadoweb/tornado#3855 on GitHub">
+<p class="cap repo">tornadoweb/tornado #3855</p>
+<h3>Include Allow header in 405 responses</h3>
+<p class="meta">Merged 2026-11-17 &#183; 2 files changed &#183; +67 -0 &#183; Exchange 1</p>
+<p>Adds the Allow header that RFC 9110 requires on 405 responses but tornado never sent. The header is built in RequestHandler.send_error, where every 405 path converges, from the methods the handler actually implements.</p>
+</a>
+<a class="card" href="https://github.com/bashtage/linearmodels/pull/862" target="_blank" rel="noopener">
+<img src="assets/contributions/bashtage-linearmodels-862.webp" width="1200" height="937" loading="lazy" alt="Screenshot of bashtage/linearmodels#862 on GitHub">
+<p class="cap repo">bashtage/linearmodels #862</p>
+<h3>BUG: Do not materialize weighted data when all weights are 1</h3>
+<p class="meta">Merged 2026-11-06 &#183; 2 files changed &#183; +213 -3 &#183; Exchange 1</p>
+<p>Stops the IV estimators from building full float64 weighted copies when every weight is 1, aliasing the original arrays instead. This avoids the extra full-size allocations reported for large low-dtype inputs.</p>
+</a>
+<a class="card" href="https://github.com/hgrecco/pint/pull/2551" target="_blank" rel="noopener">
+<img src="assets/contributions/hgrecco-pint-2551.webp" width="1200" height="937" loading="lazy" alt="Screenshot of hgrecco/pint#2551 on GitHub">
+<p class="cap repo">hgrecco/pint #2551</p>
+<h3>Fix Quantity.__setitem__ for values of a different Quantity class</h3>
+<p class="meta">Merged 2026-11-04 &#183; 3 files changed &#183; +24 -1 &#183; Exchange 1</p>
+<p>Fixes Quantity.__setitem__ so assigning a value of a different Quantity class uses the normal conversion path instead of a reciprocal-units fallback. Same-dimension assignments across classes now work, and mismatched dimensions raise the intended error.</p>
+</a>
+<a class="card" href="https://github.com/Nixtla/statsforecast/pull/1241" target="_blank" rel="noopener">
+<img src="assets/contributions/nixtla-statsforecast-1241.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/statsforecast#1241 on GitHub">
+<p class="cap repo">Nixtla/statsforecast #1241</p>
+<h3>feat: expose fixed theta parameter</h3>
+<p class="meta">Merged 2026-10-20 &#183; 2 files changed &#183; +47 -0 &#183; Exchange 1</p>
+<p>Exposes an optional fixed theta parameter on AutoTheta, OptimizedTheta and DynamicOptimizedTheta, validated against the same finite range the internal optimizer uses. The default remains None, so existing callers still estimate theta as before.</p>
+</a>
+<a class="card" href="https://github.com/SALib/SALib/pull/693" target="_blank" rel="noopener">
+<img src="assets/contributions/salib-salib-693.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#693 on GitHub">
+<p class="cap repo">SALib/SALib #693</p>
+<h3>Fix non-finite Morris samples for unbounded distributions</h3>
+<p class="meta">Merged 2026-10-10 &#183; 2 files changed &#183; +125 -0 &#183; Exchange 1</p>
+<p>Makes Morris sampling detect non-finite values produced when unit-interval endpoints pass through unbounded distributions, and fail naming the affected parameters and distributions. It directs users to finite bounds or a bounded distribution instead of returning infinite values.</p>
+</a>
+<a class="card" href="https://github.com/fairlearn/fairlearn/pull/1673" target="_blank" rel="noopener">
+<img src="assets/contributions/fairlearn-fairlearn-1673.webp" width="1200" height="937" loading="lazy" alt="Screenshot of fairlearn/fairlearn#1673 on GitHub">
+<p class="cap repo">fairlearn/fairlearn #1673</p>
+<h3>MNT: clarify fitted-state check in adversarial mitigation</h3>
+<p class="meta">Merged 2026-08-17 &#183; 2 files changed &#183; +6 -6 &#183; Exchange 1</p>
+<p>Replaces a try/except NotFittedError probe in the adversarial mitigation input validation with a direct check for the fitted backend attribute. Existing behaviour is kept while the fitted-state check is made clearer.</p>
 </a>
 <a class="card" href="https://github.com/koaning/scikit-lego/pull/805" target="_blank" rel="noopener">
 <img src="assets/contributions/koaning-scikit-lego-805.webp" width="1200" height="937" loading="lazy" alt="Screenshot of koaning/scikit-lego#805 on GitHub">
 <p class="cap repo">koaning/scikit-lego #805</p>
 <h3>Clarify equal opportunity warning message</h3>
-<p class="meta">Merged 2026-07-05 &#183; 2 files changed &#183; +5 -2</p>
+<p class="meta">Merged 2026-07-05 &#183; 2 files changed &#183; +5 -2 &#183; Exchange 1</p>
 <p>Clarifies the warning emitted by equal_opportunity_score so it states both positive-target conditions that trigger the zero-return path. The metric logic itself is unchanged.</p>
 </a>
-<a class="card" href="https://github.com/Nixtla/neuralforecast/pull/1563" target="_blank" rel="noopener">
-<img src="assets/contributions/nixtla-neuralforecast-1563.webp" width="1200" height="937" loading="lazy" alt="Screenshot of Nixtla/neuralforecast#1563 on GitHub">
-<p class="cap repo">Nixtla/neuralforecast #1563</p>
-<h3>add FreDF loss combining time-domain MSE and frequency-domain MAE</h3>
-<p class="meta">Merged 2026-07-04 &#183; 2 files changed &#183; +121 -1</p>
-<p>Adds the FreDF loss, which combines time-domain MSE with frequency-domain MAE computed through an FFT, weighted by an alpha parameter defaulting to 0.5. At alpha 0 it reduces to pure MSE, and at alpha 1 to pure frequency-domain MAE.</p>
+<a class="card" href="https://github.com/e2nIEE/pandapower/pull/3291" target="_blank" rel="noopener">
+<img src="assets/contributions/e2niee-pandapower-3291.webp" width="1200" height="937" loading="lazy" alt="Screenshot of e2nIEE/pandapower#3291 on GitHub">
+<p class="cap repo">e2nIEE/pandapower #3291</p>
+<h3>Fix MATPOWER round trip turning star-point transformer branches into impedances</h3>
+<p class="meta">Merged 2026-11-03 &#183; 7 files changed &#183; +238 -18 &#183; Exchange 0</p>
+<p>Fixes the MATPOWER round trip so the star-point branches of three-winding transformers come back as transformers instead of impedances. It corrects the TAP value handling in the to-MATPOWER, from-MATPOWER and from-ppc conversion steps.</p>
+</a>
+<a class="card" href="https://github.com/wilsonfreitas/awesome-quant/pull/735" target="_blank" rel="noopener">
+<img src="assets/contributions/wilsonfreitas-awesome-quant-735.webp" width="1200" height="937" loading="lazy" alt="Screenshot of wilsonfreitas/awesome-quant#735 on GitHub">
+<p class="cap listing">Listing / awesome-list entry</p>
+<p class="cap repo">wilsonfreitas/awesome-quant #735</p>
+<h3>Add EPSILON to Reproducing Works, Training &amp; Books</h3>
+<p class="meta">Merged 2026-10-19 &#183; 1 file changed &#183; +1 -0 &#183; Exchange 0</p>
+<p>Adds an entry for EPSILON to the awesome-quant list, in its Reproducing Works, Training &amp; Books section, pointing to the EPSILON Assumption Clinic worksheet. The pull request description discloses that its author is EPSILON&#x27;s author and maintainer, as the list&#x27;s contributing guide requires.</p>
+</a>
+<a class="card" href="https://github.com/SALib/SALib/pull/688" target="_blank" rel="noopener">
+<img src="assets/contributions/salib-salib-688.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#688 on GitHub">
+<p class="cap repo">SALib/SALib #688</p>
+<h3>Seed the delta SVM regression test</h3>
+<p class="meta">Merged 2026-09-18 &#183; 1 file changed &#183; +2 -1 &#183; Exchange 0</p>
+<p>Seeds the delta SVM regression test by requesting the existing set_seed fixture, so the test no longer depends on random draws consumed by earlier tests. Only the test&#x27;s fixture dependency and an explanatory comment change.</p>
+</a>
+<a class="card" href="https://github.com/SALib/SALib/pull/685" target="_blank" rel="noopener">
+<img src="assets/contributions/salib-salib-685.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#685 on GitHub">
+<p class="cap repo">SALib/SALib #685</p>
+<h3>Seed the discrepancy test sample</h3>
+<p class="meta">Merged 2026-09-18 &#183; 1 file changed &#183; +1 -1 &#183; Exchange 0</p>
+<p>Passes a fixed seed to the Latin hypercube sample in test_discrepancy so its numerical assertion is deterministic. The PR description records repeated failures across unseeded repetitions and passing runs after the change.</p>
+</a>
+<a class="card" href="https://github.com/ag2ai/faststream/pull/3015" target="_blank" rel="noopener">
+<img src="assets/contributions/ag2ai-faststream-3015.webp" width="1200" height="937" loading="lazy" alt="Screenshot of ag2ai/faststream#3015 on GitHub">
+<p class="cap repo">ag2ai/faststream #3015</p>
+<h3>feat(redis): add StreamSub declare option</h3>
+<p class="meta">Merged 2026-08-13 &#183; 4 files changed &#183; +55 -1 &#183; Exchange 0</p>
+<p>Adds a declare option to the Redis StreamSub class and passes it to the XGROUP CREATE command as mkstream, so a missing externally managed stream is not created when declare is False. It warns when declare is False is used without a consumer group, where it has no effect.</p>
+</a>
+<a class="card" href="https://github.com/argoproj/argo-cd/pull/29173" target="_blank" rel="noopener">
+<img src="assets/contributions/argoproj-argo-cd-29173.webp" width="1200" height="937" loading="lazy" alt="Screenshot of argoproj/argo-cd#29173 on GitHub">
+<p class="cap repo">argoproj/argo-cd #29173</p>
+<h3>docs: fix config management plugin link (#29172)</h3>
+<p class="meta">Merged 2026-08-13 &#183; 1 file changed &#183; +1 -1 &#183; Exchange 0</p>
+<p>Updates the Kustomizing Helm Charts documentation to link directly to the canonical config-management-plugins page instead of a moved-page URL. This is a documentation-only change.</p>
+</a>
+<a class="card" href="https://github.com/langgenius/dify/pull/38626" target="_blank" rel="noopener">
+<img src="assets/contributions/langgenius-dify-38626.webp" width="1200" height="937" loading="lazy" alt="Screenshot of langgenius/dify#38626 on GitHub">
+<p class="cap repo">langgenius/dify #38626</p>
+<h3>chore: Replace @patch logger.warning with caplog fixture in credit_pool_service test</h3>
+<p class="meta">Merged 2026-07-10 &#183; 1 file changed &#183; +6 -5 &#183; Exchange 0</p>
+<p>Replaces a patch mock of logger.warning with pytest&#x27;s caplog fixture in a credit_pool_service test. The assertions now check caplog records instead of mock call arguments.</p>
 </a>
 </div>
 </section>
 <section aria-label="How this list was built">
 <p class="cap kicker">Method</p>
 <h2>How this list was built</h2>
-<p>Source: GitHub search <i>is:pr author:DresdenGman is:merged</i>, checked 2026-11-17, with each pull request's own GitHub record for its merged date and its files changed, additions and deletions. Exclusion rule: pull requests in repositories under my own accounts — DresdenGman or dresdengoehner — are own-project work and are not counted here; that excludes, for example, dresdengoehner/Grid-Extreme-Risk-Toolkit-GERT- #3 and #4, which are in a repository under my second account. The wilsonfreitas/awesome-quant listing is an external merge and is included above as the 1 list entry, labelled &#8220;Listing / awesome-list entry&#8221;. Each summary is written from that pull request's description and diff.</p>
+<p>Source: GitHub search <i>is:pr author:DresdenGman is:merged</i>, checked 2026-11-17, with each pull request's own GitHub record for its merged date and its files changed, additions and deletions. Exclusion rule: pull requests in repositories under my own accounts — DresdenGman or dresdengoehner — are own-project work and are not counted here; that excludes, for example, dresdengoehner/Grid-Extreme-Risk-Toolkit-GERT- #3 and #4, which are in a repository under my second account. The wilsonfreitas/awesome-quant listing is an external merge and is included above as the 1 list entry, labelled &#8220;Listing / awesome-list entry&#8221;. Each summary is written from that pull request's description and diff. Ordering rule: the exchange on a pull request is the number of comments on it by me and by other people plus the written reviews it received, counted from its conversation on 2026-11-17 with bot comments excluded and the pull request description not counted as a comment; the list is ordered by that count, highest first, with ties broken by merged date, newest first. Each card&#8217;s meta line ends with its exchange count.</p>
 <p class="note">Screenshots: each card's image is a screenshot of that pull request's GitHub page, captured 2026-11-16 and 2026-11-17, showing its title, Merged badge and description.</p>
 </section>
 </main>
