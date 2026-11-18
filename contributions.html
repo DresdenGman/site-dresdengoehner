@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions — Dresden Goehner</title>
-<meta name="description" content="Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner): 26 merged PRs across 18 third-party repositories (25 code contributions + 1 list entry), newest first.">
+<meta name="description" content="Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner): 27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), newest first.">
 <link rel="canonical" href="https://dresdengoehner.com/contributions.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dresden Goehner">
 <meta property="og:title" content="Open-source contributions — Dresden Goehner">
-<meta property="og:description" content="26 merged PRs across 18 third-party repositories (25 code contributions + 1 list entry), newest first, each with a plain summary and its file and line counts.">
+<meta property="og:description" content="27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), newest first, each with a plain summary and its file and line counts.">
 <meta property="og:url" content="https://dresdengoehner.com/contributions.html">
 <meta property="og:image" content="https://dresdengoehner.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Open-source contributions — Dresden Goehner">
-<meta name="twitter:description" content="26 merged PRs across 18 third-party repositories (25 code contributions + 1 list entry), newest first.">
+<meta name="twitter:description" content="27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry), newest first.">
 <meta name="twitter:image" content="https://dresdengoehner.com/og.png">
 <meta name="twitter:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -54,21 +54,28 @@ a.card p{font-size:14px;color:#cfccc5}
 <header class="page">
 <p class="cap">Open-source contributions &#183; merged pull requests only</p>
 <h1>Open-source contributions</h1>
-<p class="lede">Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner), newest first: 26 merged PRs across 18 third-party repositories (25 code contributions + 1 list entry). Each card links to the pull request on GitHub. Counts were checked against GitHub on 2026-11-16 and match the <a class="src" href="proof.html#opensource">claim index</a>.</p>
+<p class="lede">Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner), newest first: 27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry). Each card links to the pull request on GitHub. Counts were checked against GitHub on 2026-11-17 and match the <a class="src" href="proof.html#opensource">claim index</a>.</p>
 </header>
 <main>
 <section aria-label="Totals">
 <div class="totals">
-<div class="total"><b>26</b><span>merged pull requests</span></div>
-<div class="total"><b>18</b><span>third-party repositories</span></div>
-<div class="total"><b>75</b><span>files changed in total, with +2830 -128 lines across the 26 pull requests</span></div>
+<div class="total"><b>27</b><span>merged pull requests</span></div>
+<div class="total"><b>19</b><span>third-party repositories</span></div>
+<div class="total"><b>77</b><span>files changed in total, with +2897 -128 lines across the 27 pull requests</span></div>
 </div>
-<p class="note" style="margin-top:16px">The 26 are 25 code contributions plus 1 list entry (the awesome-quant listing, labelled on its card below).</p>
+<p class="note" style="margin-top:16px">The 27 are 26 code contributions plus 1 list entry (the awesome-quant listing, labelled on its card below).</p>
 </section>
 <section aria-label="Merged pull requests, newest first">
 <p class="cap kicker">Newest first</p>
-<h2>26 merged PRs across 18 third-party repositories (25 code contributions + 1 list entry)</h2>
+<h2>27 merged PRs across 19 third-party repositories (26 code contributions + 1 list entry)</h2>
 <div class="cards">
+<a class="card" href="https://github.com/tornadoweb/tornado/pull/3855" target="_blank" rel="noopener">
+<img src="assets/contributions/tornadoweb-tornado-3855.webp" width="1200" height="937" loading="lazy" alt="Screenshot of tornadoweb/tornado#3855 on GitHub">
+<p class="cap repo">tornadoweb/tornado #3855</p>
+<h3>Include Allow header in 405 responses</h3>
+<p class="meta">Merged 2026-11-17 &#183; 2 files changed &#183; +67 -0</p>
+<p>Adds the Allow header that RFC 9110 requires on 405 responses but tornado never sent. The header is built in RequestHandler.send_error, where every 405 path converges, from the methods the handler actually implements.</p>
+</a>
 <a class="card" href="https://github.com/bashtage/linearmodels/pull/862" target="_blank" rel="noopener">
 <img src="assets/contributions/bashtage-linearmodels-862.webp" width="1200" height="937" loading="lazy" alt="Screenshot of bashtage/linearmodels#862 on GitHub">
 <p class="cap repo">bashtage/linearmodels #862</p>
@@ -257,8 +264,8 @@ a.card p{font-size:14px;color:#cfccc5}
 <section aria-label="How this list was built">
 <p class="cap kicker">Method</p>
 <h2>How this list was built</h2>
-<p>Source: GitHub search <i>is:pr author:DresdenGman is:merged</i>, checked 2026-11-16, with each pull request's own GitHub record for its merged date and its files changed, additions and deletions. Exclusion rule: pull requests in repositories under my own accounts — DresdenGman or dresdengoehner — are own-project work and are not counted here; that excludes, for example, dresdengoehner/Grid-Extreme-Risk-Toolkit-GERT- #3 and #4, which are in a repository under my second account. The wilsonfreitas/awesome-quant listing is an external merge and is included above as the 1 list entry, labelled &#8220;Listing / awesome-list entry&#8221;. Each summary is written from that pull request's description and diff.</p>
-<p class="note">Screenshots: each card's image is a screenshot of that pull request's GitHub page, captured 2026-11-16, showing its title, Merged badge and description.</p>
+<p>Source: GitHub search <i>is:pr author:DresdenGman is:merged</i>, checked 2026-11-17, with each pull request's own GitHub record for its merged date and its files changed, additions and deletions. Exclusion rule: pull requests in repositories under my own accounts — DresdenGman or dresdengoehner — are own-project work and are not counted here; that excludes, for example, dresdengoehner/Grid-Extreme-Risk-Toolkit-GERT- #3 and #4, which are in a repository under my second account. The wilsonfreitas/awesome-quant listing is an external merge and is included above as the 1 list entry, labelled &#8220;Listing / awesome-list entry&#8221;. Each summary is written from that pull request's description and diff.</p>
+<p class="note">Screenshots: each card's image is a screenshot of that pull request's GitHub page, captured 2026-11-16 and 2026-11-17, showing its title, Merged badge and description.</p>
 </section>
 </main>
 <footer>
