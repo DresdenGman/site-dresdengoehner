@@ -149,9 +149,10 @@
     if (!heroEl || actx || graphFailed || !audio || reducedMotion()) { return; }
     var AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) { graphFailed = true; return; }
+    var source = null;
     try {
       actx = new AC();
-      var source = actx.createMediaElementSource(audio);
+      source = actx.createMediaElementSource(audio);
       analyser = actx.createAnalyser();
       analyser.fftSize = 256;
       analyser.smoothingTimeConstant = 0.85;
@@ -159,7 +160,12 @@
       source.connect(analyser);
       analyser.connect(actx.destination);
     } catch (e) {
-      actx = null;
+      // Once an element is captured by createMediaElementSource its sound
+      // only reaches the speakers through the graph, so if a later step
+      // failed, reconnect the source straight to the output.
+      if (source && actx) {
+        try { source.connect(actx.destination); } catch (e2) { /* noop */ }
+      }
       analyser = null;
       freqData = null;
       graphFailed = true;
@@ -328,10 +334,13 @@
     if (!audio) { return; }
     if (document.hidden) {
       if (isOn && !audio.paused && !audio.ended) {
-        // A pause, not a user-off: the toggle stays ON.
-        fadeTo(0, 300, function () {
-          if (document.hidden && audio) { audio.pause(); }
-        });
+        // A pause, not a user-off: the toggle stays ON. Hidden tabs throttle
+        // or suspend timers, so a timed fade could leave the sound playing:
+        // silence and pause immediately instead.
+        fadeGen += 1;
+        if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
+        try { audio.volume = 0; } catch (e) { /* noop */ }
+        audio.pause();
       }
     } else if (isOn && audio.paused && !audio.ended) {
       // Back to the tab with the toggle still on: continue the piece.
