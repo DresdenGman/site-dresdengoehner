@@ -1,0 +1,250 @@
+/* Site music toggle.
+ *
+ * One typographic control, off by default, injected into every page.
+ * Playback uses the native Audio API. The recording is Dresden's own piano
+ * playing; it is never fetched until the first click that turns sound on,
+ * it never autoplays on a fresh visit, and it plays once (no loop).
+ *
+ * State rules:
+ * - localStorage 'dg-sound-pref' ('on' | 'off') is written only when the
+ *   user toggles the control.
+ * - sessionStorage 'dg-sound-armed' ('1') is written only after a play()
+ *   call in this tab has actually started. Same-tab navigation may then
+ *   attempt to continue playback; a new tab always starts silent.
+ * - The label and aria-pressed always reflect actual playback, never the
+ *   stored preference.
+ */
+(function () {
+  'use strict';
+
+  var scriptEl = document.currentScript ||
+    document.querySelector('script[src*="sound.js"]');
+  var audioBase = null;
+  if (scriptEl && scriptEl.src) {
+    try { audioBase = new URL('../audio/', scriptEl.src); } catch (e) { audioBase = null; }
+  }
+
+  var PREF_KEY = 'dg-sound-pref';
+  var ARMED_KEY = 'dg-sound-armed';
+  var FADE_MS = 400;
+
+  /* ---------- control ---------- */
+
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'sound-toggle';
+  btn.setAttribute('aria-pressed', 'false');
+  btn.setAttribute('aria-label', 'Site music, currently off');
+  btn.title = 'Music: played by Dresden Goehner';
+  btn.textContent = 'SOUND OFF';
+  if (document.body) {
+    document.body.appendChild(btn);
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.appendChild(btn);
+    });
+  }
+
+  /* ---------- playback state ---------- */
+
+  var audio = null;          // created lazily on first use
+  var isOn = false;          // the user's toggle intent, as displayed
+  var wantPlay = false;      // a start attempt is wanted / in flight
+  var hasPlayed = false;     // playback actually started at least once
+  var unavailable = false;   // both sources failed
+  var triedFallback = false; // webm -> mp3 retry already used
+  var fadeTimer = null;
+  var fadeGen = 0;
+  var playGen = 0;           // invalidates stale play() promise handlers
+
+  function store(storage, key, value) {
+    try {
+      if (value === null) { storage.removeItem(key); }
+      else { storage.setItem(key, value); }
+    } catch (e) { /* private mode etc. — playback still works */ }
+  }
+  function read(storage, key) {
+    try { return storage.getItem(key); } catch (e) { return null; }
+  }
+
+  function setUI(on) {
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if (!unavailable) {
+      btn.setAttribute('aria-label', on ? 'Site music, currently on' : 'Site music, currently off');
+    }
+    btn.textContent = on ? 'SOUND ON' : 'SOUND OFF';
+  }
+
+  function fadeTo(target, ms, done) {
+    if (!audio) { if (done) { done(); } return; }
+    fadeGen += 1;
+    var gen = fadeGen;
+    if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
+    var start = audio.volume;
+    var steps = Math.max(1, Math.round(ms / 25));
+    var i = 0;
+    fadeTimer = setInterval(function () {
+      if (gen !== fadeGen) { return; }
+      i += 1;
+      var v = start + (target - start) * (i / steps);
+      try { audio.volume = Math.min(1, Math.max(0, v)); } catch (e) { /* noop */ }
+      if (i >= steps) {
+        clearInterval(fadeTimer); fadeTimer = null;
+        try { audio.volume = target; } catch (e) { /* noop */ }
+        if (done) { done(); }
+      }
+    }, 25);
+  }
+
+  function pickSource() {
+    if (!audio || !audioBase) { return null; }
+    var opus = '';
+    try { opus = audio.canPlayType('audio/webm; codecs=opus'); } catch (e) { opus = ''; }
+    var file = (opus && opus !== 'no' && !triedFallback) ? 'dresden-piano.webm' : 'dresden-piano.mp3';
+    return new URL(file, audioBase).href;
+  }
+
+  function ensureAudio() {
+    if (audio || !audioBase) { return audio; }
+    audio = new Audio();
+    audio.loop = false;
+    audio.volume = 0;
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('error', onError);
+    audio.addEventListener('playing', function () { hasPlayed = true; });
+    var src = pickSource();
+    if (src) {
+      audio.src = src;
+      audio.load();
+    }
+    return audio;
+  }
+
+  function onEnded() {
+    // The piece finished: back to off, but this is not a user preference,
+    // so localStorage is not written. A later click restarts from 0.
+    isOn = false;
+    wantPlay = false;
+    playGen += 1;
+    if (audio) { try { audio.volume = 0; } catch (e) { /* noop */ } }
+    setUI(false);
+  }
+
+  function onError() {
+    if (hasPlayed) {
+      // Playback had started; a later stream error is not a load failure.
+      // Stop honestly without declaring the music unavailable.
+      isOn = false;
+      wantPlay = false;
+      playGen += 1;
+      setUI(false);
+      return;
+    }
+    if (audio && !triedFallback && /\.webm($|\?)/.test(audio.src || '')) {
+      // The Opus file failed; try the MP3 once before giving up.
+      triedFallback = true;
+      var src = pickSource();
+      if (src) {
+        audio.src = src;
+        audio.load();
+        if (wantPlay) { startPlayback(); }
+        return;
+      }
+    }
+    unavailable = true;
+    isOn = false;
+    wantPlay = false;
+    playGen += 1;
+    btn.setAttribute('aria-pressed', 'false');
+    btn.setAttribute('aria-label', 'Site music unavailable');
+    btn.textContent = 'SOUND OFF';
+  }
+
+  function startPlayback() {
+    if (!ensureAudio()) { setUI(false); return; }
+    wantPlay = true;
+    playGen += 1;
+    var gen = playGen;
+    if (audio.ended) {
+      try { audio.currentTime = 0; } catch (e) { /* noop */ }
+    }
+    var result;
+    try { result = audio.play(); } catch (e) { result = null; }
+    if (result && typeof result.then === 'function') {
+      result.then(function () {
+        if (gen !== playGen || !wantPlay) { return; }
+        store(sessionStorage, ARMED_KEY, '1');
+        isOn = true;
+        setUI(true);
+        fadeTo(1, FADE_MS);
+      }).catch(function () {
+        if (gen !== playGen) { return; }
+        // Blocked or interrupted: stay honestly off.
+        wantPlay = false;
+        isOn = false;
+        setUI(false);
+      });
+    } else {
+      store(sessionStorage, ARMED_KEY, '1');
+      isOn = true;
+      setUI(true);
+      fadeTo(1, FADE_MS);
+    }
+  }
+
+  function stopPlayback() {
+    wantPlay = false;
+    playGen += 1;
+    if (!audio) { isOn = false; setUI(false); return; }
+    fadeTo(0, FADE_MS, function () {
+      // Pause only if the user has not turned it back on meanwhile.
+      if (!isOn && audio) { audio.pause(); }
+    });
+  }
+
+  /* ---------- events ---------- */
+
+  btn.addEventListener('click', function () {
+    if (unavailable) { return; }
+    if (isOn) {
+      isOn = false;
+      store(localStorage, PREF_KEY, 'off');
+      setUI(false);
+      stopPlayback();
+    } else {
+      isOn = true;
+      store(localStorage, PREF_KEY, 'on');
+      startPlayback(); // resolves the UI to the true state
+      if (!audio) { isOn = false; setUI(false); }
+    }
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (!audio) { return; }
+    if (document.hidden) {
+      if (isOn && !audio.paused && !audio.ended) {
+        // A pause, not a user-off: the toggle stays ON.
+        fadeTo(0, 300, function () {
+          if (document.hidden && audio) { audio.pause(); }
+        });
+      }
+    } else if (isOn && audio.paused && !audio.ended) {
+      // Back to the tab with the toggle still on: continue the piece.
+      wantPlay = true;
+      var result;
+      try { result = audio.play(); } catch (e) { result = null; }
+      if (result && typeof result.then === 'function') {
+        result.then(function () { if (isOn) { fadeTo(1, FADE_MS); } })
+          .catch(function () { wantPlay = false; isOn = false; setUI(false); });
+      } else {
+        fadeTo(1, FADE_MS);
+      }
+    }
+  });
+
+  /* ---------- same-tab continuation (never a fresh-visit autoplay) ---------- */
+
+  if (read(localStorage, PREF_KEY) === 'on' && read(sessionStorage, ARMED_KEY) === '1') {
+    startPlayback(); // if the browser blocks it, the control stays OFF
+  }
+})();

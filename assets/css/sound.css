@@ -1,0 +1,39 @@
+/* Sound toggle — styles for the site-music control injected by assets/js/sound.js,
+   plus the footer credit line. Loaded by every page alongside (never inside)
+   site.css or the homepage's inline stylesheet. */
+.sound-toggle{
+  position:fixed;
+  z-index:50;
+  bottom:max(24px, env(safe-area-inset-bottom));
+  right:max(24px, env(safe-area-inset-right));
+  margin:0;
+  border:0;
+  padding:8px 10px;
+  background:rgba(11,11,11,.78);
+  color:var(--dim, #8f8c86);
+  font:600 11px/1 Inter,Helvetica,Arial,sans-serif;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.sound-toggle:hover{color:#b8b5ae}
+.sound-toggle[aria-pressed="true"]{color:var(--y, #f2e600)}
+.sound-toggle[aria-pressed="true"]:hover{color:var(--y, #f2e600)}
+.sound-toggle:focus-visible{outline:2px solid var(--y, #f2e600);outline-offset:3px}
+@media (max-width:820px){
+  .sound-toggle{
+    bottom:max(16px, env(safe-area-inset-bottom));
+    right:max(16px, env(safe-area-inset-right));
+  }
+}
+@media (prefers-reduced-motion:no-preference){
+  .sound-toggle{transition:color .15s linear}
+}
+footer .sound-credit,
+.inst .sound-credit{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:inherit;
+}
