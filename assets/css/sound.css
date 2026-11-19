@@ -49,3 +49,61 @@ footer .sound-credit,
    untouched. Sound off (or reduced motion) --amp is never set, so the
    headline is exactly as it was. Max effect: scale 1.03. */
 #lines{scale:calc(1 + var(--amp, 0) * .03);transform-origin:50% 50%}
+
+/* Now-playing detail inside the toggle chip. The block is collapsed to
+   zero size while the toggle is off, so the chip is exactly the SOUND OFF
+   chip; while on it expands to show the piano credit, a thin progress
+   line and the elapsed time. The whole block is aria-hidden in the DOM;
+   the button's aria-label carries the action. */
+.sound-toggle{text-align:left}
+.sound-state{display:block}
+.sound-detail{
+  display:block;
+  max-width:0;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+}
+.sound-toggle[aria-pressed="true"] .sound-detail{
+  max-width:300px;
+  max-height:72px;
+  opacity:1;
+}
+@media (prefers-reduced-motion:no-preference){
+  .sound-detail{transition:max-width .15s linear,max-height .15s linear,opacity .15s linear}
+}
+.sound-np{
+  display:block;
+  margin-top:6px;
+  color:var(--fg, #f2f0ea);
+  font-size:10px;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.sound-np-short{display:none}
+.sound-bar{
+  display:block;
+  height:2px;
+  margin-top:6px;
+  background:rgba(242,240,234,.16);
+}
+.sound-bar-fill{
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--y, #f2e600);
+}
+.sound-time{
+  display:block;
+  margin-top:5px;
+  color:var(--dim, #8f8c86);
+  font-size:10px;
+  letter-spacing:.14em;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+@media (max-width:480px){
+  .sound-np-full{display:none}
+  .sound-np-short{display:inline}
+  .sound-time{display:none}
+}

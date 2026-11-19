@@ -34,9 +34,30 @@
   btn.type = 'button';
   btn.className = 'sound-toggle';
   btn.setAttribute('aria-pressed', 'false');
-  btn.setAttribute('aria-label', 'Site music, currently off');
+  btn.setAttribute('aria-label', 'Play background audio');
   btn.title = 'Music: played by Dresden Goehner';
-  btn.textContent = 'SOUND OFF';
+
+  // Line 1 is the state; the detail block (now-playing label, progress
+  // line, elapsed time) is only visible while sound is on — sound.css
+  // expands and collapses it off the aria-pressed state. The whole block
+  // is aria-hidden: the button's own label carries the action.
+  var stateEl = document.createElement('span');
+  stateEl.className = 'sound-state';
+  stateEl.textContent = 'SOUND OFF';
+  btn.appendChild(stateEl);
+
+  var detailEl = document.createElement('span');
+  detailEl.className = 'sound-detail';
+  detailEl.setAttribute('aria-hidden', 'true');
+  detailEl.innerHTML =
+    '<span class="sound-np"><span class="sound-np-full">Piano — played by Dresden Goehner</span>' +
+    '<span class="sound-np-short">Piano</span></span>' +
+    '<span class="sound-bar"><span class="sound-bar-fill"></span></span>' +
+    '<span class="sound-time">0:00 / 0:00</span>';
+  btn.appendChild(detailEl);
+  var fillEl = detailEl.querySelector('.sound-bar-fill');
+  var timeEl = detailEl.querySelector('.sound-time');
+
   if (document.body) {
     document.body.appendChild(btn);
   } else {
@@ -70,9 +91,33 @@
   function setUI(on) {
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     if (!unavailable) {
-      btn.setAttribute('aria-label', on ? 'Site music, currently on' : 'Site music, currently off');
+      btn.setAttribute('aria-label', on ? 'Mute background audio' : 'Play background audio');
     }
-    btn.textContent = on ? 'SOUND ON' : 'SOUND OFF';
+    stateEl.textContent = on ? 'SOUND ON' : 'SOUND OFF';
+  }
+
+  /* ---------- now-playing progress ---------- */
+
+  function fmtTime(s) {
+    if (!isFinite(s) || s < 0) { s = 0; }
+    s = Math.floor(s);
+    var m = Math.floor(s / 60);
+    var r = s % 60;
+    return m + ':' + (r < 10 ? '0' : '') + r;
+  }
+
+  function updateProgress() {
+    if (!audio) { return; }
+    var d = audio.duration;
+    var c = audio.currentTime || 0;
+    var pct = (isFinite(d) && d > 0) ? Math.min(100, Math.max(0, (c / d) * 100)) : 0;
+    fillEl.style.width = pct.toFixed(1) + '%';
+    timeEl.textContent = fmtTime(c) + ' / ' + fmtTime(d);
+  }
+
+  function resetProgress() {
+    fillEl.style.width = '0%';
+    timeEl.textContent = '0:00 / ' + fmtTime(audio ? audio.duration : NaN);
   }
 
   function fadeTo(target, ms, done) {
@@ -112,6 +157,8 @@
     audio.addEventListener('ended', onEnded);
     audio.addEventListener('error', onError);
     audio.addEventListener('playing', function () { hasPlayed = true; });
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', updateProgress);
     var src = pickSource();
     if (src) {
       audio.src = src;
@@ -233,6 +280,7 @@
     playGen += 1;
     if (audio) { try { audio.volume = 0; } catch (e) { /* noop */ } }
     setUI(false);
+    resetProgress();
   }
 
   function onError() {
@@ -262,7 +310,7 @@
     playGen += 1;
     btn.setAttribute('aria-pressed', 'false');
     btn.setAttribute('aria-label', 'Site music unavailable');
-    btn.textContent = 'SOUND OFF';
+    stateEl.textContent = 'SOUND OFF';
   }
 
   function startPlayback() {
@@ -283,6 +331,7 @@
         store(sessionStorage, ARMED_KEY, '1');
         isOn = true;
         setUI(true);
+        updateProgress();
         fadeTo(1, FADE_MS);
         startReactive();
       }).catch(function () {
@@ -296,6 +345,7 @@
       store(sessionStorage, ARMED_KEY, '1');
       isOn = true;
       setUI(true);
+      updateProgress();
       fadeTo(1, FADE_MS);
       startReactive();
     }
