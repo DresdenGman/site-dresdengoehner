@@ -42,3 +42,10 @@ footer .sound-credit,
    the homepage hero strip and of the homepage footer bar. */
 .hero-foot{padding-bottom:64px}
 .inst{padding-bottom:64px}
+
+/* Audio-reactive hero headline (homepage only). While the music plays,
+   assets/js/sound.js drives --amp (0..1) on #lines; the standalone `scale`
+   property is used so the headline rows' own transform animations are
+   untouched. Sound off (or reduced motion) --amp is never set, so the
+   headline is exactly as it was. Max effect: scale 1.03. */
+#lines{scale:calc(1 + var(--amp, 0) * .03);transform-origin:50% 50%}

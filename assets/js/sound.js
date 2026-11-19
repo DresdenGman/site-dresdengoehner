@@ -120,6 +120,105 @@
     return audio;
   }
 
+  /* ---------- audio-reactive hero headline (homepage only) ----------
+   *
+   * When the music plays, the hero kinetic headline (#lines) breathes with
+   * it: the analyser level drives one CSS custom property, --amp, and
+   * sound.css maps it to a subtle scale. Sound off = --amp is never set =
+   * the page is exactly as it was. The AudioContext is created on the
+   * first user click, never before; if Web Audio is unavailable the music
+   * still plays, just without the reaction. Under prefers-reduced-motion
+   * nothing is animated. */
+
+  var heroEl = document.getElementById('lines');
+  var gestured = false;      // a real click on the toggle has happened
+  var actx = null;
+  var analyser = null;
+  var freqData = null;
+  var graphFailed = false;
+  var amp = 0;
+  var rafId = null;
+  var lastFrameT = 0;
+
+  function reducedMotion() {
+    try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+    catch (e) { return false; }
+  }
+
+  function initGraph() {
+    if (!heroEl || actx || graphFailed || !audio || reducedMotion()) { return; }
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) { graphFailed = true; return; }
+    try {
+      actx = new AC();
+      var source = actx.createMediaElementSource(audio);
+      analyser = actx.createAnalyser();
+      analyser.fftSize = 256;
+      analyser.smoothingTimeConstant = 0.85;
+      freqData = new Uint8Array(analyser.frequencyBinCount);
+      source.connect(analyser);
+      analyser.connect(actx.destination);
+    } catch (e) {
+      actx = null;
+      analyser = null;
+      freqData = null;
+      graphFailed = true;
+    }
+  }
+
+  function resumeContext() {
+    if (actx && actx.state === 'suspended') {
+      try {
+        var p = actx.resume();
+        if (p && typeof p.catch === 'function') { p.catch(function () { /* noop */ }); }
+      } catch (e) { /* noop */ }
+    }
+  }
+
+  function setAmp(v) {
+    if (heroEl) { heroEl.style.setProperty('--amp', v.toFixed(3)); }
+  }
+
+  function startReactive() {
+    if (!heroEl || !analyser || rafId !== null || reducedMotion()) { return; }
+    lastFrameT = 0;
+    rafId = requestAnimationFrame(reactiveFrame);
+  }
+
+  function reactiveFrame(t) {
+    rafId = null;
+    if (!analyser || !audio) { amp = 0; setAmp(0); return; }
+    var dt = lastFrameT ? Math.min(100, t - lastFrameT) : 16;
+    lastFrameT = t;
+    var playing = !audio.paused && !audio.ended;
+    var target = 0;
+    if (playing) {
+      analyser.getByteFrequencyData(freqData);
+      // Low-mid energy: bins 2..39 of 128 (bin width is sampleRate/256,
+      // so at 48 kHz this averages roughly 375 Hz to 7.3 kHz, where the
+      // piano's energy concentrates).
+      var sum = 0;
+      var hi = Math.min(freqData.length, 40);
+      for (var i = 2; i < hi; i++) { sum += freqData[i]; }
+      var level = (sum / (hi - 2)) / 255;
+      level = (level - 0.06) / 0.94; // noise floor: quiet passages rest
+      target = Math.max(0, Math.min(1, level * 1.6));
+    }
+    // Attack ~80 ms, musical release ~400 ms; once playback has stopped
+    // (paused, ended, hidden) decay faster so --amp is back at rest within
+    // about 500 ms and the loop can stop.
+    var tau = !playing ? 120 : (target > amp ? 80 : 400);
+    amp += (target - amp) * (1 - Math.exp(-dt / tau));
+    if (!playing && amp < 0.005) {
+      // Paused, ended or hidden and fully decayed: park at 0, stop the loop.
+      amp = 0;
+      setAmp(0);
+      return;
+    }
+    setAmp(amp);
+    rafId = requestAnimationFrame(reactiveFrame);
+  }
+
   function onEnded() {
     // The piece finished: back to off, but this is not a user preference,
     // so localStorage is not written. A later click restarts from 0.
@@ -162,6 +261,8 @@
 
   function startPlayback() {
     if (!ensureAudio()) { setUI(false); return; }
+    if (gestured) { initGraph(); }
+    resumeContext();
     wantPlay = true;
     playGen += 1;
     var gen = playGen;
@@ -177,6 +278,7 @@
         isOn = true;
         setUI(true);
         fadeTo(1, FADE_MS);
+        startReactive();
       }).catch(function () {
         if (gen !== playGen) { return; }
         // Blocked or interrupted: stay honestly off.
@@ -189,6 +291,7 @@
       isOn = true;
       setUI(true);
       fadeTo(1, FADE_MS);
+      startReactive();
     }
   }
 
@@ -206,6 +309,8 @@
 
   btn.addEventListener('click', function () {
     if (unavailable) { return; }
+    gestured = true;
+    if (audio) { initGraph(); resumeContext(); }
     if (isOn) {
       isOn = false;
       store(localStorage, PREF_KEY, 'off');
@@ -223,24 +328,23 @@
     if (!audio) { return; }
     if (document.hidden) {
       if (isOn && !audio.paused && !audio.ended) {
-        // A pause, not a user-off: the toggle stays ON. Hidden tabs throttle
-        // or suspend timers, so a timed fade could leave the sound playing:
-        // silence and pause immediately instead.
-        fadeGen += 1;
-        if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
-        try { audio.volume = 0; } catch (e) { /* noop */ }
-        audio.pause();
+        // A pause, not a user-off: the toggle stays ON.
+        fadeTo(0, 300, function () {
+          if (document.hidden && audio) { audio.pause(); }
+        });
       }
     } else if (isOn && audio.paused && !audio.ended) {
       // Back to the tab with the toggle still on: continue the piece.
       wantPlay = true;
+      resumeContext();
       var result;
       try { result = audio.play(); } catch (e) { result = null; }
       if (result && typeof result.then === 'function') {
-        result.then(function () { if (isOn) { fadeTo(1, FADE_MS); } })
+        result.then(function () { if (isOn) { fadeTo(1, FADE_MS); startReactive(); } })
           .catch(function () { wantPlay = false; isOn = false; setUI(false); });
       } else {
         fadeTo(1, FADE_MS);
+        startReactive();
       }
     }
   });
