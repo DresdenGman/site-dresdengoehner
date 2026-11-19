@@ -1,7 +1,7 @@
 /* Site music toggle.
  *
  * One typographic control, off by default, injected into every page.
- * Playback uses the native Audio API. The recording is Dresden's own piano
+ * Playback uses the native Audio API. The recording is Dresden's own marimba
  * playing; it is never fetched until the first click that turns sound on,
  * it never autoplays on a fresh visit, and it plays once (no loop).
  *
@@ -56,8 +56,8 @@
   detailEl.className = 'sound-detail';
   detailEl.setAttribute('aria-hidden', 'true');
   detailEl.innerHTML =
-    '<span class="sound-np"><span class="sound-np-full">Piano — played by Dresden Goehner</span>' +
-    '<span class="sound-np-short">Piano</span></span>' +
+    '<span class="sound-np"><span class="sound-np-full">Marimba — played by Dresden Goehner</span>' +
+    '<span class="sound-np-short">Marimba</span></span>' +
     '<span class="sound-bar"><span class="sound-bar-fill"></span></span>' +
     '<span class="sound-time">0:00 / 0:00</span>';
   btn.appendChild(detailEl);
@@ -152,7 +152,7 @@
     if (!audio || !audioBase) { return null; }
     var opus = '';
     try { opus = audio.canPlayType('audio/webm; codecs=opus'); } catch (e) { opus = ''; }
-    var file = (opus && opus !== 'no' && !triedFallback) ? 'dresden-piano.webm' : 'dresden-piano.mp3';
+    var file = (opus && opus !== 'no' && !triedFallback) ? 'dresden-marimba.webm' : 'dresden-marimba.mp3';
     return new URL(file, audioBase).href;
   }
 
@@ -256,7 +256,7 @@
       analyser.getByteFrequencyData(freqData);
       // Low-mid energy: bins 2..39 of 128 (bin width is sampleRate/256,
       // so at 48 kHz this averages roughly 375 Hz to 7.3 kHz, where the
-      // piano's energy concentrates).
+      // marimba's energy concentrates).
       var sum = 0;
       var hi = Math.min(freqData.length, 40);
       for (var i = 2; i < hi; i++) { sum += freqData[i]; }
@@ -283,7 +283,7 @@
    *
    * While the music is playing, hovering (fine pointer only) or
    * activating one of the homepage's "View the full record" links sounds
-   * one very soft synthesized piano-like tone through the shared
+   * one very soft synthesized marimba-like tone through the shared
    * AudioContext, routed straight to the destination — never through
    * the analyser, so the headline does not react to it. Sound off means
    * no tones, and this feature never creates a context of its own: if
@@ -298,22 +298,27 @@
     try {
       resumeContext();
       var t = actx.currentTime;
+      // Wooden-mallet strike: near-instant attack, short decay (~300 ms).
       var out = actx.createGain();
       out.gain.setValueAtTime(0, t);
-      out.gain.linearRampToValueAtTime(0.03, t + 0.005);
-      out.gain.exponentialRampToValueAtTime(0.0001, t + 0.55);
+      out.gain.linearRampToValueAtTime(0.03, t + 0.002);
+      out.gain.exponentialRampToValueAtTime(0.0001, t + 0.32);
       out.connect(actx.destination);
-      var partials = [[1, 1], [2, 0.35]]; // fundamental + quiet 2nd harmonic
+      // Marimba bar partials: fundamental, a quiet partial near 3.9x (the
+      // tuned fourth-partial of the bar) and a very quiet, very short ~10x
+      // click of the mallet. [ratio, level, decay seconds]
+      var partials = [[1, 1, 0.3], [3.9, 0.2, 0.12], [10, 0.05, 0.04]];
       for (var i = 0; i < partials.length; i++) {
         var osc = actx.createOscillator();
         osc.type = 'sine';
         osc.frequency.value = freq * partials[i][0];
         var og = actx.createGain();
-        og.gain.value = partials[i][1];
+        og.gain.setValueAtTime(partials[i][1], t);
+        og.gain.exponentialRampToValueAtTime(0.0001, t + partials[i][2]);
         osc.connect(og);
         og.connect(out);
         osc.start(t);
-        osc.stop(t + 0.6);
+        osc.stop(t + 0.35);
       }
     } catch (e) { /* fail silently */ }
   }

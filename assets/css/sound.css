@@ -52,7 +52,7 @@ footer .sound-credit,
 
 /* Now-playing detail inside the toggle chip. The block is collapsed to
    zero size while the toggle is off, so the chip is exactly the SOUND OFF
-   chip; while on it expands to show the piano credit, a thin progress
+   chip; while on it expands to show the marimba credit, a thin progress
    line and the elapsed time. The whole block is aria-hidden in the DOM;
    the button's aria-label carries the action. */
 .sound-toggle{text-align:left}
