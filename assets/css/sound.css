@@ -45,19 +45,15 @@ footer .sound-credit-note,
 .hero-foot{padding-bottom:64px}
 .inst{padding-bottom:64px}
 
-/* Audio-reactive type. assets/js/sound.js writes --amp, --bass, --mid, --high
-   and --beat (all 0..1) on the in-view elements once per frame while the music plays, and
-   --b0..--b6 (the beat, staggered down the rows) on #lines. Only elements in
-   the viewport carry .rx. Everything uses the standalone scale / translate
-   properties (or paint-only colour), so the pages' own transform animations
-   are never touched. Sound off or reduced motion: the variables are never
-   set and nothing moves. Pulses are at least 340 ms apart (< 3 Hz). */
+/* Audio-reactive headline: ONLY the homepage's big rows (#lines) move with the
+   music; nothing else on any page does. assets/js/sound.js writes --amp
+   (loudness, the block swell) and --b0..--b6 (the beat, staggered down the
+   rows) on #lines while the music plays and the headline is in the viewport
+   (.rx). Sound off or reduced motion: the variables are never set and
+   nothing moves. Pulses are at least 380 ms apart (< 3 Hz). */
 @media (prefers-reduced-motion:no-preference){
-  /* hero: whole block breathes, each row kicks on the beat, staggered, with
-     an alternating skew; rows are sized in index.html to fit at full swing */
-  /* A left-anchored swell of a full-width block can poke a few px past the
-     right edge; never let that create horizontal scroll. */
-  html:has(body.sound-on){overflow-x:clip}
+  /* the whole block breathes, each row kicks on the beat, staggered, with an
+     alternating skew; rows are sized in index.html to fit at full swing */
   #lines.rx{scale:calc(1 + var(--amp, 0) * .02);transform-origin:8% 50%}
   .ln:nth-child(1){--b:var(--b0,0);--sk:1}
   .ln:nth-child(2){--b:var(--b1,0);--sk:-1}
@@ -70,50 +66,6 @@ footer .sound-credit-note,
     transform:skewX(calc(var(--b, 0) * var(--sk, 1) * -2.5deg)) scale(calc(1 + var(--b, 0) * .05));
     transform-origin:12% 60%;
   }
-  /* subtitle: swells with the mid band, nudges with the bass, yellow glow on the beat */
-  body.sound-on .hero-foot .claim.rx{
-    transform-origin:0 50%;
-    scale:calc(1 + var(--mid, 0) * .02 + var(--beat, 0) * .03);
-    translate:calc(var(--bass, 0) * 5px) 0;
-  }
-  body.sound-on .hero-foot .claim.rx em{text-shadow:0 0 calc(var(--beat, 0) * 16px) rgba(242,230,0,.6)}
-  /* yellow rules and marks pulse on the beat */
-  body.sound-on .label.rx{border-top-color:color-mix(in srgb, var(--y) calc(var(--beat, 0) * 100%), var(--line))}
-  body.sound-on .evidence .label.rx{border-top-color:color-mix(in srgb, var(--y) calc(var(--beat, 0) * 100%), #333)}
-  body.sound-on .ex .tag .no.rx{transform-origin:0 50%;scale:calc(1 + var(--beat, 0) * .15)}
-  body.sound-on .inst .mark.rx{scale:calc(1 + var(--beat, 0) * .7)}
-  body.sound-on .sound-toggle.is-on .sound-bar-fill{
-    transform-origin:0 50%;
-    transform:scaleY(calc(1 + var(--beat, 0) * 1.8));
-  }
-  /* section headings and big words kick on the beat */
-  body.sound-on .ex .big.rx{transform-origin:0 100%;scale:calc(1 + var(--beat, 0) * .02 + var(--bass, 0) * .01)}
-  body.sound-on .wall h3.rx,
-  body.sound-on .item h4.rx,
-  body.sound-on footer .sig.rx{transform-origin:0 50%;scale:calc(1 + var(--beat, 0) * .04)}
-  body.sound-on .quote blockquote.rx{transform-origin:0 50%;scale:calc(1 + var(--beat, 0) * .012 + var(--mid, 0) * .01)}
-  /* evidence numbers: a clear kick up and out on every beat */
-  body.sound-on .num b.rx{
-    transform-origin:0 100%;
-    scale:calc(1 + var(--beat, 0) * .10 + var(--amp, 0) * .02);
-    translate:0 calc(var(--beat, 0) * -7px);
-  }
-  /* detail pages: headings swell, kickers brighten */
-  body.sound-on header.page h1.rx{transform-origin:0 50%;scale:calc(1 + var(--beat, 0) * .03 + var(--amp, 0) * .015)}
-  body.sound-on section h2.rx{transform-origin:0 50%;scale:calc(1 + var(--beat, 0) * .03)}
-  body.sound-on section .kicker.rx{color:color-mix(in srgb, #fff calc(var(--beat, 0) * 60%), var(--y))}
-  /* body text: a very small baseline shimmer on the mid band, alternating by
-     element so it reads as a ripple, never a shake (readability first) */
-  body.sound-on :is(.wall p, .wall .med, .ex figcaption, .sub, .num span, .ev-note, .item p, .drawer-note, .hero-foot .q, header.page .lede).rx{
-    translate:0 calc(var(--mid, 0) * -1.4px);
-  }
-  body.sound-on :is(.wall p, .wall .med, .ex figcaption, .sub, .num span, .ev-note, .item p, .drawer-note, .hero-foot .q, header.page .lede).rx:nth-child(even){
-    translate:0 calc(var(--mid, 0) * 1.4px);
-  }
-}
-@media (prefers-reduced-motion:no-preference) and (max-width:820px){
-  body.sound-on .hero-foot .claim.rx{scale:calc(1 + var(--mid, 0) * .01 + var(--beat, 0) * .015);translate:calc(var(--bass, 0) * 2px) 0}
-  body.sound-on .num b.rx{scale:calc(1 + var(--beat, 0) * .07 + var(--amp, 0) * .02)}
 }
 
 /* Music notes: one click-through layer that scrolls with the page (zero height, so it adds no scroll area); only transform and opacity are

@@ -244,20 +244,22 @@
     return audio;
   }
 
-  /* ---------- audio-reactive type ----------
+  /* ---------- audio-reactive headline ----------
    *
-   * While the music plays, an analyser feeds a few smoothed bands (bass,
-   * low-mid, high) and an onset (beat) detector. Once per animation frame
-   * the result is written to CSS custom properties on the in-view elements (--amp, --bass,
-   * --mid, --high, --beat) and, for the hero rows, --b0..--b6 on #lines (the
-   * same beat, staggered down the rows). All visuals are done in sound.css,
-   * only on elements currently in the viewport (they carry the .rx class),
-   * with transform-like properties. Sound off, or prefers-reduced-motion:
-   * the variables are never set and nothing moves. The Web Audio graph is
-   * only built once the context is really running, so the music itself can
-   * never be silenced by it; if Web Audio is unavailable the music still
-   * plays, just without the reaction. Beats are at least 380 ms apart, so
-   * nothing pulses faster than 3 Hz (WCAG 2.3.1). */
+   * Only the homepage's big headline rows (#lines) move with the music; every
+   * other element on every page is static. While the music plays, an analyser
+   * feeds a smoothed loudness value and an onset (beat) detector. Once per
+   * animation frame, and only while the headline is in the viewport, the
+   * result is written to CSS custom properties on #lines: --amp (loudness,
+   * the block swell) and --b0..--b6 (the beat, staggered down the rows). The
+   * visuals are in sound.css (standalone scale, per-row skew/scale). The beat
+   * detector keeps running on every page (the music notes use it) but then
+   * writes nothing. Sound off, or prefers-reduced-motion: the loop does not
+   * run and nothing moves. The Web Audio graph is only built once the
+   * context is really running, so the music itself can never be silenced by
+   * it; if Web Audio is unavailable the music still plays, just without the
+   * reaction. Beats are at least 380 ms apart, so nothing pulses faster than
+   * 3 Hz (WCAG 2.3.1). */
 
   var heroEl = document.getElementById('lines');
   var gestured = false;      // a real user gesture has happened
@@ -269,21 +271,13 @@
   var graphFailed = false;
   var rafId = null;
   var lastFrameT = 0;
-  var RX_SELECTORS = [
-    '#lines', '.hero-foot .claim', '.hero-foot .q', '.label', '.ex .big', '.ex .tag .no',
-    '.wall h3', '.wall p', '.wall .med', '.ex figcaption', '.sub', '.num b', '.num span',
-    '.ev-note', '.quote blockquote', '.item h4', '.item p', '.drawer-note', 'footer .sig',
-    '.inst .mark', 'header.page h1', 'header.page .lede', 'section h2', 'section .kicker'
-  ].join(',');
-  var rxObserver = null;
-  var rxEls = [];   // elements currently in view; the variables are written on these only
-  var VAR_NAMES = ['amp', 'bass', 'mid', 'high', 'beat'];
+  var heroVisible = true;    // #lines is in the viewport (IntersectionObserver)
   var ROWS = 7;
 
-  // smoothed 0..1 values and beat state
-  var v = { amp: 0, bass: 0, mid: 0, high: 0, beat: 0 };
-  var written = { amp: -1, bass: -1, mid: -1, high: -1, beat: -1 };
-  var peak = { amp: 0.12, bass: 0.12, mid: 0.12, high: 0.12 };
+  // smoothed loudness 0..1
+  var v = { amp: 0 };
+  var written = -1;
+  var peak = { amp: 0.12 };
   var fluxAvg = 0.01;
   var beats = [{ t: -1e9, s: 0 }, { t: -1e9, s: 0 }]; // newest first
   var BEAT_TAU = 230;        // ms, decay of a beat pulse
@@ -296,30 +290,17 @@
     catch (e) { return false; }
   }
 
-  function observeTargets() {
-    if (rxObserver || !('IntersectionObserver' in window)) { return; }
-    rxObserver = new IntersectionObserver(function (entries) {
-      for (var i = 0; i < entries.length; i++) {
-        var el = entries[i].target;
-        var at = rxEls.indexOf(el);
-        if (entries[i].isIntersecting) {
-          if (at < 0) {
-            rxEls.push(el);
-            el.classList.add('rx');
-            // start from the current values, not from rest
-            for (var n = 0; n < VAR_NAMES.length; n++) {
-              if (written[VAR_NAMES[n]] > 0) { el.style.setProperty('--' + VAR_NAMES[n], written[VAR_NAMES[n]].toFixed(3)); }
-            }
-          }
-        } else if (at >= 0) {
-          rxEls.splice(at, 1);
-          el.classList.remove('rx');
-          for (var m = 0; m < VAR_NAMES.length; m++) { el.style.removeProperty('--' + VAR_NAMES[m]); }
-        }
-      }
+  function observeHero() {
+    if (!heroEl || !('IntersectionObserver' in window)) {
+      if (heroEl) { heroEl.classList.add('rx'); }
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      var e = entries[entries.length - 1];
+      heroVisible = e.isIntersecting;
+      heroEl.classList.toggle('rx', heroVisible);
     }, { rootMargin: '60px 0px' });
-    var nodes = document.querySelectorAll(RX_SELECTORS);
-    for (var j = 0; j < nodes.length; j++) { rxObserver.observe(nodes[j]); }
+    io.observe(heroEl);
   }
 
   function buildGraph() {
@@ -335,7 +316,7 @@
       source.connect(analyser);
       analyser.connect(actx.destination);
       graphBuilt = true;
-      observeTargets();
+      observeHero();
       startReactive();
     } catch (e) {
       // Once an element is captured by createMediaElementSource its sound
@@ -378,15 +359,6 @@
     }
   }
 
-  function setVar(name, val) {
-    if (Math.abs(val - written[name]) < 0.004 && !(val === 0 && written[name] !== 0)) { return; }
-    written[name] = val;
-    // Written on the in-view elements only (not :root), so the browser
-    // restyles a handful of nodes per frame instead of the whole document.
-    var str = val.toFixed(3);
-    for (var i = 0; i < rxEls.length; i++) { rxEls[i].style.setProperty('--' + name, str); }
-  }
-
   function rowEnv(i, t) {
     var best = 0;
     for (var k = 0; k < beats.length; k++) {
@@ -399,20 +371,18 @@
     return best;
   }
 
-  function writeVars(t) {
-    setVar('amp', v.amp);
-    setVar('bass', v.bass);
-    setVar('mid', v.mid);
-    setVar('high', v.high);
-    setVar('beat', v.beat);
-    if (heroEl) {
-      for (var i = 0; i < ROWS; i++) {
-        var e = rowEnv(i, t);
-        if (e < 0.004) { e = 0; }
-        if (rowWritten[i] === undefined || Math.abs(e - rowWritten[i]) >= 0.004 || (e === 0 && rowWritten[i] !== 0)) {
-          rowWritten[i] = e;
-          heroEl.style.setProperty('--b' + i, e.toFixed(3));
-        }
+  function writeVars(t, force) {
+    if (!heroEl || (!heroVisible && !force)) { return; }
+    if (Math.abs(v.amp - written) >= 0.004 || (v.amp === 0 && written !== 0)) {
+      written = v.amp;
+      heroEl.style.setProperty('--amp', v.amp.toFixed(3));
+    }
+    for (var i = 0; i < ROWS; i++) {
+      var e = rowEnv(i, t);
+      if (e < 0.004) { e = 0; }
+      if (rowWritten[i] === undefined || Math.abs(e - rowWritten[i]) >= 0.004 || (e === 0 && rowWritten[i] !== 0)) {
+        rowWritten[i] = e;
+        heroEl.style.setProperty('--b' + i, e.toFixed(3));
       }
     }
   }
@@ -644,17 +614,12 @@
     lastFrameT = t;
     var playing = !audio.paused && !audio.ended;
     if (!playing && noteLive) { clearNotes(); }
-    var tAmp = 0, tBass = 0, tMid = 0, tHigh = 0;
+    var tAmp = 0;
     if (playing) {
       analyser.getByteFrequencyData(freqData);
       var hz = (actx && actx.sampleRate ? actx.sampleRate : 48000) / analyser.fftSize;
       var nb = freqData.length;
-      var b1 = Math.max(2, Math.round(400 / hz));
-      var b2 = Math.max(b1 + 1, Math.round(2000 / hz));
-      var b3 = Math.min(nb, Math.max(b2 + 1, Math.round(8000 / hz)));
-      tBass = norm('bass', bandAvg(1, b1));
-      tMid = norm('mid', bandAvg(b1, b2));
-      tHigh = norm('high', bandAvg(b2, b3));
+      var b3 = Math.min(nb, Math.max(4, Math.round(8000 / hz)));
       tAmp = norm('amp', bandAvg(1, b3));
       // Onset: positive spectral flux against its moving average.
       var flux = 0;
@@ -668,7 +633,6 @@
         var s = Math.min(1, 0.6 + (flux / (fluxAvg * 1.9 + 0.004) - 1) * 0.25);
         beats[1] = beats[0];
         beats[0] = { t: t, s: s };
-        if (s > v.beat) { v.beat = s; }
         if (NOTES && isOn && !pending) { spawnNotes(s); }
       }
       fluxAvg += (flux - fluxAvg) * (dt / 700);
@@ -677,23 +641,19 @@
     // hidden) everything eases back to rest and the loop stops.
     var up = 60, dn = playing ? 320 : 130;
     v.amp = smooth(v.amp, tAmp, dt, up, dn);
-    v.bass = smooth(v.bass, tBass, dt, up, dn);
-    v.mid = smooth(v.mid, tMid, dt, up, dn);
-    v.high = smooth(v.high, tHigh, dt, up, dn);
-    v.beat = v.beat * Math.exp(-dt / (playing ? BEAT_TAU : 90));
     if (!playing) {
       beats[0].s *= Math.exp(-dt / 90); beats[1].s *= Math.exp(-dt / 90);
     }
-    var rest = v.amp + v.bass + v.mid + v.high + v.beat;
+    var rest = v.amp + beats[0].s + beats[1].s;
     if (!playing && rest < 0.02) { zeroAll(); return; }
     writeVars(t);
     rafId = requestAnimationFrame(reactiveFrame);
   }
 
   function zeroAll() {
-    v.amp = v.bass = v.mid = v.high = v.beat = 0;
+    v.amp = 0;
     beats[0] = { t: -1e9, s: 0 }; beats[1] = { t: -1e9, s: 0 };
-    writeVars(performance.now());
+    writeVars(performance.now(), true);
   }
 
   /* ---------- subtle UI tones (homepage detail links) ----------
