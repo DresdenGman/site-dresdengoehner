@@ -17,8 +17,8 @@
   cursor:pointer;
 }
 .sound-toggle:hover{color:#b8b5ae}
-.sound-toggle[aria-pressed="true"]{color:var(--y, #f2e600)}
-.sound-toggle[aria-pressed="true"]:hover{color:var(--y, #f2e600)}
+.sound-toggle.is-on{color:var(--y, #f2e600)}
+.sound-toggle.is-on:hover{color:var(--y, #f2e600)}
 .sound-toggle:focus-visible{outline:2px solid var(--y, #f2e600);outline-offset:3px}
 @media (max-width:820px){
   .sound-toggle{
@@ -64,7 +64,7 @@ footer .sound-credit,
   opacity:0;
   overflow:hidden;
 }
-.sound-toggle[aria-pressed="true"] .sound-detail{
+.sound-toggle.is-on .sound-detail{
   max-width:300px;
   max-height:72px;
   opacity:1;
@@ -114,4 +114,16 @@ footer .sound-credit,
 .wrap footer{padding-bottom:96px}
 @media (max-width:820px){
   .inst{padding-bottom:88px}
+}
+
+/* While sound is on, the expanded chip reaches further left along the
+   bottom edge: at desktop sizes shift the hero foot's right-hand hint
+   ("exhibits · evidence · archive") left, visually only, so the chip
+   never covers it. Off, or below the grid layout's breakpoint, the hint
+   is exactly where it was. */
+@media (min-width:821px){
+  body.sound-on .hero-foot .s{transform:translateX(-336px)}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero-foot .s{transition:transform .15s linear}
 }

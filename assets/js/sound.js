@@ -11,8 +11,10 @@
  * - sessionStorage 'dg-sound-armed' ('1') is written only after a play()
  *   call in this tab has actually started. Same-tab navigation may then
  *   attempt to continue playback; a new tab always starts silent.
- * - The label and aria-pressed always reflect actual playback, never the
- *   stored preference.
+ * - The label always reflects actual playback, never the stored
+ *   preference. (No pressed-state attribute: the switching Play/Mute
+ *   aria-label already announces the action; the on state is carried
+ *   visually by the button's is-on class and on <body> as sound-on.)
  */
 (function () {
   'use strict';
@@ -28,19 +30,23 @@
   var ARMED_KEY = 'dg-sound-armed';
   var FADE_MS = 400;
 
+  // Subtle UI tones on the homepage's "View the full record" links while
+  // the music plays (see bindUiTones below). Set to false to remove the
+  // feature completely.
+  const UI_SOUNDS = true;
+
   /* ---------- control ---------- */
 
   var btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'sound-toggle';
-  btn.setAttribute('aria-pressed', 'false');
   btn.setAttribute('aria-label', 'Play background audio');
   btn.title = 'Music: played by Dresden Goehner';
 
   // Line 1 is the state; the detail block (now-playing label, progress
   // line, elapsed time) is only visible while sound is on — sound.css
-  // expands and collapses it off the aria-pressed state. The whole block
-  // is aria-hidden: the button's own label carries the action.
+  // expands and collapses it off the button's is-on class. The whole
+  // block is aria-hidden: the button's own label carries the action.
   var stateEl = document.createElement('span');
   stateEl.className = 'sound-state';
   stateEl.textContent = 'SOUND OFF';
@@ -89,7 +95,8 @@
   }
 
   function setUI(on) {
-    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    btn.classList.toggle('is-on', on);
+    if (document.body) { document.body.classList.toggle('sound-on', on); }
     if (!unavailable) {
       btn.setAttribute('aria-label', on ? 'Mute background audio' : 'Play background audio');
     }
@@ -272,6 +279,72 @@
     rafId = requestAnimationFrame(reactiveFrame);
   }
 
+  /* ---------- subtle UI tones (homepage detail links) ----------
+   *
+   * While the music is playing, hovering (fine pointer only) or
+   * activating one of the homepage's "View the full record" links sounds
+   * one very soft synthesized piano-like tone through the shared
+   * AudioContext, routed straight to the destination — never through
+   * the analyser, so the headline does not react to it. Sound off means
+   * no tones, and this feature never creates a context of its own: if
+   * there is no shared context, it fails silently. Each link keeps its
+   * own note from a pentatonic set, cycling through the links in page
+   * order, and tones are throttled to one per 250 ms per link. */
+
+  var TONE_NOTES = [523.25, 587.33, 659.25, 783.99, 880.00]; // C5 D5 E5 G5 A5
+
+  function playTone(freq) {
+    if (!actx) { return; }
+    try {
+      resumeContext();
+      var t = actx.currentTime;
+      var out = actx.createGain();
+      out.gain.setValueAtTime(0, t);
+      out.gain.linearRampToValueAtTime(0.03, t + 0.005);
+      out.gain.exponentialRampToValueAtTime(0.0001, t + 0.55);
+      out.connect(actx.destination);
+      var partials = [[1, 1], [2, 0.35]]; // fundamental + quiet 2nd harmonic
+      for (var i = 0; i < partials.length; i++) {
+        var osc = actx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = freq * partials[i][0];
+        var og = actx.createGain();
+        og.gain.value = partials[i][1];
+        osc.connect(og);
+        og.connect(out);
+        osc.start(t);
+        osc.stop(t + 0.6);
+      }
+    } catch (e) { /* fail silently */ }
+  }
+
+  function bindUiTones() {
+    if (!UI_SOUNDS) { return; }
+    var finePointer = false;
+    try { finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches; }
+    catch (e) { finePointer = false; }
+    var links = document.querySelectorAll('a.go');
+    var picked = [];
+    for (var i = 0; i < links.length; i++) {
+      var label = (links[i].textContent || '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
+      if (label.indexOf('View the full record') === 0) { picked.push(links[i]); }
+    }
+    for (var j = 0; j < picked.length; j++) {
+      (function (el, idx) {
+        var last = 0;
+        function ring() {
+          if (!isOn || !audio || audio.paused || audio.ended || !actx) { return; }
+          var now = Date.now();
+          if (now - last < 250) { return; }
+          last = now;
+          playTone(TONE_NOTES[idx % TONE_NOTES.length]);
+        }
+        if (finePointer) { el.addEventListener('mouseenter', ring); }
+        el.addEventListener('click', ring);
+      })(picked[j], j);
+    }
+  }
+
   function onEnded() {
     // The piece finished: back to off, but this is not a user preference,
     // so localStorage is not written. A later click restarts from 0.
@@ -308,7 +381,8 @@
     isOn = false;
     wantPlay = false;
     playGen += 1;
-    btn.setAttribute('aria-pressed', 'false');
+    btn.classList.remove('is-on');
+    if (document.body) { document.body.classList.remove('sound-on'); }
     btn.setAttribute('aria-label', 'Site music unavailable');
     stateEl.textContent = 'SOUND OFF';
   }
@@ -407,6 +481,8 @@
       }
     }
   });
+
+  bindUiTones();
 
   /* ---------- same-tab continuation (never a fresh-visit autoplay) ---------- */
 
