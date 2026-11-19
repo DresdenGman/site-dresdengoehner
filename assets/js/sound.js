@@ -44,6 +44,11 @@
   // feature completely.
   const UI_SOUNDS = true;
 
+  // Small music-note glyphs that float up on detected beats while the music
+  // plays (see the notes block below). Set to false to remove the feature
+  // completely.
+  const NOTES = true;
+
   /* ---------- control ---------- */
 
   var btn = document.createElement('button');
@@ -440,12 +445,205 @@
     return y * Math.sqrt(y);
   }
 
+  /* ---------- music notes ----------
+   *
+   * On a detected beat (the same detector that drives the type, so at least
+   * 380 ms apart) one or two small note glyphs (quarter, eighth, two beamed
+   * eighths, two double-beamed) rise 60-120 px with a little drift and
+   * rotation and fade out over 1.5-2.5 s. White / grey, now and then yellow.
+   * They live in one aria-hidden, pointer-events:none layer that scrolls with the page, are drawn
+   * as inline SVG (same on every platform), use pooled nodes (11 live + 1 chip note at
+   * most, 3 + 1 on phones) and animate only transform and opacity with the Web
+   * Animations API (compositor, no per-frame script). Positions are chosen
+   * in free space: each candidate is checked against the rectangles of the
+   * text on screen along the whole path of the note, so a note never crosses
+   * body text. On a strong beat one note also rises from the sound chip.
+   * Reduced motion never gets this far (the reactive loop does not run).
+   * Off, pending, a hidden tab or a paused piece: no new notes, the live
+   * ones are cleared. */
+
+  var noteLayer = null;
+  var notePool = [];
+  var noteLive = 0;
+  var noteFlip = 0;
+  var NOTE_KINDS = ['n1', 'n2', 'n3', 'n4'];
+  var NOTE_SYMBOLS =
+    '<symbol id="dg-n1" viewBox="0 0 24 32"><ellipse cx="8" cy="25" rx="6.4" ry="4.5" transform="rotate(-22 8 25)"/><rect x="12.6" y="3" width="2" height="22.5"/></symbol>' +
+    '<symbol id="dg-n2" viewBox="0 0 24 32"><ellipse cx="8" cy="25" rx="6.4" ry="4.5" transform="rotate(-22 8 25)"/><rect x="12.6" y="3" width="2" height="22.5"/><path d="M14.6 3 C15.2 11 22.5 13 21.4 22 C20.6 17.5 17.8 15.6 14.6 15.2Z"/></symbol>' +
+    '<symbol id="dg-n3" viewBox="0 0 32 32"><ellipse cx="7" cy="26" rx="6" ry="4.2" transform="rotate(-22 7 26)"/><ellipse cx="24" cy="23" rx="6" ry="4.2" transform="rotate(-22 24 23)"/><rect x="11" y="7" width="2" height="19"/><rect x="28" y="4" width="2" height="19"/><path d="M11 7 L30 4 L30 9.6 L11 12.6Z"/></symbol>' +
+    '<symbol id="dg-n4" viewBox="0 0 32 32"><ellipse cx="7" cy="26" rx="6" ry="4.2" transform="rotate(-22 7 26)"/><ellipse cx="24" cy="23" rx="6" ry="4.2" transform="rotate(-22 24 23)"/><rect x="11" y="5" width="2" height="21"/><rect x="28" y="2" width="2" height="21"/><path d="M11 5 L30 2 L30 7 L11 10Z"/><path d="M11 11.2 L30 8.2 L30 13.2 L11 16.2Z"/></symbol>';
+  var NOTE_TEXT = 'h1,h2,h3,h4,p,li,blockquote,figcaption,dt,dd,td,th,label,a,button,.cap,.num b,.num span,.claim,.q,.ln .w,.big,.code,.lang';
+  var NOTE_COLORS = ['#f4f1ea', '#f4f1ea', '#f4f1ea', '#b9b6af', '#8f8c86', '#f2e600'];
+
+  function noteMax() {
+    var small = false;
+    try { small = window.matchMedia('(max-width: 480px)').matches; } catch (e) { small = false; }
+    return small ? { live: 3, perBeat: 1, min: 14, max: 22 } : { live: 11, perBeat: 2, min: 20, max: 30 };
+  }
+
+  function ensureNoteLayer() {
+    if (noteLayer) { return true; }
+    if (!document.body || typeof Element.prototype.animate !== 'function') { return false; }
+    noteLayer = document.createElement('div');
+    noteLayer.className = 'dg-notes';
+    noteLayer.setAttribute('aria-hidden', 'true');
+    noteLayer.innerHTML = '<svg width="0" height="0" focusable="false" style="position:absolute">' + NOTE_SYMBOLS + '</svg>';
+    document.body.appendChild(noteLayer);
+    return true;
+  }
+
+  function takeNote() {
+    for (var i = 0; i < notePool.length; i++) {
+      if (!notePool[i].busy) { return notePool[i]; }
+    }
+    var el = document.createElement('div');
+    el.className = 'dg-note';
+    el.innerHTML = '<svg viewBox="0 0 24 32" focusable="false"><use href="#dg-n1"></use></svg>';
+    noteLayer.appendChild(el);
+    var rec = { el: el, use: el.firstChild.firstChild, svg: el.firstChild, anim: null, busy: false };
+    notePool.push(rec);
+    return rec;
+  }
+
+  // Rectangles of the text on screen (a little padded), read once per beat.
+  function textRects() {
+    var out = [];
+    var vh = window.innerHeight || 800, vw = window.innerWidth || 1280;
+    var nodes = document.querySelectorAll(NOTE_TEXT);
+    var range = document.createRange();
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      if (n === btn || btn.contains(n) || (noteLayer && noteLayer.contains(n))) { continue; }
+      var r = n.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0 || r.bottom < -140 || r.top > vh + 140 || r.right < -40 || r.left > vw + 40) { continue; }
+      // the tight box of the text itself, not of the (often full-width) block
+      try {
+        range.selectNodeContents(n);
+        var t = range.getBoundingClientRect();
+        if (t.width > 0 && t.height > 0) { r = t; }
+      } catch (e) { /* use the element box */ }
+      // the headline rows and big words swell on the beat: leave room for it
+      var gx = 8, gy = 8;
+      if (n.classList.contains('w') || n.classList.contains('big')) { gx += r.width * 0.05; gy += 12; }
+      var disp = n.classList.contains('w') || n.classList.contains('big') || n.tagName === 'H1' || n.tagName === 'H2';
+      out.push({ l: r.left - gx, t: r.top - gy, r: r.right + gx, b: r.bottom + gy, d: disp });
+    }
+    return out;
+  }
+
+  // 0 = blocked by body text; 1 = free; 2 = free of body text but it crosses
+  // display type (the big headline words). Notes carry a thin dark outline, so
+  // they stay readable over white letters; they are only sent there when the
+  // free space has run out, and then half of them are yellow. The path is walked in 6 steps (about
+  // 20 px apart, so the boxes overlap) and each box is tested against every
+  // text rectangle.
+  function pathFree(x, y, size, rise, drift, rects) {
+    var crosses = false;
+    for (var k = 0; k <= 5; k++) {
+      var px = x + drift * k / 5 - 5, py = y - rise * k / 5 - 5, sz = size + 10;
+      for (var i = 0; i < rects.length; i++) {
+        var q = rects[i];
+        if (px + sz > q.l && px < q.r && py + sz > q.t && py < q.b) {
+          if (!q.d) { return 0; }
+          crosses = true;
+        }
+      }
+    }
+    return crosses ? 2 : 1;
+  }
+
+  function launchNote(x, y, size, rise, drift, rects, allowCross) {
+    var free = rects ? pathFree(x, y, size, rise, drift, rects) : 1;
+    if (!free || (free === 2 && !allowCross)) { return false; }
+    var rec = takeNote();
+    rec.busy = true;
+    noteLive += 1;
+    var kind = NOTE_KINDS[Math.floor(Math.random() * NOTE_KINDS.length)];
+    rec.use.setAttribute('href', '#dg-' + kind);
+    rec.svg.setAttribute('viewBox', (kind === 'n3' || kind === 'n4') ? '0 0 32 32' : '0 0 24 32');
+    rec.el.style.color = (free === 2 && Math.random() < 0.5) ? NOTE_COLORS[5] : NOTE_COLORS[Math.floor(Math.random() * NOTE_COLORS.length)];
+    // Document coordinates: the note scrolls with the page, so text that
+    // scrolls by never runs into it (the free space was checked at spawn).
+    y += window.pageYOffset || 0;
+    var k = size / 28;
+    var r0 = (Math.random() * 28 - 14);
+    var r1 = r0 + (drift >= 0 ? 1 : -1) * (10 + Math.random() * 16);
+    var dur = 1500 + Math.random() * 1000;
+    rec.el.classList.add('live');
+    var a;
+    try {
+      a = rec.el.animate([
+        { transform: 'translate(' + x + 'px,' + y + 'px) rotate(' + r0 + 'deg) scale(' + (k * 0.7) + ')', opacity: 0 },
+        { transform: 'translate(' + (x + drift * 0.2) + 'px,' + (y - rise * 0.25) + 'px) rotate(' + (r0 + (r1 - r0) * 0.2) + 'deg) scale(' + k + ')', opacity: 0.95, offset: 0.14 },
+        { transform: 'translate(' + (x + drift * 0.6) + 'px,' + (y - rise * 0.65) + 'px) rotate(' + (r0 + (r1 - r0) * 0.6) + 'deg) scale(' + k + ')', opacity: 0.8, offset: 0.55 },
+        { transform: 'translate(' + (x + drift) + 'px,' + (y - rise) + 'px) rotate(' + r1 + 'deg) scale(' + (k * 0.95) + ')', opacity: 0 }
+      ], { duration: dur, easing: 'cubic-bezier(.2,.6,.3,1)', fill: 'both' });
+    } catch (e) { rec.busy = false; noteLive -= 1; rec.el.classList.remove('live'); return false; }
+    rec.anim = a;
+    a.onfinish = function () { releaseNote(rec); };
+    return true;
+  }
+
+  function releaseNote(rec) {
+    if (!rec.busy) { return; }
+    rec.busy = false;
+    noteLive = Math.max(0, noteLive - 1);
+    if (rec.anim) { rec.anim.onfinish = null; try { rec.anim.cancel(); } catch (e) { /* noop */ } rec.anim = null; }
+    rec.el.classList.remove('live');
+  }
+
+  function clearNotes() {
+    for (var i = 0; i < notePool.length; i++) { releaseNote(notePool[i]); }
+  }
+
+  function spawnNotes(strength) {
+    if (!NOTES || document.hidden || reducedMotion() || !ensureNoteLayer()) { return; }
+    var cfg = noteMax();
+    var vw = window.innerWidth || 1280, vh = window.innerHeight || 800;
+    var rects = textRects();
+    var want = 1 + (cfg.perBeat > 1 && Math.random() < 0.45 ? 1 : 0);
+    var tries = 0;
+    while (want > 0 && noteLive < cfg.live && tries < 24) {
+      tries += 1;
+      var size = cfg.min + Math.random() * (cfg.max - cfg.min);
+      var rise = 60 + Math.random() * 60;
+      var drift = (Math.random() < 0.5 ? -1 : 1) * (8 + Math.random() * 20);
+      // half the candidates hug the side margins, half roam the screen
+      var x;
+      if (Math.random() < 0.5) {
+        var edge = Math.min(vw * 0.14, 150) * Math.random();
+        x = Math.random() < 0.5 ? 4 + edge : vw - size - 4 - edge;
+      } else {
+        x = 8 + Math.random() * (vw - size - 16);
+      }
+      var y = vh * 0.14 + Math.random() * (vh * 0.78) + rise;
+      if (y > vh - size - 6) { y = vh - size - 6; }
+      if (x + drift < 10 || x + drift + size > vw - 10) { drift = -drift; }
+      if (x + drift < 10 || x + drift + size > vw - 10) { continue; }
+      // keep clear of the chip itself; the chip has its own note
+      var cr = btn.getBoundingClientRect();
+      if (x + size + drift > cr.left - 10 && x + drift < cr.right + 10 && y + size > cr.top - 130) { continue; }
+      if (launchNote(x, y, size, rise, drift, rects, tries > 5)) { want -= 1; }
+    }
+    // strong beat: one note rises from the sound chip, the "it is playing" cue
+    if (strength >= 0.85 && noteLive < cfg.live + 1) {
+      var c = btn.getBoundingClientRect();
+      var cs = cfg.min + Math.random() * 4;
+      var cx = c.left + 6 + Math.random() * Math.max(10, c.width - cs - 12);
+      noteFlip = -noteFlip || 1;
+      var cd = noteFlip * (6 + Math.random() * 10);
+      var cy = c.top - cs - 2;
+      if (cx + cd > 10 && cx + cd + cs < vw - 10) { launchNote(cx, cy, cs, 56 + Math.random() * 30, cd, rects, true); }
+    }
+  }
+
   function reactiveFrame(t) {
     rafId = null;
     if (!analyser || !audio) { zeroAll(); return; }
     var dt = lastFrameT ? Math.min(100, t - lastFrameT) : 16;
     lastFrameT = t;
     var playing = !audio.paused && !audio.ended;
+    if (!playing && noteLive) { clearNotes(); }
     var tAmp = 0, tBass = 0, tMid = 0, tHigh = 0;
     if (playing) {
       analyser.getByteFrequencyData(freqData);
@@ -471,6 +669,7 @@
         beats[1] = beats[0];
         beats[0] = { t: t, s: s };
         if (s > v.beat) { v.beat = s; }
+        if (NOTES && isOn && !pending) { spawnNotes(s); }
       }
       fluxAvg += (flux - fluxAvg) * (dt / 700);
     }
@@ -740,6 +939,7 @@
     if (audio && audio.currentTime > 0) { store(sessionStorage, T_KEY, audio.currentTime.toFixed(1)); }
     if (!audio) { return; }
     if (document.hidden) {
+      clearNotes();
       if (isOn && !audio.paused && !audio.ended) {
         // A pause, not a user-off: the toggle stays ON. Hidden tabs throttle
         // or suspend timers, so a timed fade could leave the sound playing:
