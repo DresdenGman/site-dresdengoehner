@@ -37,3 +37,8 @@ footer .sound-credit,
   text-transform:uppercase;
   color:inherit;
 }
+
+/* Keep the fixed toggle clear of the last line of content at the bottom of
+   the homepage hero strip and of the homepage footer bar. */
+.hero-foot{padding-bottom:64px}
+.inst{padding-bottom:64px}
