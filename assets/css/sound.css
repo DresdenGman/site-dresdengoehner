@@ -107,3 +107,11 @@ footer .sound-credit,
   .sound-np-short{display:inline}
   .sound-time{display:none}
 }
+
+/* The expanded (sound on) chip is taller than SOUND OFF: give inner-page
+   footers and the homepage footer bar enough room that it never sits on
+   the credit line or the last footer links. */
+.wrap footer{padding-bottom:96px}
+@media (max-width:820px){
+  .inst{padding-bottom:88px}
+}
