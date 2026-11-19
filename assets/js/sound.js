@@ -223,10 +223,13 @@
     if (!audio) { return; }
     if (document.hidden) {
       if (isOn && !audio.paused && !audio.ended) {
-        // A pause, not a user-off: the toggle stays ON.
-        fadeTo(0, 300, function () {
-          if (document.hidden && audio) { audio.pause(); }
-        });
+        // A pause, not a user-off: the toggle stays ON. Hidden tabs throttle
+        // or suspend timers, so a timed fade could leave the sound playing:
+        // silence and pause immediately instead.
+        fadeGen += 1;
+        if (fadeTimer) { clearInterval(fadeTimer); fadeTimer = null; }
+        try { audio.volume = 0; } catch (e) { /* noop */ }
+        audio.pause();
       }
     } else if (isOn && audio.paused && !audio.ended) {
       // Back to the tab with the toggle still on: continue the piece.
