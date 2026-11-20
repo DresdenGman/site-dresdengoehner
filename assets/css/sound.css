@@ -54,7 +54,7 @@ footer .sound-credit-note,
 @media (prefers-reduced-motion:no-preference){
   /* the whole block breathes, each row kicks on the beat, staggered, with an
      alternating skew; rows are sized in index.html to fit at full swing */
-  #lines.rx{scale:calc(1 + var(--amp, 0) * .02);transform-origin:8% 50%}
+  #lines.rx{scale:calc(1 + var(--amp, 0) * .012);transform-origin:8% 50%}
   .ln:nth-child(1){--b:var(--b0,0);--sk:1}
   .ln:nth-child(2){--b:var(--b1,0);--sk:-1}
   .ln:nth-child(3){--b:var(--b2,0);--sk:1}
@@ -63,7 +63,7 @@ footer .sound-credit-note,
   .ln:nth-child(6){--b:var(--b5,0);--sk:-1}
   .ln:nth-child(7){--b:var(--b6,0);--sk:1}
   body.sound-on #lines.rx .ln .w{
-    transform:skewX(calc(var(--b, 0) * var(--sk, 1) * -2.5deg)) scale(calc(1 + var(--b, 0) * .05));
+    transform:skewX(calc(var(--b, 0) * var(--sk, 1) * -1.5deg)) scale(calc(1 + var(--b, 0) * .03));
     transform-origin:12% 60%;
   }
 }

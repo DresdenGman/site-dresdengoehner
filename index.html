@@ -30,7 +30,7 @@ a{color:inherit;text-decoration:none}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);padding:0 var(--pad)}
 .ul{background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:color .25s,background-size .35s var(--ease)}
 .ul:hover,.ul:focus-visible{color:var(--y)}
-/* ---------- hero: Megert ---------- */
+/* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;flex-direction:column;padding-top:28px}
 .meta{font-size:13px;line-height:1.38}
 .meta>div:nth-child(1){grid-column:1/4}.meta>div:nth-child(2){grid-column:4/7}.meta>div:nth-child(3){grid-column:7/10}.meta>nav{grid-column:10/13;text-align:right}
@@ -45,9 +45,9 @@ a{color:inherit;text-decoration:none}
    row's measured width in em (Archivo 800, -.035em tracking), and the fit
    term makes code column (var(--pad)) + row + the full mouse-parallax range
    (14px) end at 95.6% of the viewport width, so the solid glyphs stay inside
-   at rest. The remaining 4.4% absorbs the full audio-reactive swing: #lines
-   scales up to 1.02 about the centre and each row up to 1.05 about its own
-   centre plus a 2.5deg skew on the beat (see assets/css/sound.css). Rows
+   at rest. The remaining 4.4% easily absorbs the full audio-reactive swing: #lines
+   swells up to 1.2% and each row up to 3% about its own
+   origin plus a 1.5deg skew on the beat (see assets/css/sound.css). Rows
    that already fit keep the original size; only the long rows shrink. The
    scroll drift still slides rows through the clipped .lines frame. */
 .ln .w{position:relative;display:inline-block;font-family:Archivo,sans-serif;font-weight:800;font-size:min(clamp(42px,7.5vw,116px),calc((95.6vw - var(--pad) - 14px) / var(--em,14.3)));line-height:.94;letter-spacing:-.035em}
@@ -68,7 +68,7 @@ a{color:inherit;text-decoration:none}
 section{padding:128px 0}
 .label{grid-column:1/-1;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:12px;margin-bottom:64px;color:var(--dim)}
 .label .cap:first-child{color:var(--y)}
-/* ---------- exhibits: Megert word + Landheer wall label ---------- */
+/* ---------- exhibits ---------- */
 .ex{row-gap:0;margin-bottom:150px;align-items:start}
 .ex:last-child{margin-bottom:0}
 .ex .tag{grid-column:1/-1;display:flex;align-items:baseline;gap:18px;margin-bottom:10px}
@@ -142,7 +142,7 @@ section{padding:128px 0}
 footer{padding-top:120px}
 footer .sig{grid-column:1/7;font-family:Archivo;font-weight:900;font-size:clamp(44px,7vw,108px);letter-spacing:-.045em;line-height:.84}
 footer .col{font-size:13px;line-height:1.7;align-self:end}
-footer .c1{grid-column:7/10}footer .c2{grid-column:10/13;text-align:right;color:var(--dim)}
+footer .c1{grid-column:10/13;text-align:right}
 .inst{margin-top:64px;background:var(--paper);color:var(--ink);padding:14px var(--pad);display:flex;flex-wrap:wrap;gap:12px 40px;align-items:center}
 .inst .cap{font-weight:600;letter-spacing:.16em}
 .inst .cap:first-child{margin-right:auto}
@@ -172,7 +172,7 @@ section{padding:88px 0}
 .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ev-note,.drawer-note,.quote blockquote,.quote cite{grid-column:1/-1}
 .drawer{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px var(--gap)}
-footer .sig,footer .c1,footer .c2{grid-column:1/-1;text-align:left}footer .c1{margin-top:28px}
+footer .sig,footer .c1{grid-column:1/-1;text-align:left}footer .c1{margin-top:28px}
 .inst{gap:10px 20px}.inst .cap:first-child{flex-basis:100%}
 }
 </style><link rel="stylesheet" href="assets/css/sound.css">
@@ -281,7 +281,7 @@ footer .sig,footer .c1,footer .c2{grid-column:1/-1;text-align:left}footer .c1{ma
 </main>
 
 <footer>
-  <div class="grid"><div class="sig">dresden<br>goehner</div><div class="col c1"><a class="ul" href="https://github.com/DresdenGman">GitHub ↗</a><br><a class="ul" href="https://math.stackexchange.com/users/1769665/dresden">Math StackExchange ↗</a><br><a class="ul" href="mailto:dr.dresden0416@gmail.com">dr.dresden0416@gmail.com</a></div><div class="col c2">kinetic × museum<br>after Peter Megert 1965 · Alfred Willimann 1932<br>Tim A. Landheer 2015</div></div>
+  <div class="grid"><div class="sig">dresden<br>goehner</div><div class="col c1"><a class="ul" href="https://github.com/DresdenGman">GitHub ↗</a><br><a class="ul" href="https://math.stackexchange.com/users/1769665/dresden">Math StackExchange ↗</a><br><a class="ul" href="mailto:dr.dresden0416@gmail.com">dr.dresden0416@gmail.com</a></div></div>
   <div class="inst"><span class="cap"><span class="mark" aria-hidden="true"></span>Dresden Goehner · Research Index</span><a class="cap" href="proof.html">Claim index</a><a class="cap" href="contributions.html">Contributions</a><a class="cap" href="projects/index.html">Projects</a><a class="cap" href="https://github.com/DresdenGman">GitHub</a><a class="cap" href="https://math.stackexchange.com/users/1769665/dresden">Math SE</a><a class="cap" href="#top">Back to top ↑</a><span class="cap sound-credit">Music: played by Dresden Goehner</span></div>
 </footer>
 <script src="assets/common.js"></script>
