@@ -1,0 +1,166 @@
+/* Sound toggle — styles for the site-music control injected by assets/js/sound.js,
+   plus the footer credit line. Loaded by every page alongside (never inside)
+   site.css or the homepage's inline stylesheet. */
+.sound-toggle{
+  position:fixed;
+  z-index:50;
+  bottom:max(24px, env(safe-area-inset-bottom));
+  right:max(24px, env(safe-area-inset-right));
+  margin:0;
+  border:0;
+  padding:8px 10px;
+  background:rgba(11,11,11,.78);
+  color:var(--dim, #8f8c86);
+  font:600 11px/1 Inter,Helvetica,Arial,sans-serif;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.sound-toggle:hover{color:#b8b5ae}
+.sound-toggle.is-on{color:var(--y, #f2e600)}
+.sound-toggle.is-on:hover{color:var(--y, #f2e600)}
+.sound-toggle:focus-visible{outline:2px solid var(--y, #f2e600);outline-offset:3px}
+@media (max-width:820px){
+  .sound-toggle{
+    bottom:max(16px, env(safe-area-inset-bottom));
+    right:max(16px, env(safe-area-inset-right));
+  }
+}
+@media (prefers-reduced-motion:no-preference){
+  .sound-toggle{transition:color .15s linear}
+}
+footer .sound-credit,
+footer .sound-credit-note,
+.inst .sound-credit,
+.inst .sound-credit-note{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:inherit;
+}
+
+/* Keep the fixed toggle clear of the last line of content at the bottom of
+   the homepage hero strip and of the homepage footer bar. */
+.hero-foot{padding-bottom:64px}
+.inst{padding-bottom:64px}
+
+/* Audio-reactive headline: ONLY the homepage's big rows (#lines) move with the
+   music; nothing else on any page does. assets/js/sound.js writes --amp
+   (loudness, the block swell) and --b0..--b6 (the beat, staggered down the
+   rows) on #lines while the music plays and the headline is in the viewport
+   (.rx). Sound off or reduced motion: the variables are never set and
+   nothing moves. Pulses are at least 380 ms apart (< 3 Hz). */
+@media (prefers-reduced-motion:no-preference){
+  /* the whole block breathes, each row kicks on the beat, staggered, with an
+     alternating skew; rows are sized in index.html to fit at full swing */
+  #lines.rx{scale:calc(1 + var(--amp, 0) * .02);transform-origin:8% 50%}
+  .ln:nth-child(1){--b:var(--b0,0);--sk:1}
+  .ln:nth-child(2){--b:var(--b1,0);--sk:-1}
+  .ln:nth-child(3){--b:var(--b2,0);--sk:1}
+  .ln:nth-child(4){--b:var(--b3,0);--sk:-1}
+  .ln:nth-child(5){--b:var(--b4,0);--sk:1}
+  .ln:nth-child(6){--b:var(--b5,0);--sk:-1}
+  .ln:nth-child(7){--b:var(--b6,0);--sk:1}
+  body.sound-on #lines.rx .ln .w{
+    transform:skewX(calc(var(--b, 0) * var(--sk, 1) * -2.5deg)) scale(calc(1 + var(--b, 0) * .05));
+    transform-origin:12% 60%;
+  }
+}
+
+/* Music notes: one click-through layer that scrolls with the page (zero height, so it adds no scroll area); only transform and opacity are
+   animated (Web Animations API, see sound.js). Never created for reduced motion. */
+.dg-notes{position:absolute;top:0;left:0;width:100%;height:0;z-index:40;pointer-events:none;overflow-x:clip;overflow-y:visible}
+.dg-note{position:absolute;left:0;top:0;width:28px;height:28px;margin:0;padding:0;opacity:0;visibility:hidden;pointer-events:none;will-change:transform,opacity;transform-origin:50% 100%}
+.dg-note.live{visibility:visible}
+.dg-note svg{display:block;width:100%;height:100%;fill:currentColor;stroke:#0b0b0b;stroke-width:2.4;stroke-linejoin:round;paint-order:stroke fill;overflow:visible}
+
+/* ON-pending: ON by default, waiting for the first tap or key press. */
+.sound-hint{display:none;color:var(--dim)}
+.sound-toggle.is-pending{color:var(--y, #f2e600)}
+.sound-toggle.is-pending .sound-hint{display:inline}
+@media (max-width:480px){
+  .sound-hint-more{display:none}
+}
+.sound-credit-note{opacity:.8}
+
+/* Now-playing detail inside the toggle chip. The block is collapsed to
+   zero size while the toggle is off, so the chip is exactly the SOUND OFF
+   chip; while on it expands to show the marimba credit, a thin progress
+   line and the elapsed time. The whole block is aria-hidden in the DOM;
+   the button's aria-label carries the action. */
+.sound-toggle{text-align:left}
+.sound-state{display:block}
+.sound-detail{
+  display:block;
+  max-width:0;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+}
+.sound-toggle.is-on .sound-detail{
+  max-width:300px;
+  max-height:72px;
+  opacity:1;
+}
+@media (prefers-reduced-motion:no-preference){
+  .sound-detail{transition:max-width .15s linear,max-height .15s linear,opacity .15s linear}
+}
+.sound-np{
+  display:block;
+  margin-top:6px;
+  color:var(--fg, #f2f0ea);
+  font-size:10px;
+  letter-spacing:.14em;
+  white-space:nowrap;
+}
+.sound-np-short{display:none}
+.sound-bar{
+  display:block;
+  height:2px;
+  margin-top:6px;
+  background:rgba(242,240,234,.16);
+}
+.sound-bar-fill{
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--y, #f2e600);
+}
+.sound-time{
+  display:block;
+  margin-top:5px;
+  color:var(--dim, #8f8c86);
+  font-size:10px;
+  letter-spacing:.14em;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+@media (max-width:480px){
+  .sound-np-full{display:none}
+  .sound-np-short{display:inline}
+  .sound-time{display:none}
+}
+
+/* The expanded (sound on) chip is taller than SOUND OFF: give inner-page
+   footers and the homepage footer bar enough room that it never sits on
+   the credit line or the last footer links. */
+.wrap footer{padding-bottom:96px}
+@media (max-width:820px){
+  .inst{padding-bottom:88px}
+}
+
+/* While sound is on, the expanded chip sits over the hero foot's decorative
+   right-hand hint ("exhibits · evidence · archive"). At desktop sizes fade
+   the hint out while the chip is expanded (sliding it left instead would
+   land it on the neighbouring tagline); on narrow screens raise the foot so
+   the hint clears the chip. Sound off: the hint is exactly where it was. */
+@media (min-width:821px){
+  body.sound-on .hero-foot .s,body.sound-pending .hero-foot .s{opacity:0}
+}
+@media (max-width:820px){
+  .hero-foot{padding-bottom:80px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero-foot .s{transition:opacity .15s linear}
+}

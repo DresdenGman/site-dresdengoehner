@@ -40,7 +40,17 @@ a{color:inherit;text-decoration:none}
 .lines{flex:1;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:3vh 0}
 .ln{position:relative;display:flex;align-items:center;white-space:nowrap;will-change:transform}
 .ln .code{flex:0 0 var(--pad);display:flex;justify-content:center;font:600 10px Inter;letter-spacing:.14em;color:var(--y);writing-mode:vertical-rl;transform:rotate(180deg);opacity:.9}
-.ln .w{position:relative;display:inline-block;font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(42px,7.5vw,116px);line-height:.94;letter-spacing:-.035em}
+/* Each headline row is sized to be as large as the original design allows
+   (clamp(42px,7.5vw,116px)) but never wider than the viewport: --em is the
+   row's measured width in em (Archivo 800, -.035em tracking), and the fit
+   term makes code column (var(--pad)) + row + the full mouse-parallax range
+   (14px) end at 95.6% of the viewport width, so the solid glyphs stay inside
+   at rest. The remaining 4.4% absorbs the full audio-reactive swing: #lines
+   scales up to 1.02 about the centre and each row up to 1.05 about its own
+   centre plus a 2.5deg skew on the beat (see assets/css/sound.css). Rows
+   that already fit keep the original size; only the long rows shrink. The
+   scroll drift still slides rows through the clipped .lines frame. */
+.ln .w{position:relative;display:inline-block;font-family:Archivo,sans-serif;font-weight:800;font-size:min(clamp(42px,7.5vw,116px),calc((95.6vw - var(--pad) - 14px) / var(--em,14.3)));line-height:.94;letter-spacing:-.035em}
 .ln .w::before,.ln .w::after{content:attr(data-t);position:absolute;left:0;top:0;color:transparent;-webkit-text-stroke:1.15px rgba(242,240,234,.72);transform:translate(var(--gx,6px),var(--gy,4px));pointer-events:none}
 .ln .w::after{-webkit-text-stroke:1px rgba(242,240,234,.3);transform:translate(calc(var(--gx,6px)*2),calc(var(--gy,4px)*2))}
 .ln.o .w{color:transparent;-webkit-text-stroke:1.25px var(--fg)}
@@ -96,11 +106,8 @@ section{padding:128px 0}
 .lightbox{aspect-ratio:16/10;position:relative;overflow:hidden;background:#101010;display:grid;place-items:center}
 .lightbox i{position:absolute;background:linear-gradient(100deg,rgba(255,255,255,0),#fff 35%,#fff 65%,rgba(255,255,255,0));transform:skewX(-18deg) rotate(-6deg);filter:blur(6px);box-shadow:0 0 50px rgba(255,255,255,.25)}
 .lightbox b{position:relative;font-family:Archivo;font-weight:900;font-size:clamp(28px,4.6vw,72px);letter-spacing:-.04em;line-height:.92;text-align:center;color:transparent;-webkit-text-stroke:1.1px var(--fg);mix-blend-mode:difference}
-/* ---------- evidence: Willimann beam ---------- */
+/* ---------- evidence room ---------- */
 .evidence{position:relative;background:#0b0b0b;overflow:hidden;padding:150px 0 140px;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
-.evidence::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(242,240,234,0) 0%,rgba(242,240,234,.55) 22%,#f7f5ef 50%,rgba(242,240,234,.55) 78%,rgba(242,240,234,0) 100%);clip-path:polygon(14% 0,86% 0,52.5% 50%,86% 100%,14% 100%,47.5% 50%);transform:scaleX(var(--bx,1));transition:transform 1.8s var(--ease),opacity 1.8s;opacity:.95}
-.evidence::after{content:"";position:absolute;left:0;right:0;top:50%;height:120px;transform:translateY(-50%);background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.16) 45%,rgba(255,255,255,.3) 50%,rgba(255,255,255,.16) 55%,rgba(255,255,255,0));pointer-events:none}
-.js:not(.rm) .evidence:not(.in)::before{--bx:.35;opacity:0}
 .evidence .label{position:relative;border-color:#333}
 .nums{position:relative;z-index:1;grid-column:1/-1;display:grid;grid-template-columns:1fr 1.55fr 1fr 1fr;gap:var(--gap);align-items:start;padding:40px 0}
 .num b{display:block;font-family:Archivo;font-weight:900;font-size:clamp(50px,6.5vw,104px);line-height:.9;letter-spacing:-.04em;color:var(--y);-webkit-text-stroke:1.4px #0b0b0b;text-shadow:1px 1px 0 #0b0b0b,2px 2px 0 #0b0b0b,3px 3px 0 #0b0b0b,4px 4px 0 #0b0b0b,5px 5px 0 #0b0b0b,6px 6px 0 #0b0b0b,7px 7px 0 #0b0b0b,8px 8px 0 #0b0b0b,9px 9px 0 rgba(242,230,0,.35)}
@@ -162,23 +169,24 @@ section{padding:88px 0}
 .ex .wall{margin-top:18px}
 .ex figcaption{flex-direction:column;gap:2px}
 .nums{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:48px}
-.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.evidence::before{clip-path:polygon(0 0,100% 0,56% 50%,100% 100%,0 100%,44% 50%);opacity:.6}
+.nums{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ev-note,.drawer-note,.quote blockquote,.quote cite{grid-column:1/-1}
 .drawer{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px var(--gap)}
 footer .sig,footer .c1,footer .c2{grid-column:1/-1;text-align:left}footer .c1{margin-top:28px}
 .inst{gap:10px 20px}.inst .cap:first-child{flex-basis:100%}
 }
-</style></head><body>
+</style><link rel="stylesheet" href="assets/css/sound.css">
+</head><body>
 <header class="hero" id="top">
   <div class="grid meta"><div><b>dresdengoehner.com</b><br>research · systems · evidence</div><div>independent work<br>2020 — 2026</div><div>applied mathematics<br>probabilistic modeling</div><nav aria-label="Primary"><a class="ul" href="#work">exhibits</a><a class="ul" href="#evidence">evidence</a><a class="ul" href="#archive">archive</a></nav></div>
   <div class="lines" id="lines" aria-label="Dresden Goehner — make uncertainty visible">
-    <div class="ln" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" data-t="dresden goehner">dresden goehner</span></span></div>
-    <div class="ln o" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" data-t="make uncertainty visible">make uncertainty visible</span></span></div>
-    <div class="ln" aria-hidden="true"><span class="code">DE</span><span class="inner"><span class="w" data-t="unsicherheit sichtbar machen">unsicherheit sichtbar machen</span></span></div>
-    <div class="ln o" aria-hidden="true"><span class="code">FR</span><span class="inner"><span class="w" data-t="rendre l’incertitude visible">rendre l’incertitude visible</span></span></div>
-    <div class="ln" aria-hidden="true"><span class="code">IT</span><span class="inner"><span class="w" data-t="rendere visibile l’incertezza">rendere visibile l’incertezza</span></span></div>
-    <div class="ln o" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" data-t="make uncertainty visible">make uncertainty visible</span></span></div>
-    <div class="ln" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" data-t="dresden goehner">dresden goehner</span></span></div>
+    <div class="ln" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" style="--em:8.181" data-t="dresden goehner">dresden goehner</span></span></div>
+    <div class="ln o" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" style="--em:11.67" data-t="make uncertainty visible">make uncertainty visible</span></span></div>
+    <div class="ln" aria-hidden="true"><span class="code">DE</span><span class="inner"><span class="w" style="--em:14.299" data-t="unsicherheit sichtbar machen">unsicherheit sichtbar machen</span></span></div>
+    <div class="ln o" aria-hidden="true"><span class="code">FR</span><span class="inner"><span class="w" style="--em:12.383" data-t="rendre l’incertitude visible">rendre l’incertitude visible</span></span></div>
+    <div class="ln" aria-hidden="true"><span class="code">IT</span><span class="inner"><span class="w" style="--em:13.004" data-t="rendere visibile l’incertezza">rendere visibile l’incertezza</span></span></div>
+    <div class="ln o" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" style="--em:11.67" data-t="make uncertainty visible">make uncertainty visible</span></span></div>
+    <div class="ln" aria-hidden="true"><span class="code">EN</span><span class="inner"><span class="w" style="--em:8.181" data-t="dresden goehner">dresden goehner</span></span></div>
   </div>
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Dresden Goehner</h1>
   <div class="grid hero-foot"><p class="claim">Building decision systems that make <em>uncertainty visible.</em></p><p class="q">Models are useful only when we know where they fail.</p><p class="s cap">exhibits · evidence · archive ↓</p></div>
@@ -274,9 +282,10 @@ footer .sig,footer .c1,footer .c2{grid-column:1/-1;text-align:left}footer .c1{ma
 
 <footer>
   <div class="grid"><div class="sig">dresden<br>goehner</div><div class="col c1"><a class="ul" href="https://github.com/DresdenGman">GitHub ↗</a><br><a class="ul" href="https://math.stackexchange.com/users/1769665/dresden">Math StackExchange ↗</a><br><a class="ul" href="mailto:dr.dresden0416@gmail.com">dr.dresden0416@gmail.com</a></div><div class="col c2">kinetic × museum<br>after Peter Megert 1965 · Alfred Willimann 1932<br>Tim A. Landheer 2015</div></div>
-  <div class="inst"><span class="cap"><span class="mark" aria-hidden="true"></span>Dresden Goehner · Research Index</span><a class="cap" href="proof.html">Claim index</a><a class="cap" href="contributions.html">Contributions</a><a class="cap" href="projects/index.html">Projects</a><a class="cap" href="https://github.com/DresdenGman">GitHub</a><a class="cap" href="https://math.stackexchange.com/users/1769665/dresden">Math SE</a><a class="cap" href="#top">Back to top ↑</a></div>
+  <div class="inst"><span class="cap"><span class="mark" aria-hidden="true"></span>Dresden Goehner · Research Index</span><a class="cap" href="proof.html">Claim index</a><a class="cap" href="contributions.html">Contributions</a><a class="cap" href="projects/index.html">Projects</a><a class="cap" href="https://github.com/DresdenGman">GitHub</a><a class="cap" href="https://math.stackexchange.com/users/1769665/dresden">Math SE</a><a class="cap" href="#top">Back to top ↑</a><span class="cap sound-credit">Music: played by Dresden Goehner</span></div>
 </footer>
 <script src="assets/common.js"></script>
+<script src="assets/js/sound.js" defer></script>
 <script>
 (()=>{
   const hero=document.querySelector('.hero');
