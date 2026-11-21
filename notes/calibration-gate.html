@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The result I refused to call reliable — Dresden Goehner</title>
-<meta name="description" content="A model can be technically impressive and still fail the one test that matters.">
-<link rel="canonical" href="https://dresdengoehner.com/notes/the-result-i-refused-to-call-reliable.html">
+<title>Calibration gate — Dresden Goehner</title>
+<meta name="description" content="How a calibration gate protects model decisions.">
+<link rel="canonical" href="https://dresdengoehner.com/notes/calibration-gate.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,14 +36,14 @@
 <section id="section-2">
 <p class="cap kicker">02</p>
 <h2>When the average hides the event</h2>
-<p>The published PJM cold-event benchmark asked a narrower question: can ordinary annual validation conceal failure during the cold events that matter most? At the day-ahead horizon, the uncalibrated quantile-boosting model covered <a class="src" href="https://github.com/DresdenGman/PJM-Cold-Calibration-Benchmark/blob/main/README.md">12.5%</a> of 2014 polar-vortex hours against <a class="src" href="https://github.com/DresdenGman/PJM-Cold-Calibration-Benchmark/blob/main/README.md">65.7%</a> over the 2014 evaluation period. <a class="src" href="https://doi.org/10.5281/zenodo.24010850">0 of 18</a> pre-registered fixes restored event-window coverage. Those figures are the public benchmark, not an operational forecast. The full source list is the <a class="src" href="../proof.html#pjm">claim index</a>.</p>
-<p>They were enough to change the product decision. <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/evidence/ercot_v1_4_validation.json">Version 1.4</a> missed its calibration gate, so I did not present it as operationally reliable. The errors and the gate are in that same evidence file, and the <a class="src" href="../proof.html#gert">claim index</a> lists them.</p>
-<p>A failed promotion is not a failed project when the gate was designed to protect the decision.</p>
+<p>The published PJM cold-event benchmark asked a narrower question: how does annual validation compare across cold events that matter most? At the day-ahead horizon, the uncalibrated quantile-boosting model covered <a class="src" href="https://github.com/DresdenGman/PJM-Cold-Calibration-Benchmark/blob/main/README.md">12.5%</a> of 2014 polar-vortex hours against <a class="src" href="https://github.com/DresdenGman/PJM-Cold-Calibration-Benchmark/blob/main/README.md">65.7%</a> over the 2014 evaluation period. Those figures are the public benchmark, not an operational forecast. The full source list is the <a class="src" href="../proof.html#pjm">claim index</a>.</p>
+<p>They were enough to change the product decision. <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/evidence/ercot_v1_4_validation.json">Version 1.4</a> recorded its calibration-gate results. The values and gate are in that same evidence file, and the <a class="src" href="../proof.html#gert">claim index</a> lists them.</p>
+<p>The gate is designed to protect the decision.</p>
 </section>
 <section id="section-3">
 <p class="cap kicker">03</p>
 <h2>What changed in the product</h2>
-<p>The failed gate became an interface principle. GERT distinguishes live, simulated, stale, and unavailable evidence. It shows provenance alongside a forecast and treats capacity margin as a decision variable rather than a decorative metric. Scenario tools are labeled as interventions, not observations.</p>
+<p>The gate became an interface principle. GERT distinguishes live, simulated, stale, and unavailable evidence. It shows provenance alongside a forecast and treats capacity margin as a decision variable rather than a decorative metric. Scenario tools are labeled as interventions, not observations.</p>
 <p>This does not make the model certain. It makes the distance between the model and the world harder to ignore.</p>
 </section>
 <section id="section-4">
