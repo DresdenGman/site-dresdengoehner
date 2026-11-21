@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GERT — Grid Extreme Risk Toolkit — Dresden Goehner</title>
-<meta name="description" content="The public record for GERT: the Historical Lab, tests, PJM cold-event benchmark and community ledger, each with its source.">
+<meta name="description" content="The full record for GERT: a forecast may be served only after it clears a pre-set calibration gate. Version 1.4 missed the gate and the decision is published. The Historical Lab, the tests, the PJM cold-event benchmark and the community ledger, each with its source.">
 <link rel="canonical" href="https://dresdengoehner.com/projects/gert">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dresden Goehner">
 <meta property="og:title" content="GERT — Grid Extreme Risk Toolkit — Dresden Goehner">
-<meta property="og:description" content="The lab, the tests and the PJM benchmark, each with its source.">
+<meta property="og:description" content="Version 1.4 missed its pre-set calibration gate and was not promoted. The lab, the tests, the PJM benchmark and the limits, each with its source.">
 <meta property="og:url" content="https://dresdengoehner.com/projects/gert">
 <meta property="og:image" content="https://dresdengoehner.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="GERT — Grid Extreme Risk Toolkit — Dresden Goehner">
-<meta name="twitter:description" content="The lab, the tests and the PJM benchmark, each with its source.">
+<meta name="twitter:description" content="Version 1.4 missed its pre-set calibration gate and was not promoted. The lab, the tests, the PJM benchmark and the limits, each with its source.">
 <meta name="twitter:image" content="https://dresdengoehner.com/og.png">
 <meta name="twitter:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -48,7 +48,7 @@ ul.evid li{margin:10px 0}
 <header class="page">
 <p class="cap">Exhibit 02 · Published research lab</p>
 <h1>Grid Extreme Risk Toolkit</h1>
-<p class="lede">A forecast is evaluated through a pre-set calibration gate. The public Historical Lab uses 216 hours of ERCOT load. Official site: <a class="src" href="https://gertgrid.space">gertgrid.space</a>. Tool: <a class="src" href="https://gert-d.vercel.app">gert-d.vercel.app</a>. Repository: <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-</a>.</p>
+<p class="lede">A forecast may be served only after it clears a pre-set calibration gate. Version 1.4 missed that gate, and the decision is published. The public Historical Lab uses 216 hours of ERCOT load. Official site: <a class="src" href="https://gertgrid.space">gertgrid.space</a>. Tool: <a class="src" href="https://gert-d.vercel.app">gert-d.vercel.app</a>. Repository: <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-">DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-</a>.</p>
 </header>
 <main>
 <section aria-label="Main visual">
@@ -66,7 +66,7 @@ ul.evid li{margin:10px 0}
 <p class="cap kicker">What I built</p>
 <h2>A gate the model cannot argue with</h2>
 <ul>
-<li>A FastAPI backend and a Next.js frontend. The current candidate, ercot-delta-quantile-v1.4, is a quantile model of load change. The calibration gate was written before the evaluation window was opened.</li>
+<li>A FastAPI backend and a Next.js frontend. The current candidate, ercot-delta-quantile-v1.4, is a quantile model of load change. The calibration gate was written before the evaluation window was opened; a candidate that fails is not served — the forecast endpoint returns 503 — and the decision is published either way.</li>
 <li>The public Historical Lab: 216 hours of measured ERCOT load in three 72-hour windows. Every result can be downloaded and independently recomputed; no account is required. Official site <a class="src" href="https://gertgrid.space">gertgrid.space</a>; tool <a class="src" href="https://gert-d.vercel.app">gert-d.vercel.app</a>.</li>
 <li>The PJM-Cold-Calibration-Benchmark: four extreme cold events, 3 model classes &#215; 5 calibrators, each evaluated chronologically and by leave-one-event-out. The protocol is published in the benchmark&#8217;s <a class="src" href="https://github.com/DresdenGman/PJM-Cold-Calibration-Benchmark/tree/main/preregistration">preregistration/</a>.</li>
 </ul>
@@ -75,14 +75,14 @@ ul.evid li{margin:10px 0}
 <p class="cap kicker">Evidence</p>
 <h2>What can be checked</h2>
 <ul class="evid">
-<li><b>v1.4 calibration record.</b> Against the pre-set gate of absolute coverage error &#8804; 0.03, the recorded errors are Q90 0.035417, Q95 0.04375, Q99 0.031667. Source: <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/docs/DECISION_RECORD_ERCOT_v1_4.md">decision record</a> and the <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/evidence/ercot_v1_4_validation.json">evidence JSON</a>.</li>
-<li><b>Pinball skill.</b> Pinball skill against the frozen seasonal baseline ran +0.76 to +0.84 across quantiles. Source: the same <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/docs/DECISION_RECORD_ERCOT_v1_4.md">decision record</a>.</li>
+<li><b>v1.4 was not promoted.</b> Against the pre-set gate of absolute coverage error &#8804; 0.03, the recorded errors are Q90 0.035417, Q95 0.04375, Q99 0.031667. Source: <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/docs/DECISION_RECORD_ERCOT_v1_4.md">decision record</a> and the <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/evidence/ercot_v1_4_validation.json">evidence JSON</a>.</li>
+<li><b>Skilled, and still rejected.</b> Pinball skill against the frozen seasonal baseline ran +0.76 to +0.84 across quantiles. It did not buy promotion: the calibration gate is the decision, not the skill score. Source: the same <a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/docs/DECISION_RECORD_ERCOT_v1_4.md">decision record</a>.</li>
 <li><b>Historical Lab: 216 hours.</b> In the summer-2023 window at an assumed 80,000 MW capacity, observed load exceeds capacity for 21 hours (66,683 MWh unserved-energy proxy); with a 5% load reduction, 7 hours and 4,458 MWh. Sources: <a class="src" href="https://doi.org/10.5281/zenodo.22975251">dataset DOI 10.5281/zenodo.22975251</a> and the <a class="src" href="https://gert-d.vercel.app">lab</a>.</li>
 <li><b>Tests: 142 backend and 51 frontend</b>, passing on 2026-11-17 — the tool site&#8217;s own footer, <a class="src" href="https://gert-d.vercel.app">gert-d.vercel.app</a>. The earlier count, 141 backend and 50 frontend on 2026-11-09, is kept in the <a class="src" href="../proof.html#gert">claim index</a>.</li>
 <li><b>Archives.</b> Software: <a class="src" href="https://doi.org/10.5281/zenodo.23982226">DOI 10.5281/zenodo.23982226</a> (v1.2.0, 2026-11-05). Dataset: <a class="src" href="https://doi.org/10.5281/zenodo.22975251">DOI 10.5281/zenodo.22975251</a> (v1, 2026-09-26).</li>
-<li id="pjm"><b>PJM cold-event benchmark.</b> Day-ahead QR-GBT 90% interval coverage was 12.5% during the 2014 polar vortex, against 65.7% over the 2014 evaluation period. Retrospective leave-one-event-out evaluation reports coverage differences of +11.6 and +21.2 percentage points against chronological evaluation. Sources: <a class="src" href="https://github.com/DresdenGman/PJM-Cold-Calibration-Benchmark">benchmark repository</a> and <a class="src" href="https://doi.org/10.5281/zenodo.24010850">DOI 10.5281/zenodo.24010850</a>.</li>
-<li><b>Community sessions:</b> Session 1 in May 2026 and Session 2 on 2026-09-08 (<a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/docs/FEEDBACK.md">docs/FEEDBACK.md</a>).</li>
-<li><b>Community ledger:</b> 4 forwarded reports, 2 hands-on core completions (<a class="src" href="https://gert-d.vercel.app/community">community page</a>, updated 2026-09-25).</li>
+<li id="pjm"><b>PJM cold-event benchmark.</b> Day-ahead QR-GBT 90% interval coverage fell to 12.5% during the 2014 polar vortex, against 65.7% over the 2014 evaluation period; 0 of 18 repair cells passed. Retrospective leave-one-event-out evaluation overstates the Mondrian calibrators&#8217; coverage by +11.6 and +21.2 percentage points against chronological evaluation. Sources: <a class="src" href="https://github.com/DresdenGman/PJM-Cold-Calibration-Benchmark">benchmark repository</a> and <a class="src" href="https://doi.org/10.5281/zenodo.24010850">DOI 10.5281/zenodo.24010850</a>.</li>
+<li><b>Two pilots are on record:</b> Session 1 in May 2026 and Session 2 on 2026-09-08 (<a class="src" href="https://github.com/DresdenGman/Grid-Extreme-Risk-Toolkit-GERT-/blob/main/docs/FEEDBACK.md">docs/FEEDBACK.md</a>). No participant counts are published here: the figures in that document are organiser-reported and unverified, with no raw responses.</li>
+<li><b>Community ledger:</b> 4 organiser-forwarded reports, 2 hands-on core completions (self-reported), 0 independent retests (<a class="src" href="https://gert-d.vercel.app/community">community page</a>, updated 2026-09-25). A record of what happened — not adoption evidence.</li>
 </ul>
 </section>
 <section>
@@ -100,12 +100,22 @@ ul.evid li{margin:10px 0}
 </ul>
 </section>
 <section>
+<p class="cap kicker">Limits and next steps</p>
+<h2>What it cannot do yet</h2>
+<ul>
+<li>The v1.4 validation window is 96 hours — small for tail quantiles. The decision record states that this alone would not support promotion, independent of the gate result.</li>
+<li>GERT is decision-support research, not an autonomous grid controller, and it is not deployed on an operating network.</li>
+<li>The PJM benchmark has 1 submission; its git history cannot prove the preregistration predates the results, and the 2014 modelling table is not published with the repository.</li>
+<li>A next candidate (v1.5) is pre-registered as a plan. It is not completed, and no result is claimed for it.</li>
+</ul>
+</section>
+<section>
 <p class="cap kicker">Media</p>
 <h2>Charts from the repository</h2>
 <div class="media">
 <figure>
-<img src="../assets/gert-gate-chart.webp" width="1671" height="941" loading="lazy" alt="Gate chart: preregistered gate 0.030, with Q50 and the higher quantiles recorded">
-<figcaption>The gate: preregistered gate 0.030; Q50 0.021, Q90 0.035, Q95 0.044, Q99 0.032. Project graphic (docs/assets/gate-chart.png); exact values are in the evidence JSON.</figcaption>
+<img src="../assets/gert-gate-chart.webp" width="1671" height="941" loading="lazy" alt="Stylised gate chart: preregistered gate 0.030, with Q50 passing and Q90, Q95, Q99 failing">
+<figcaption>The gate, as the project draws it: preregistered gate 0.030; Q50 0.021 pass, Q90 0.035, Q95 0.044, Q99 0.032 fail — rejected, 1 of 4 passed. Project graphic (docs/assets/gate-chart.png); exact values are in the evidence JSON.</figcaption>
 </figure>
 <figure>
 <img src="../assets/gert-pipeline.webp" width="1672" height="941" loading="lazy" alt="Pipeline graphic: recorded data, features, model, the gate, evidence">
