@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Open-source contributions — Dresden Goehner</title>
-<meta name="description" content="Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner): 28 merged PRs across 19 third-party repositories (27 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first.">
+<meta name="description" content="Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner): 30 merged PRs across 20 third-party repositories (29 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first.">
 <link rel="canonical" href="https://dresdengoehner.com/contributions.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dresden Goehner">
 <meta property="og:title" content="Open-source contributions — Dresden Goehner">
-<meta property="og:description" content="28 merged PRs across 19 third-party repositories (27 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first, each with a plain summary and its file and line counts.">
+<meta property="og:description" content="30 merged PRs across 20 third-party repositories (29 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first, each with a plain summary and its file and line counts.">
 <meta property="og:url" content="https://dresdengoehner.com/contributions.html">
 <meta property="og:image" content="https://dresdengoehner.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Open-source contributions — Dresden Goehner">
-<meta name="twitter:description" content="28 merged PRs across 19 third-party repositories (27 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first.">
+<meta name="twitter:description" content="30 merged PRs across 20 third-party repositories (29 code contributions + 1 list entry), ordered by the exchange each one had with its maintainers, most exchange first.">
 <meta name="twitter:image" content="https://dresdengoehner.com/og.png">
 <meta name="twitter:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -55,20 +55,20 @@ a.card p{font-size:14px;color:#cfccc5}
 <header class="page">
 <p class="cap">Open-source contributions &#183; merged pull requests only</p>
 <h1>Open-source contributions</h1>
-<p class="lede">Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner), ordered by the exchange each one had with the repository&#8217;s maintainers &#8212; the comments and written reviews on the pull request &#8212; most exchange first: 28 merged PRs across 19 third-party repositories (27 code contributions + 1 list entry). Each card links to the pull request on GitHub. Counts were checked against GitHub on 2026-11-18 and match the <a class="src" href="proof.html#opensource">claim index</a>.</p>
+<p class="lede">Every merged pull request into third-party repositories (excluding repos under my own accounts DresdenGman and dresdengoehner), ordered by the exchange each one had with the repository&#8217;s maintainers &#8212; the comments and written reviews on the pull request &#8212; most exchange first: 30 merged PRs across 20 third-party repositories (29 code contributions + 1 list entry). Each card links to the pull request on GitHub. Counts were checked against GitHub on 2026-11-22 and match the <a class="src" href="proof.html#opensource">claim index</a>.</p>
 </header>
 <main>
 <section aria-label="Totals">
 <div class="totals">
-<div class="total"><b>28</b><span>merged pull requests</span></div>
+<div class="total"><b>30</b><span>merged pull requests</span></div>
 <div class="total"><b>19</b><span>third-party repositories</span></div>
-<div class="total"><b>84</b><span>files changed in total, with +3165 -163 lines across the 28 pull requests</span></div>
+<div class="total"><b>97</b><span>files changed in total, with +3480 -216 lines across the 30 pull requests</span></div>
 </div>
 <p class="note" style="margin-top:16px">The 28 are 27 code contributions plus 1 list entry (the awesome-quant listing, labelled on its card below).</p>
 </section>
 <section aria-label="Merged pull requests, most exchange first">
 <p class="cap kicker">Most exchange first</p>
-<h2>28 merged PRs across 19 third-party repositories (27 code contributions + 1 list entry)</h2>
+<h2>30 merged PRs across 20 third-party repositories (29 code contributions + 1 list entry)</h2>
 <div class="cards">
 <a class="card" href="https://github.com/scikit-learn-contrib/MAPIE/pull/953" target="_blank" rel="noopener">
 <img src="assets/contributions/scikit-learn-contrib-mapie-953.webp" width="1200" height="937" loading="lazy" alt="Screenshot of scikit-learn-contrib/MAPIE#953 on GitHub">
@@ -160,6 +160,20 @@ a.card p{font-size:14px;color:#cfccc5}
 <h3>Add py.typed marker</h3>
 <p class="meta">Merged 2026-07-11 &#183; 1 file changed &#183; +0 -0 &#183; Exchange 2</p>
 <p>Adds a py.typed marker file to the statsforecast package so type checkers recognise it as a typed package under PEP 561. No runtime code is changed.</p>
+</a>
+<a class="card" href="https://github.com/SALib/SALib/pull/716" target="_blank" rel="noopener">
+<img src="assets/contributions/salib-salib-716.webp" width="1200" height="937" loading="lazy" alt="Screenshot of SALib/SALib#716 on GitHub">
+<p class="cap repo">SALib/SALib #716</p>
+<h3>Add group-aware Shapley effects (#708, item 2)</h3>
+<p class="meta">Merged 2026-11-22 &#183; 9 files changed &#183; +212 -44 &#183; Exchange 1</p>
+<p>Makes the Shapley effects analyzer group-aware instead of warning and ignoring groups. Per-trajectory contributions are aggregated by group, so a group&#8217;s effect is the sum of its members&#8217; effects and its confidence interval accounts for the covariance of member contributions. The analyzer also reports the mean absolute contribution and its confidence half-width alongside the signed values.</p>
+</a>
+<a class="card" href="https://github.com/psf/black/pull/5660" target="_blank" rel="noopener">
+<img src="assets/contributions/psf-black-5660.webp" width="1200" height="937" loading="lazy" alt="Screenshot of psf/black#5660 on GitHub">
+<p class="cap repo">psf/black #5660</p>
+<h3>Keep commented expressions together when the comment trails the expression (preview)</h3>
+<p class="meta">Merged 2026-11-19 &#183; 4 files changed &#183; +103 -9 &#183; Exchange 1</p>
+<p>Completes the preview feature that keeps a commented expression together, for the case where the comment trails the expression. In delimiter_split, when the last standalone comment sits after the last highest-priority delimiter at the same bracket depth and the split is not a comprehension, the split now yields to standalone_comment_split. Stable style is unchanged; the change applies only under --preview, with 7 new preview test cases.</p>
 </a>
 <a class="card" href="https://github.com/e2nIEE/pandapower/pull/3351" target="_blank" rel="noopener">
 <img src="assets/contributions/e2niee-pandapower-3351.webp" width="1200" height="937" loading="lazy" alt="Screenshot of e2nIEE/pandapower#3351 on GitHub">
@@ -272,8 +286,8 @@ a.card p{font-size:14px;color:#cfccc5}
 <section aria-label="How this list was built">
 <p class="cap kicker">Method</p>
 <h2>How this list was built</h2>
-<p>Source: GitHub search <i>is:pr author:DresdenGman is:merged</i>, checked 2026-11-18, with each pull request's own GitHub record for its merged date and its files changed, additions and deletions. Exclusion rule: pull requests in repositories under my own accounts — DresdenGman or dresdengoehner — are own-project work and are not counted here; that excludes, for example, dresdengoehner/Grid-Extreme-Risk-Toolkit-GERT- #3 and #4, which are in a repository under my second account. The wilsonfreitas/awesome-quant listing is an external merge and is included above as the 1 list entry, labelled &#8220;Listing / awesome-list entry&#8221;. Each summary is written from that pull request's description and diff. Ordering rule: the exchange on a pull request is the number of comments on it by me and by other people plus the written reviews it received, counted from their conversations on 2026-11-17 and 2026-11-18 with bot comments excluded and the pull request description not counted as a comment; the list is ordered by that count, highest first, with ties broken by merged date, newest first. Each card&#8217;s meta line ends with its exchange count.</p>
-<p class="note">Screenshots: each card's image is a screenshot of that pull request's GitHub page, captured 2026-11-16 to 2026-11-18, showing its title, Merged badge and description.</p>
+<p>Source: GitHub search <i>is:pr author:DresdenGman is:merged</i>, checked 2026-11-22, with each pull request's own GitHub record for its merged date and its files changed, additions and deletions. Exclusion rule: pull requests in repositories under my own accounts — DresdenGman or dresdengoehner — are own-project work and are not counted here; that excludes, for example, dresdengoehner/Grid-Extreme-Risk-Toolkit-GERT- #3 and #4, which are in a repository under my second account. The wilsonfreitas/awesome-quant listing is an external merge and is included above as the 1 list entry, labelled &#8220;Listing / awesome-list entry&#8221;. Each summary is written from that pull request's description and diff. Ordering rule: the exchange on a pull request is the number of comments on it by me and by other people plus the written reviews it received, counted from their conversations on 2026-11-17, 2026-11-18 and, for the two newest, 2026-11-22 with bot comments excluded and the pull request description not counted as a comment; the list is ordered by that count, highest first, with ties broken by merged date, newest first. Each card&#8217;s meta line ends with its exchange count.</p>
+<p class="note">Screenshots: each card's image is a screenshot of that pull request's GitHub page, captured 2026-11-16 to 2026-11-22, showing its title, Merged badge and description.</p>
 </section>
 </main>
 <footer>
