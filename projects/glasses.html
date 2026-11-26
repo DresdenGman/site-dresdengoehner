@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Navigation Glasses — Dresden Goehner</title>
-<meta name="description" content="The full record for the AI Navigation Glasses: a research prototype that turns traffic-light, obstacle and crosswalk observations into restrained spoken guidance, and says uncertain below a 0.70 confidence threshold. Survey, Bosch evaluation, tests and limits, each with its source.">
+<title>QuietFrame — Dresden Goehner</title>
+<meta name="description" content="The full record for the QuietFrame: a research prototype that turns traffic-light, obstacle and crosswalk observations into restrained spoken guidance, and says uncertain below a 0.70 confidence threshold. Survey, Bosch evaluation, tests and limits, each with its source.">
 <link rel="canonical" href="https://dresdengoehner.com/projects/glasses">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dresden Goehner">
-<meta property="og:title" content="AI Navigation Glasses — Dresden Goehner">
+<meta property="og:title" content="QuietFrame — Dresden Goehner">
 <meta property="og:description" content="Research prototype, not a certified mobility aid. The survey, the Bosch evaluation, the tests and the limits, each with its source.">
 <meta property="og:url" content="https://dresdengoehner.com/projects/glasses">
 <meta property="og:image" content="https://dresdengoehner.com/og.png">
@@ -16,7 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Navigation Glasses — Dresden Goehner">
+<meta name="twitter:title" content="QuietFrame — Dresden Goehner">
 <meta name="twitter:description" content="Research prototype, not a certified mobility aid. The survey, the Bosch evaluation, the tests and the limits, each with its source.">
 <meta name="twitter:image" content="https://dresdengoehner.com/og.png">
 <meta name="twitter:image:alt" content="Dresden Goehner. Building decision systems that make uncertainty visible.">
@@ -47,13 +47,13 @@ ul.evid li{margin:10px 0}
 </nav>
 <header class="page">
 <p class="cap">Exhibit 01 · Research prototype</p>
-<h1>AI Navigation Glasses</h1>
-<p class="lede">A research prototype that turns traffic-light, obstacle and crosswalk observations into restrained spoken guidance, and says &#8220;uncertain&#8221; below a 0.70 confidence threshold instead of issuing a command. Not a certified mobility aid. Built on the open-source <a class="src" href="https://github.com/AI-FanGe/OpenAIglasses_for_Navigation">AI-FanGe / OpenAIglasses_for_Navigation</a> framework. Repository: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation">DresdenGman/AIGlasses_for_navigation</a>.</p>
+<h1>QuietFrame</h1>
+<p class="lede">A research prototype that turns traffic-light, obstacle and crosswalk observations into restrained spoken guidance, and says &#8220;uncertain&#8221; below a 0.70 confidence threshold instead of issuing a command. Not a certified mobility aid. Built on the open-source <a class="src" href="https://github.com/AI-FanGe/OpenAIglasses_for_Navigation">AI-FanGe / OpenAIglasses_for_Navigation</a> framework. Repository: <a class="src" href="https://github.com/DresdenGman/QuietFrame">DresdenGman/QuietFrame</a>.</p>
 </header>
 <main>
 <section aria-label="Main visual">
 <figure class="hero-fig">
-<img src="../assets/glasses-render-v04.jpg" width="1600" height="1156" alt="AI Navigation Glasses, Continuous Facets v0.4 enclosure, three-quarter studio render">
+<img src="../assets/glasses-render-v04.jpg" width="1600" height="1156" alt="QuietFrame, Continuous Facets v0.4 enclosure, three-quarter studio render">
 <figcaption>Continuous Facets v0.4 enclosure · three-quarter view. Blender render of the editable enclosure model · not a photograph of a manufactured device.</figcaption>
 </figure>
 </section>
@@ -66,9 +66,9 @@ ul.evid li{margin:10px 0}
 <p class="cap kicker">What I built</p>
 <h2>A guidance engine with the boundary inside</h2>
 <ul>
-<li>A hardware-independent guidance engine: observations in, spoken prompts out (Chinese speech). Below 0.70 confidence it says &#8220;uncertain&#8221; instead of issuing a command. Core files: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/aiglasses/guidance.py">aiglasses/guidance.py</a>, <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/aiglasses/pipeline.py">pipeline.py</a>, <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/aiglasses/vision.py">vision.py</a>, <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/aiglasses/service.py">service.py</a>. Architecture: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/docs/ARCHITECTURE.md">docs/ARCHITECTURE.md</a>.</li>
+<li>A hardware-independent guidance engine: observations in, spoken prompts out (Chinese speech). Below 0.70 confidence it says &#8220;uncertain&#8221; instead of issuing a command. Core files: <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/aiglasses/guidance.py">aiglasses/guidance.py</a>, <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/aiglasses/pipeline.py">pipeline.py</a>, <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/aiglasses/vision.py">vision.py</a>, <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/aiglasses/service.py">service.py</a>. Architecture: <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/docs/ARCHITECTURE.md">docs/ARCHITECTURE.md</a>.</li>
 <li>Default perception is an OpenCV colour heuristic. A YOLOX ONNX detector is optional and is not the default evaluation path. A laptop-camera and video channel feed the same engine.</li>
-<li>The Continuous Facets v0.4 editable enclosure (Blender / STL), in <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/tree/main/design/v0.4">design/v0.4/</a>. The current release contains no finished ESP32 wearable, and the device is not a certified aid.</li>
+<li>The Continuous Facets v0.4 editable enclosure (Blender / STL), in <a class="src" href="https://github.com/DresdenGman/QuietFrame/tree/main/design/v0.4">design/v0.4/</a>. The current release contains no finished ESP32 wearable, and the device is not a certified aid.</li>
 <li>Upstream, stated plainly: the project is built on <a class="src" href="https://github.com/AI-FanGe/OpenAIglasses_for_Navigation">AI-FanGe / OpenAIglasses_for_Navigation</a>. My own work is the guidance rules, the evaluation harnesses, the survey and its raw data, the v0.4 enclosure, and the community materials. The upstream project&#8217;s manual images are not my work and are not shown on this page.</li>
 </ul>
 </section>
@@ -77,24 +77,24 @@ ul.evid li{margin:10px 0}
 <h2>What can be checked</h2>
 <ul class="evid">
 <li><b>Survey: 85 responses (self-selected, non-random sample).</b> Of the 64 people who had used the glasses, 9 were still using them; 48% reported inaccurate prompts; mean helpfulness 3.47 out of 5. Full methodology and raw CSV: docs/FEEDBACK.md.</li>
-<li><b>124 automated tests</b> in the <code>tests/</code> tree at commit 11725cd5 (2026-11-05), still current on 2026-11-09. Public run of that tree: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/actions/runs/42235271943">Actions run 42235271943</a> (2026-11-06). Detail: <a class="src" href="../proof.html#glasses">claim index</a>.</li>
-<li><b>Bosch real frames.</b> On 61 single-state red/green frames from the Bosch Small Traffic Lights Dataset, the laptop camera path committed to a state on only 4 frames (coverage 6.6%); one red frame was read as green; and on 104 frames containing no annotated light it emitted &#8220;green&#8221; on 2. Source: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/docs/EVALUATION.md">docs/EVALUATION.md</a>. This is a distant, vehicle-camera benchmark — it is not head-worn, near-field performance. The dataset images are not redistributed (non-commercial licence).</li>
-<li><b>Synthetic calibration.</b> On drawn lamp discs — 14 frames in 11 clips — the harness records 0 false prompts and 0 misses. Source: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/docs/EVAL.md">docs/EVAL.md</a>. Drawn discs, not street validation.</li>
+<li><b>124 automated tests</b> in the <code>tests/</code> tree at commit 11725cd5 (2026-11-05), still current on 2026-11-09. Public run of that tree: <a class="src" href="https://github.com/DresdenGman/QuietFrame/actions/runs/42235271943">Actions run 42235271943</a> (2026-11-06). Detail: <a class="src" href="../proof.html#glasses">claim index</a>.</li>
+<li><b>Bosch real frames.</b> On 61 single-state red/green frames from the Bosch Small Traffic Lights Dataset, the laptop camera path committed to a state on only 4 frames (coverage 6.6%); one red frame was read as green; and on 104 frames containing no annotated light it emitted &#8220;green&#8221; on 2. Source: <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/docs/EVALUATION.md">docs/EVALUATION.md</a>. This is a distant, vehicle-camera benchmark — it is not head-worn, near-field performance. The dataset images are not redistributed (non-commercial licence).</li>
+<li><b>Synthetic calibration.</b> On drawn lamp discs — 14 frames in 11 clips — the harness records 0 false prompts and 0 misses. Source: <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/docs/EVAL.md">docs/EVAL.md</a>. Drawn discs, not street validation.</li>
 <li><b>Software archive:</b> <a class="src" href="https://doi.org/10.5281/zenodo.23977544">DOI 10.5281/zenodo.23977544</a>.</li>
-<li><b>Privacy boundary:</b> event history retains 0 raw video, audio or location fields. Source: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/docs/DATA_BOUNDARIES.md">docs/DATA_BOUNDARIES.md</a>.</li>
-<li><b>3 communities</b> received hands-on making instruction. Source: the project <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/README.md">README</a> and the <a class="src" href="../proof.html#glasses">claim index</a>. This is instruction, not deployment.</li>
+<li><b>Privacy boundary:</b> event history retains 0 raw video, audio or location fields. Source: <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/docs/DATA_BOUNDARIES.md">docs/DATA_BOUNDARIES.md</a>.</li>
+<li><b>3 communities</b> received hands-on making instruction. Source: the project <a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/README.md">README</a> and the <a class="src" href="../proof.html#glasses">claim index</a>. This is instruction, not deployment.</li>
 </ul>
 </section>
 <section>
 <p class="cap kicker">Timeline</p>
 <h2>Public record only</h2>
 <ul>
-<li><b>2025-12-09</b> — the repository&#8217;s first public commit (<a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/commit/12b121a3">12b121a3</a>). Any earlier start date is the author&#8217;s own account and is not published here.</li>
+<li><b>2025-12-09</b> — the repository&#8217;s first public commit (<a class="src" href="https://github.com/DresdenGman/QuietFrame/commit/12b121a3">12b121a3</a>). Any earlier start date is the author&#8217;s own account and is not published here.</li>
 <li><b>2026-07-29</b> — reproducible FastAPI guidance prototype and dashboard (README project timeline).</li>
-<li><b>2026-08-26 to 2026-11-04</b> — survey collection window (<a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/docs/FEEDBACK.md">docs/FEEDBACK.md</a>).</li>
-<li><b>2026-09-18</b> — Continuous Facets v0.4 enclosure released (<a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/docs/RELEASE_v0.4.md">release note</a>).</li>
+<li><b>2026-08-26 to 2026-11-04</b> — survey collection window (<a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/docs/FEEDBACK.md">docs/FEEDBACK.md</a>).</li>
+<li><b>2026-09-18</b> — Continuous Facets v0.4 enclosure released (<a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/docs/RELEASE_v0.4.md">release note</a>).</li>
 <li><b>2026-11-05</b> — survey analysis, Bosch evaluation and reference BOM pricing published.</li>
-<li><b>2026-11-09</b> — the 124-test tree was still current on this date (public run: <a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/actions/runs/42235271943">2026-11-06</a>).</li>
+<li><b>2026-11-09</b> — the 124-test tree was still current on this date (public run: <a class="src" href="https://github.com/DresdenGman/QuietFrame/actions/runs/42235271943">2026-11-06</a>).</li>
 </ul>
 </section>
 <section>
@@ -104,7 +104,7 @@ ul.evid li{margin:10px 0}
 <li>A research prototype, not a certified mobility aid. It does not replace a white cane, a guide dog, or professional orientation and mobility support.</li>
 <li>Default perception is a colour heuristic. On distant Bosch frames it almost never commits to a state, and it once read red as green. Near-field performance has not been measured under the same protocol.</li>
 <li>The survey relies on a self-selected community sample without controlled follow-up. There is no consented field-video dataset in the repository.</li>
-<li>Cost, stated with its conditions: a reference bill of materials totals <b>US$32.29, parts only</b>, priced 2026-11-05 (<a class="src" href="https://github.com/DresdenGman/AIGlasses_for_navigation/blob/main/docs/BOM_PRICING.md">docs/BOM_PRICING.md</a>). That figure requires the board at Seeed&#8217;s direct price and the speaker build; it excludes shipping and tax; fit with the v0.4 enclosure is unverified; and it is not the bill for any batch of built units.</li>
+<li>Cost, stated with its conditions: a reference bill of materials totals <b>US$32.29, parts only</b>, priced 2026-11-05 (<a class="src" href="https://github.com/DresdenGman/QuietFrame/blob/main/docs/BOM_PRICING.md">docs/BOM_PRICING.md</a>). That figure requires the board at Seeed&#8217;s direct price and the speaker build; it excludes shipping and tax; fit with the v0.4 enclosure is unverified; and it is not the bill for any batch of built units.</li>
 <li>There is no photograph of a physical unit to publish yet. Next steps, neither of them done: add physical photographs or video, and rerun the evaluation protocol on labelled near-field frames.</li>
 </ul>
 </section>
